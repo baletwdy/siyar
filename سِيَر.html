@@ -1,0 +1,1703 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>سِيَر</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: one phone-width column (max 560px) with a fixed bottom bar; each screen is a stack of manuscript-like panels. */
+:root {
+  --bg: #0D1A18;
+  --surface: #142623;
+  --surface-2: #1B322E;
+  --line: #2A4641;
+  --fg: #EFE7D3;
+  --muted: #A6B7AF;
+  --faint: #8A9F96;
+  --gold: #E0AE4E;
+  --teal: #5FB3A6;
+  --on-gold: #10201D;
+  --c-hanafi: #E0AE4E;
+  --c-maliki: #5FB3A6;
+  --c-shafii: #E58C6B;
+  --c-hanbali: #A99CE6;
+  --font-display: "Amiri", "Traditional Arabic", "Times New Roman", serif;
+  --font-body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F1F3EE; --surface: #FFFFFF; --surface-2: #E5EBE5; --line: #C9D5CD;
+    --fg: #14211E; --muted: #4B5E57; --faint: #5A6C64;
+    --gold: #8F600C; --teal: #1C6B60; --on-gold: #FFFFFF;
+    --c-hanafi: #8F600C; --c-maliki: #1C6B60; --c-shafii: #A8461F; --c-hanbali: #5B4BB5;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F1F3EE; --surface: #FFFFFF; --surface-2: #E5EBE5; --line: #C9D5CD;
+  --fg: #14211E; --muted: #4B5E57; --faint: #5A6C64;
+  --gold: #8F600C; --teal: #1C6B60; --on-gold: #FFFFFF;
+  --c-hanafi: #8F600C; --c-maliki: #1C6B60; --c-shafii: #A8461F; --c-hanbali: #5B4BB5;
+  color-scheme: light;
+}
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.75; }
+* { box-sizing: border-box; }
+button { font-family: inherit; font-size: inherit; color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+#app {
+  max-width: 560px; margin: 0 auto; min-height: 100%;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px calc(96px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: 16px;
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 700; }
+p { margin: 0; }
+.display { font-family: var(--font-display); }
+.ref { font-size: 12px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 13px; font-weight: 600; color: var(--teal); letter-spacing: .02em; }
+.muted { color: var(--muted); }
+
+.topbar { display: flex; align-items: center; gap: 12px; }
+.icon-btn { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; cursor: pointer; }
+.icon-btn svg { width: 22px; height: 22px; }
+.title-block { display: flex; flex-direction: column; min-width: 0; }
+.title-block h1 { font-family: var(--font-display); font-size: 28px; line-height: 1.25; }
+.title-block .sub { font-size: 13px; color: var(--muted); }
+
+.brand { display: flex; align-items: center; justify-content: center; text-align: center; gap: 12px; }
+.brand h1 { font-family: var(--font-display); font-size: 48px; line-height: 1; color: var(--gold); }
+.brand .tag { font-size: 14px; color: var(--muted); }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.panel.quiet { background: transparent; border-style: dashed; }
+.panel h2 { font-size: 15px; font-weight: 600; color: var(--teal); }
+
+.imam-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.imam-card { text-align: start; border: 1px solid var(--line); background: var(--surface); border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; position: relative; min-height: 150px; }
+.imam-card .letter { font-family: var(--font-display); font-size: 44px; line-height: 1; color: var(--ic); }
+.imam-card .name { font-weight: 600; font-size: 16px; line-height: 1.4; }
+.imam-card .yrs { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.imam-card .school { font-size: 12px; color: var(--ic); font-weight: 600; }
+.imam-card .stamp { position: absolute; top: 12px; left: 12px; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ic); display: grid; place-items: center; color: var(--ic); }
+.imam-card .stamp svg { width: 16px; height: 16px; }
+
+.collection { text-align: start; cursor: pointer; border: 1px solid var(--gold); background: var(--surface); border-radius: 22px; padding: 22px 20px; display: flex; flex-direction: column; gap: 6px; }
+.collection .ctitle { font-family: var(--font-display); font-size: 32px; line-height: 1.25; color: var(--gold); font-weight: 700; }
+.collection .letters { display: flex; gap: 8px; margin-top: 8px; }
+.collection .letters i { font-style: normal; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ic); color: var(--ic); display: grid; place-items: center; font-family: var(--font-display); font-size: 22px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.tile { text-align: start; cursor: pointer; border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tile svg { width: 22px; height: 22px; color: var(--teal); }
+.tile b { font-size: 14px; }
+.tile span { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { min-height: 40px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 14px; }
+.chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); font-weight: 600; }
+
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px; }
+.tab { min-height: 42px; border: 0; border-radius: 10px; background: transparent; cursor: pointer; font-weight: 600; font-size: 13px; padding: 0 2px; color: var(--muted); }
+.tab[aria-selected="true"] { background: var(--surface-2); color: var(--fg); }
+
+.hero { border-radius: 20px; padding: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.hero .nm { font-family: var(--font-display); font-size: 30px; line-height: 1.3; color: var(--ic); }
+.hero .yrs { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.fact { display: flex; flex-direction: column; gap: 2px; }
+.place { display: flex; gap: 10px; }
+.place .dot { flex: none; width: 10px; height: 10px; border-radius: 50%; margin-top: 9px; background: var(--ic); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.tier { margin-top: 18px; } .tier h3 { margin: 0 0 6px; font-size: 16px; } .tier h3 small { font-weight: 400; font-size: 12px; color: var(--muted, #888); margin-inline-start: 6px; }
+.cent { margin: 10px 0 0; } .cent h4 { margin: 0 0 8px; font-size: 13px; opacity: .8; border-bottom: 1px dashed currentColor; padding-bottom: 4px; }
+.pill { display: flex; flex-direction: column; padding: 8px 12px; border-radius: 14px; background: var(--surface-2); line-height: 1.5; }
+.pill b { font-weight: 500; font-size: 14px; }
+.pill.tap { border: 1px solid var(--line); cursor: pointer; text-align: start; min-height: 44px; color: inherit; font: inherit; }
+.pill.tap .more { font-size: 12px; color: var(--ic, var(--muted)); }
+.pill.work { background: transparent; border: 1px solid var(--ic); }
+.pill.work b { color: var(--ic); font-weight: 600; }
+.quote { font-family: var(--font-display); font-size: 21px; line-height: 1.8; }
+
+.story { border-radius: 22px; padding: 24px 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; min-height: 320px; }
+.story .kicker { font-size: 13px; font-weight: 600; color: var(--ic); }
+.story h3 { font-family: var(--font-display); font-size: 30px; line-height: 1.3; color: var(--ic); }
+.story p { font-size: 17px; line-height: 1.95; }
+.progress { display: flex; gap: 5px; }
+.progress span { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+.progress span.on { background: var(--ic); }
+.row { display: flex; gap: 10px; }
+.btn { min-height: 48px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-weight: 600; padding: 0 16px; }
+.ed { width: 100%; box-sizing: border-box; font: inherit; font-size: 14px; line-height: 1.7; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2); color: inherit; min-height: 44px; }
+.ed-f { display: flex; flex-direction: column; gap: 4px; }
+.ed-line { display: flex; flex-direction: column; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
+.btn.primary { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.btn:disabled { opacity: .45; cursor: default; }
+.grow { flex: 1; }
+
+.svgwrap { width: 100%; overflow-x: auto; }
+svg.map, svg.chain, svg.tl { width: 100%; height: auto; display: block; direction: ltr; }
+.map .grid { stroke: var(--line); stroke-width: .6; fill: none; }
+.map .gl { fill: var(--faint); font-size: 8px; font-family: var(--font-body); }
+.map .city { fill: var(--fg); font-size: 11px; font-family: var(--font-body); font-weight: 600; }
+.map .city.dim { fill: var(--faint); font-weight: 400; }
+.map .base { fill: var(--surface-2); stroke: var(--line); }
+.chain .node { fill: var(--surface-2); stroke: var(--line); }
+.chain .lbl { fill: var(--fg); font-size: 13px; font-family: var(--font-body); font-weight: 600; }
+.chain .edge { fill: none; stroke: var(--muted); stroke-width: 1.4; }
+.chain .elbl { fill: var(--faint); font-size: 9.5px; font-family: var(--font-body); }
+.chain .arrow { fill: var(--muted); }
+.tl .axis { stroke: var(--line); }
+.tl .tick { fill: var(--faint); font-size: 10px; font-family: var(--font-body); }
+.tl .nm { fill: var(--fg); font-size: 12px; font-family: var(--font-body); font-weight: 600; }
+.tl .yr { fill: var(--muted); font-size: 10px; font-family: var(--font-body); }
+.tl .ev { stroke: var(--gold); stroke-dasharray: 3 3; }
+.tl .evt { fill: var(--gold); font-size: 10px; font-family: var(--font-body); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 50%; background: var(--ic); display: inline-block; }
+
+.hints { display: flex; flex-direction: column; gap: 8px; }
+.hint { padding: 12px 14px; border-radius: 12px; background: var(--surface-2); display: flex; flex-direction: column; gap: 2px; }
+.hint.locked { background: transparent; border: 1px dashed var(--line); color: var(--faint); }
+.options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { min-height: 52px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-weight: 600; }
+.opt.right { border-color: var(--teal); background: var(--surface-2); color: var(--teal); }
+.opt.wrong { border-color: var(--c-shafii); color: var(--c-shafii); }
+.score { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--gold); }
+.verdict { font-weight: 600; }
+
+.passport { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.seal { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12px; text-align: center; }
+.seal .ring { width: 56px; height: 56px; border-radius: 50%; border: 2px dashed var(--line); display: grid; place-items: center; font-family: var(--font-display); font-size: 24px; color: var(--faint); }
+.seal.on .ring { border-style: solid; border-color: var(--ic); color: var(--ic); background: var(--surface-2); }
+
+.navbar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); z-index: 5; }
+.navbar .in { max-width: 560px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.collection.alt { border-color: var(--teal); }
+.tiles.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.search { width: 100%; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2); color: var(--fg); padding: 8px 14px; font: inherit; }
+.not-group h3 { font-size: 15px; margin: 4px 0 8px; color: var(--ic, var(--fg)); }
+.set-row { display: flex; flex-direction: column; gap: 10px; }
+[hidden] { display: none !important; }
+.nav { min-height: 64px; border: 0; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; color: var(--muted); cursor: pointer; }
+.nav svg { width: 22px; height: 22px; }
+.nav[aria-current="page"] { color: var(--gold); font-weight: 600; }
+.source-note { font-size: 12px; line-height: 1.8; color: var(--faint); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .story, .hero, .panel { animation: rise .35s ease both; }
+  @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
+}
+</style>
+
+<div id="app" dir="rtl" lang="ar"></div>
+<nav class="navbar" dir="rtl" lang="ar" aria-label="التنقل"><div class="in" id="nav"></div></nav>
+
+<script>
+document.documentElement.lang = 'ar';
+document.documentElement.dir = 'rtl';
+
+/* ---------- البيانات: كل معلومة مُحالة إلى «سير أعلام النبلاء» (ط الرسالة) بالجزء/الصفحة ---------- */
+const IMAMS = [
+  {
+    id: 'hanafi', short: 'أبو حنيفة', letter: 'ن', school: 'المذهب الحنفي',
+    name: 'أبو حنيفة النعمان بن ثابت التيمي', born: 80, died: 150,
+    book: { short: 'الجواهر', full: '«الجواهر المضية في طبقات الحنفية» لعبد القادر القرشي (ت ٧٧٥ هـ)، بتحقيق الحلو' },
+    years: '٨٠ – ١٥٠ هـ', yearsRef: '٦/٣٩١، ٦/٤٠٣', yearsM: 'الجواهر ١/٥٣–٥٤',
+    summary: 'الإمام، فقيه الملة، عالم العراق، الكوفي. كان خزّازًا يبيع الخزّ، ودكّانه معروف في دار عمرو بن حريث.', summaryRef: '٦/٣٩٠، ٦/٣٩٤',
+    extra: { t: 'قال القرشي: روى عنه الجمّ الغفير، نحو من أربعة آلاف نفس.', m: 'الجواهر ١/٥٥' },
+    sifa: { t: 'قال أبو يوسف: كان ربعة، من أحسن الناس صورة، وأبلغهم نطقًا، وأعذبهم نغمة. وقال ابنه حماد: كان جميلًا تعلوه سمرة، حسن الهيئة، كثير التعطّر، هيوبًا، لا يتكلم إلا جوابًا، ولا يخوض فيما لا يعنيه.', r: '٦/٣٩٩–٤٠٠' },
+    places: [
+      { k: 'b', city: 'kufa', t: 'بلده، وبها دكّانه، ورُئي شيخًا يفتي الناس بمسجدها', r: '٦/٣٩٤، ٦/٣٩٩' },
+      { k: 's', city: 'basra', t: 'قدمها فسُئل عن أشياء لم يكن عنده فيها جواب، فعزم على ملازمة حماد', r: '٦/٣٩٨' },
+      { k: 'd', city: 'baghdad', t: 'حُبس فيها لامتناعه عن القضاء، ومات بها', r: '٦/٤٠١، ٦/٤٠٣', m: 'الجواهر ١/٥٤' }
+    ],
+    teachers: [
+      { n: 'حماد بن أبي سليمان', d: 'وبه تفقّه', r: '٦/٣٩١' },
+      { n: 'عطاء بن أبي رباح', d: 'أكبر شيخ له', r: '٦/٣٩١', m: 'الجواهر ١/٥٥' },
+      { n: 'نافع مولى ابن عمر', d: '', r: '٦/٣٩١', m: 'الجواهر ١/٥٥' }
+    ],
+    students: [ { n: 'القاضي أبو يوسف', r: '٦/٣٩٤' }, { n: 'محمد بن الحسن الشيباني', r: '٦/٣٩٤' }, { n: 'زفر بن الهذيل', r: '٦/٣٩٣' } ],
+    works: [],
+    quote: 'ما أحوج الناس كل وقت إلى من يقول لهم مثل هذا', quoteBy: 'الإمام أبو حنيفة لمن قال له: اتّقِ الله', quoteRef: '٦/٤٠٠',
+    notes: [
+      { t: 'قصة تركه علم الكلام وجلوسه إلى حماد بعد سؤال امرأة عن الطلاق قال فيها الذهبي: «الله أعلم بصحتها». والثابت عنده من رواية العجلي أنه صحب حمادًا ثماني عشرة سنة.', r: '٦/٣٩٧–٣٩٨' },
+      { t: 'قال القرشي: الصحيح أنه وُلد سنة ثمانين، وقيل: إحدى وستين، وقيل: ثلاث وستين. وأجمعوا على أنه مات سنة خمسين ومائة، واختلفوا في الشهر: رجب، أو شعبان، أو النصف من شوال.', m: 'الجواهر ١/٥٣–٥٤' }
+    ],
+    stories: [
+      { k: 'الكوفة', h: 'خزّاز الكوفة', p: 'قال العجلي: كان أبو حنيفة خزّازًا يبيع الخزّ، ودكّانه معروف في دار عمرو بن حريث.', r: '٦/٣٩٤' },
+      { k: 'الطلب', h: 'ثماني عشرة سنة', p: 'قال أبو حنيفة: قدمتُ البصرة فظننتُ أني لا أُسأل عن شيء إلا أجبتُ فيه، فسألوني عن أشياء لم يكن عندي فيها جواب، فجعلتُ على نفسي ألا أفارق حمادًا حتى يموت، فصحبتُه ثماني عشرة سنة.', r: '٦/٣٩٨' },
+      { k: 'شهادة مالك', h: 'سارية من ذهب', p: 'سُئل مالك عن أبي حنيفة فقال: رأيتُ رجلًا لو كلّمك في هذه السارية أن يجعلها ذهبًا لقام بحجّته.', r: '٦/٣٩٩', m: 'الجواهر ١/٥٦' },
+      { k: 'بغداد', h: 'أبى القضاء', p: 'طلبه المنصور فأراده على القضاء وحلف ليلينّ، فأبى وحلف ألا يفعل، وقال: أمير المؤمنين على كفّارة يمينه أقدر مني. فأمر به إلى السجن، فمات فيه ببغداد.', r: '٦/٤٠١' },
+      { k: 'بين إمامين', h: 'عزاء أحمد في محنته', p: 'كان الإمام أحمد بن حنبل كثيرًا ما يذكره ويترحّم عليه، ويبكي في زمن محنته، ويتسلّى بضرب أبي حنيفة على القضاء.', m: 'الجواهر ١/٥٦' },
+      { k: 'شهادة', h: 'أولهم أبو حنيفة', p: 'قال يزيد بن هارون: أدركتُ ألف رجل وكتبتُ عن أكثرهم، ما رأيتُ فيهم أفقه ولا أورع ولا أعلم من خمسة؛ أولهم أبو حنيفة.', m: 'الجواهر ١/٥٧' },
+      { k: 'عبادته', h: 'الوتد', p: 'قال أبو عاصم النبيل: كان أبو حنيفة يُسمّى الوتد؛ لكثرة صلاته.', r: '٦/٤٠٠' },
+      { k: 'ورعه', h: 'دينار لكل يمين', p: 'جعل أبو حنيفة على نفسه إن حلف بالله صادقًا أن يتصدّق بدينار، وكان إذا أنفق على عياله نفقة تصدّق بمثلها.', r: '٦/٤٠٠' },
+      { k: 'خشيته', h: '«اتّقِ الله»', p: 'سمع رجلًا يقول له: اتّقِ الله، فانتفض واصفرّ وأطرق، وقال: جزاك الله خيرًا، ما أحوج الناس كل وقت إلى من يقول لهم مثل هذا.', r: '٦/٤٠٠' },
+      { k: 'الخاتمة', h: 'سنة ١٥٠', p: 'تُوفي سنة خمسين ومائة، وله سبعون سنة.', r: '٦/٤٠٣', m: 'الجواهر ١/٥٤' }
+    ],
+    hints: [
+      { t: 'كنتُ خزّازًا أبيع الخزّ، ودكّاني معروف في دار عمرو بن حريث.', r: '٦/٣٩٤' },
+      { t: 'صحبتُ شيخي في الفقه ثماني عشرة سنة.', r: '٦/٣٩٨' },
+      { t: 'أبيتُ القضاء، فحُبستُ، ومتُّ في السجن ببغداد.', r: '٦/٤٠١' }
+    ]
+  },
+  {
+    id: 'maliki', short: 'مالك', letter: 'م', school: 'المذهب المالكي',
+    name: 'مالك بن أنس الأصبحي المدني', born: 93, died: 179,
+    book: { short: 'المدارك', full: '«ترتيب المدارك وتقريب المسالك» للقاضي عياض (ت ٥٤٤ هـ)، الطبعة المغربية' },
+    years: '٩٣ – ١٧٩ هـ', yearsRef: '٨/٤٩، ٨/١٣٠', yearsM: 'المدارك ١/١١٨–١١٩',
+    summary: 'شيخ الإسلام، حجة الأمة، إمام دار الهجرة. نشأ في صون ورفاهية وتجمّل، وطلب العلم وهو حدَث بُعيد موت القاسم وسالم.', summaryRef: '٨/٤٨–٤٩',
+    extra: { t: 'قال الشافعي: ما في الأرض كتاب في العلم أكثر صوابًا من كتاب مالك.', m: 'المدارك ٢/٧٠' },
+    sifa: { t: 'في «السير» ٨/٦٩: كان طُوالًا جسيمًا، عظيم الهامة، أشقر، أبيض الرأس واللحية، عظيم اللحية، أصلع؛ وقيل: كان أزرق العين؛ وقال الوليد بن مسلم: كان يلبس البياض. وفي «المدارك» ١/١٢١: ولم يكن يخضب، وقيل: كان ربعة والأول أشهر؛ وقال له بعض ولاة المدينة: لِمَ لا تخضب؟ فقال: هذا بقي عليك من العدل؟', r: '٨/٦٩', m: 'المدارك ١/١٢١' },
+    places: [ { city: 'medina', t: 'نسبته «المدني»، ولُقّب «إمام دار الهجرة»', r: '٨/٤٨' } ],
+    teachers: [ { n: 'نافع مولى ابن عمر', d: '٨٥ حديثًا في الموطأ', r: '٨/٥٠' }, { n: 'ابن شهاب الزهري', d: '', r: '٨/٤٩' }, { n: 'ربيعة الرأي', d: '', r: '٨/٤٩' } ],
+    students: [ { n: 'الشافعي', r: '٨/٥٣' }, { n: 'عبد الرحمن بن القاسم', r: '٨/٥٢' }, { n: 'عبد الله بن وهب', r: '٨/٥٢' } ],
+    works: [ { n: 'الموطأ', r: '٨/٤٩', m: 'المدارك ٢/٧٠' } ],
+    quote: 'جُنّة العالم: «لا أدري»، فإذا أغفلها أُصيبت مقاتله', quoteBy: 'الإمام مالك', quoteRef: '٨/٧٧',
+    notes: [
+      { t: 'جعل الذهبي مولده سنة ٩٣ «على الأصح»، عام موت أنس بن مالك. ونقل القعنبي أن عمره تسع وثمانون سنة.', r: '٨/٤٩، ٨/١٣٠' },
+      { t: 'قال القاضي عياض: اختُلف في مولده اختلافًا كثيرًا، والأشهر قول يحيى بن بكير: سنة ثلاث وتسعين، وقيل: أربع وتسعين، وقيل غير ذلك. والصحيح في وفاته ما عليه الجمهور: سنة تسع وسبعين ومائة، والأكثر أنها في ربيع الأول.', m: 'المدارك ١/١١٨–١١٩' }
+    ],
+    stories: [
+      { k: 'المولد', h: 'عام موت أنس', p: 'مولد مالك على الأصح سنة ثلاث وتسعين، عام موت أنس خادم رسول الله ﷺ، ونشأ في صون ورفاهية وتجمّل.', r: '٨/٤٩', m: 'المدارك ١/١١٨' },
+      { k: 'الطلب', h: 'طلب وهو حدَث', p: 'طلب العلم وهو حدَث بُعيد موت القاسم وسالم، فأخذ عن نافع وسعيد المقبري والزهري وعبد الله بن دينار وخلق.', r: '٨/٤٩' },
+      { k: 'الفتيا', h: 'شهد له سبعون', p: 'قال مالك: ما أفتيتُ حتى شهد لي سبعون أني أهلٌ لذلك.', r: '٨/٩٦' },
+      { k: 'الموطأ', h: 'عشرة آلاف حديث', p: 'قال عتيق الزبيري: وضع مالك الموطأ على نحو من عشرة آلاف حديث، فلم يزل ينظر فيه كل سنة ويُسقط منه حتى بقي هذا.', m: 'المدارك ٢/٧٣' },
+      { k: 'مع المنصور', h: 'دَعِ الناس', p: 'أراد المنصور أن ينسخ كتبه ويبعث إلى كل مصر نسخة يحمل الناس عليها، فقال مالك: يا أمير المؤمنين لا تفعل، فإن الناس قد سبقت لهم أقاويل وسمعوا أحاديث، فدع الناس وما هم عليه، وما اختار أهل كل بلد لأنفسهم.', m: 'المدارك ٢/٧٢' },
+      { k: 'أدب العالم', h: '«لا أدري»', p: 'قال مالك: جُنّة العالم «لا أدري»، فإذا أغفلها أُصيبت مقاتله.', r: '٨/٧٧' },
+      { k: 'مجلس الحديث', h: 'على طهارة', p: 'كان مالك إذا جلس للحديث توضأ، وجلس على صدر فراشه، وسرّح لحيته، وتمكّن في جلوسه بوقار وهيبة، ثم حدّث. فقيل له في ذلك، فقال: أحبّ أن أعظّم حديث رسول الله ﷺ، ولا أحدّث به إلا على طهارة متمكّنًا.', m: 'المدارك ٢/١٥' },
+      { k: 'إجلال الحديث', h: 'ست عشرة لدغة', p: 'قال عبد الله بن المبارك: كنت عند مالك وهو يحدّثنا، فلدغته عقرب ست عشرة مرة، ومالك يتغيّر لونه ويصبر ولا يقطع حديث رسول الله ﷺ. فلما فرغ قلت له: لقد رأيت منك اليوم عجبًا. قال: إنما صبرت إجلالًا لحديث رسول الله ﷺ.', m: 'المدارك ٢/١٦' },
+      { k: 'شهادة', h: 'أنفع كتاب بعد كتاب الله', p: 'قال عبد الرحمن بن مهدي: ما كتاب بعد كتاب الله أنفع للناس من الموطأ. وقال أحمد بن حنبل: ما أحسن الموطأ لمن تديّن به.', m: 'المدارك ٢/٧٠' },
+      { k: 'الخاتمة', h: 'سنة ١٧٩', p: 'تُوفي سنة تسع وسبعين ومائة، وعلى هذا جمهور أصحابه والحفاظ، والأكثر أنه في ربيع الأول.', r: '٨/١٣٠', m: 'المدارك ١/١١٩' }
+    ],
+    hints: [
+      { t: 'وُلدتُ عام موت أنس بن مالك خادم رسول الله ﷺ.', r: '٨/٤٩' },
+      { t: 'رويتُ في كتابي عن نافع خمسة وثمانين حديثًا.', r: '٨/٥٠' },
+      { t: 'ما أفتيتُ حتى شهد لي سبعون أني أهل لذلك.', r: '٨/٩٦' }
+    ]
+  },
+  {
+    id: 'shafii', short: 'الشافعي', letter: 'ش', school: 'المذهب الشافعي',
+    name: 'محمد بن إدريس الشافعي المطلبي', born: 150, died: 204,
+    book: { short: 'طبقات الشافعيين', full: '«طبقات الشافعيين» لابن كثير (ت ٧٧٤ هـ). نسخة الشاملة غير مرقّمة في أول ترجمة الشافعي، فالإحالة فيها بعنوان الفصل' },
+    years: '١٥٠ – ٢٠٤ هـ', yearsRef: '١٠/١٠، ١٠/٧٦', yearsM: 'طبقات الشافعيين (فصل المولد، فصل الرحلة)',
+    summary: 'نسيب رسول الله ﷺ وابن عمه. نشأ يتيمًا في حجر أمه، وأقبل على الرمي حتى صار يصيب من عشرة أسهم تسعة، ثم أقبل على العربية والشرع فبرع.', summaryRef: '١٠/٦',
+    extra: { t: 'قال ابن كثير: وُلد سنة خمسين ومائة بلا نزاع، وهو العام الذي توفي فيه أبو حنيفة.', m: 'طبقات الشافعيين (فصل المولد)' },
+    sifa: { t: 'كان من أعلم الناس بالسير وأيام العرب والأنساب، ومن أحسن الناس رميًا، ومن أسخى الناس كفًّا؛ أعطاه الرشيد مالًا جزيلًا ففرّقه على ذوي الحاجات من قريش. وكان من أفصح الناس، وقال: لو علمتُ أن شرب الماء البارد ينقص مروءتي ما شربته.', m: 'طبقات الشافعيين ص ١٢' },
+    places: [
+      { k: 'b', city: 'gaza', t: 'مولده سنة ١٥٠ هـ', r: '١٠/٦، ١٠/١٠', m: 'طبقات الشافعيين (فصل المولد)' },
+      { k: 's', city: 'mecca', t: 'حُمل إليها ابن سنتين، وأخذ عن مسلم الزنجي وابن عيينة', r: '١٠/٦، ١٠/١٠', m: 'طبقات الشافعيين (فصل المولد)' },
+      { k: 's', city: 'medina', t: 'رحل إليها فقرأ الموطأ على مالك من حفظه', r: '١٠/٦–٧', m: 'طبقات الشافعيين (فصل الرحلة)' },
+      { k: 's', city: 'yemen', t: 'أخذ بها عن مطرّف بن مازن وهشام بن يوسف، ووَلي الحكم بنجران', r: '١٠/٧', m: 'طبقات الشافعيين (فصل الرحلة)' },
+      { k: 's', city: 'baghdad', t: 'قدمها أول مرة سنة ١٨٤ هـ فلازم محمد بن الحسن، ولقي أحمد في قدمته سنة ١٩٥ هـ', r: '١٠/٧', m: 'طبقات الشافعيين ص ٣٩' },
+      { k: 'd', city: 'egypt', t: 'خرج إليها فأقام بها حتى مات سنة ٢٠٤ هـ', r: '١٠/٥١', m: 'طبقات الشافعيين (فصل الرحلة)' }
+    ],
+    teachers: [
+      { n: 'مسلم بن خالد الزنجي', d: 'مفتي مكة', r: '١٠/٦', m: 'طبقات الشافعيين (فصل المولد)' },
+      { n: 'سفيان بن عيينة', d: '', r: '١٠/٦' },
+      { n: 'مالك بن أنس', d: '', r: '١٠/٧', m: 'طبقات الشافعيين (فصل الرحلة)' },
+      { n: 'محمد بن الحسن', d: 'فقيه العراق', r: '١٠/٧', m: 'طبقات الشافعيين (فصل الرحلة)' }
+    ],
+    students: [ { n: 'أحمد بن حنبل', r: '١٠/٧' }, { n: 'أبو يعقوب البويطي', r: '١٠/٧' }, { n: 'الربيع بن سليمان المرادي', r: '١٠/٨' } ],
+    works: [ { n: 'الرسالة', r: '١٠/٤٤' }, { n: 'تصانيف في أصول الفقه وفروعه', r: '١٠/٧' } ],
+    quote: 'إذا وجدتم في كتابي خلاف سنة رسول الله ﷺ فقولوا بسنة رسول الله ﷺ ودعوا ما قلت', quoteBy: 'الإمام الشافعي', quoteRef: '١٠/٧٧–٧٨',
+    notes: [
+      { t: 'رُوي عنه: «وُلدتُ بعسقلان»، وفي رواية: «وُلدتُ باليمن»، وفُسّرت بالقبيلة لأن أمه أزدية. والذي عليه الذهبي أن مولده بغزة.', r: '١٠/٦، ١٠/١٠' },
+      { t: 'قال ابن كثير: فهذه ثلاث روايات في بلد مولده، والمشهور أنه وُلد بغزة. وما يقال إنه وُلد في اليوم الذي توفي فيه أبو حنيفة لا يكاد يصح.', m: 'طبقات الشافعيين (فصل المولد)' },
+      { t: 'قال ابن كثير: قدم بغداد أول مرة سنة ١٨٤ هـ بعد موت القاضي أبي يوسف بسنتين، فلم يدركه، وخبر مناظرته أبا يوسف عند الرشيد مكذوب.', m: 'طبقات الشافعيين (فصل الرحلة)' }
+    ],
+    stories: [
+      { k: 'غزة ومكة', h: 'يتيم في حجر أمه', p: 'وُلد بغزة، ومات أبوه شابًّا، فنشأ يتيمًا في حجر أمه، فخافت عليه الضيعة، فتحوّلت به إلى محتده بمكة وهو ابن عامين.', r: '١٠/٦' },
+      { k: 'الصبا', h: 'العلم على العظام', p: 'قال الشافعي: كنتُ يتيمًا في حجر أمي، ولم يكن معها ما تعطي المعلم، وكان منزلنا بمكة في شعب الخيف، فكنتُ أنظر إلى العظم فأكتب فيه الحديث أو المسألة، وكانت لنا جرّة عظيمة إذا امتلأ العظم طرحتُه فيها.', m: 'طبقات الشافعيين (فصل المولد)' },
+      { k: 'الحفظ', h: 'ابن سبع وابن عشر', p: 'قال الشافعي: حفظتُ القرآن وأنا ابن سبع سنين، وحفظتُ الموطأ وأنا ابن عشر سنين.', m: 'طبقات الشافعيين (فصل المولد)' },
+      { k: 'الرمي', h: 'تسعة من عشرة', p: 'أقبل على الرمي حتى فاق فيه الأقران، وصار يصيب من عشرة أسهم تسعة، ثم أقبل على العربية والشرع فبرع.', r: '١٠/٦' },
+      { k: 'مكة', h: '«أفتِ يا أبا عبد الله»', p: 'قال مسلم بن خالد الزنجي مفتي مكة للشافعي: أفتِ يا أبا عبد الله، فقد آن لك والله أن تفتي. قال الخطيب: وهو ابن دون عشرين سنة.', m: 'طبقات الشافعيين (فصل المولد)' },
+      { k: 'المدينة', h: '«اقرأ»', p: 'قال الشافعي: قدمتُ على مالك وقد حفظتُ الموطأ ظاهرًا، فقلت: إني أريد أن أسمع الموطأ منك، فقال: اطلب من يقرأ لك، وكرّرتُ عليه، فقال: اقرأ، فلما سمع قراءتي قال: اقرأ، فقرأتُ عليه حتى فرغتُ منه.', r: '١٠/٦–٧', m: 'طبقات الشافعيين (فصل الرحلة)' },
+      { k: 'اليمن', h: 'قاضي نجران', p: 'قال الشافعي: وَليتُ نجران، فجمعتُهم فقلت: اختاروا سبعة منكم، فمن عدّلوه كان عدلًا، ومن جرّحوه كان مجروحًا. فكان إذا شهد الشاهد عنده التفت إلى السبعة.', m: 'طبقات الشافعيين (فصل الرحلة)' },
+      { k: 'التصنيف', h: 'كتاب الرسالة', p: 'كتب إليه عبد الرحمن بن مهدي وهو شاب أن يضع له كتابًا فيه معاني القرآن، ويجمع قبول الأخبار، وحجة الإجماع، وبيان الناسخ والمنسوخ، فوضع له كتاب «الرسالة».', r: '١٠/٤٤' },
+      { k: 'وصية', h: 'دعوا ما قلت', p: 'قال الشافعي: إذا وجدتم في كتابي خلاف سنة رسول الله ﷺ فقولوا بسنة رسول الله ﷺ ودعوا ما قلت.', r: '١٠/٧٧–٧٨' },
+      { k: 'الخاتمة', h: 'هلال شعبان ٢٠٤', p: 'قال الربيع: مات يوم الخميس، وانصرفنا من جنازته ليلة الجمعة، فرأينا هلال شعبان سنة أربع ومائتين، وله نيّف وخمسون سنة.', r: '١٠/٧٦' }
+    ],
+    hints: [
+      { t: 'كنتُ في صباي أصيب من عشرة أسهم تسعة.', r: '١٠/٦' },
+      { t: 'كنتُ أكتب الحديث على العظام، فإذا امتلأ العظم طرحتُه في جرّة.', m: 'طبقات الشافعيين (فصل المولد)' },
+      { t: 'وضعتُ كتاب «الرسالة» لعبد الرحمن بن مهدي.', r: '١٠/٤٤' }
+    ]
+  },
+  {
+    id: 'hanbali', short: 'أحمد', letter: 'أ', school: 'المذهب الحنبلي',
+    name: 'أحمد بن محمد بن حنبل الشيباني', born: 164, died: 241,
+    book: { short: 'طبقات الحنابلة', full: '«طبقات الحنابلة» لابن أبي يعلى (ت ٥٢٦ هـ)، بتحقيق العثيمين' },
+    years: '١٦٤ – ٢٤١ هـ', yearsRef: '١١/١٧٩، ١١/٣٣٤–٣٣٧',
+    summary: 'المروزي ثم البغدادي، أحد الأئمة الأعلام. مات أبوه شابًّا فنشأ يتيمًا، وطلب العلم وهو ابن خمس عشرة سنة، في العام الذي مات فيه مالك.', summaryRef: '١١/١٧٨–١٨٠',
+    sifa: { t: 'قال محمد بن عباس النحوي: رأيته حسن الوجه، ربعة، يخضب بالحنّاء خضابًا ليس بالقاني، في لحيته شعرات سود، ورأيت ثيابه غلاظًا بيضًا. وقال ابن ذريح العكبري: كان شيخًا مخضوبًا، طُوالًا، أسمر شديد السمرة.', r: '١١/١٨٤' },
+    extra: { t: 'قال الشافعي: أحمد إمام في ثمان خصال: إمام في الحديث، إمام في الفقه، إمام في اللغة، إمام في القرآن، إمام في الفقر، إمام في الزهد، إمام في الورع، إمام في السنة.', m: 'طبقات الحنابلة ١/١٠' },
+    places: [
+      { city: 'marw', t: 'كان أبوه من أجنادها، وجيء به منها حَمْلًا', r: '١١/١٧٩' },
+      { k: 'd', city: 'baghdad', t: 'نشأته، وبها مات يوم الجمعة ١٢ ربيع الأول', r: '١١/١٧٨، ١١/٣٣٧' },
+      { k: 's', city: 'mecca', t: 'قال: أقمتُ بمكة سنة سبع وتسعين ومائة', r: '١١/١٨٤' },
+      { k: 's', city: 'yemen', t: 'قال: أقمتُ عند عبد الرزاق سنة تسع وتسعين ومائة', r: '١١/١٨٤' }
+    ],
+    teachers: [ { n: 'هشيم بن بشير', d: 'فأكثر وجوّد', r: '١١/١٨٠' }, { n: 'سفيان بن عيينة', d: '', r: '١١/١٨٠' }, { n: 'وكيع', d: 'فأكثر', r: '١١/١٨٠' }, { n: 'عبد الرزاق', d: 'أقام عنده سنة ١٩٩', r: '١١/١٨١، ١١/١٨٤' }, { n: 'الشافعي', d: '', r: '١١/١٨١' } ],
+    students: [
+      { n: 'البخاري', r: '١١/١٨١' },
+      { n: 'مسلم', r: '١١/١٨١' },
+      { n: 'أبو داود', r: '١١/١٨١', m: 'طبقات الحنابلة ١/١٤' },
+      { n: 'صالح', d: 'ابنه', r: '١١/١٨١', m: 'طبقات الحنابلة ١/١٤' },
+      { n: 'عبد الله', d: 'ابنه', r: '١١/١٨١', m: 'طبقات الحنابلة ١/١٤' },
+      { n: 'ابن عمه حنبل', r: '١١/١٨١', m: 'طبقات الحنابلة ١/١٤' }
+    ],
+    studentsNote: { t: 'نقلة الفقه عنه مائة ونيّف وعشرون نفسًا.', m: 'طبقات الحنابلة ١/١٤–١٥' },
+    works: [ { n: 'المسند', r: '١١/١٨١' } ],
+    quote: 'قولوا لأهل البدع: بيننا وبينكم يوم الجنائز', quoteBy: 'الإمام أحمد', quoteRef: '١١/٣٤٠',
+    notes: [
+      { t: 'قال هو وابنه صالح: وُلد في ربيع الأول سنة ١٦٤، وقال ابنه عبد الله وابن أبي خيثمة: في ربيع الآخر.', r: '١١/١٧٩' },
+      { t: 'ذكر ابن أبي يعلى أخبارًا ومنامات بعد وفاته، ونبّه محقق الكتاب إلى أن أكثر أخبار المنامات في كتب التراجم والمناقب لا يصح، فلم نوردها هنا.', m: 'طبقات الحنابلة ١/٤٢ (الحاشية)' }
+    ],
+    stories: [
+      { k: 'مرو وبغداد', h: 'حَمْلٌ من مرو', p: 'قال صالح: جيء بأبي حَمْلًا من مرو، فمات أبوه شابًّا، فوليته أمه.', r: '١١/١٧٩' },
+      { k: 'الطلب', h: 'ابن خمس عشرة', p: 'طلب العلم وهو ابن خمس عشرة سنة، في العام الذي مات فيه مالك وحماد بن زيد، فسمع من هشيم فأكثر وجوّد.', r: '١١/١٨٠' },
+      { k: 'شيخه الأول', h: 'ما سمعه من هشيم', p: 'قال أحمد: مات هشيم وأنا ابن عشرين سنة، وأنا أحفظ ما سمعتُ منه.', r: '١١/١٨٤' },
+      { k: 'الحفظ', h: 'سبعمائة ألف حديث', p: 'قال أبو زرعة الرازي: حزرنا حفظ أحمد بن حنبل بالمذاكرة على سبعمائة ألف حديث.', m: 'طبقات الحنابلة ١/١٤' },
+      { k: 'مع الشافعي', h: '«فأعلموني»', p: 'قال الشافعي لأحمد يومًا: أنتم أعلم بالحديث والرجال، فإذا كان الحديث الصحيح فأعلموني، إن شاء يكون كوفيًّا أو شاميًّا، حتى أذهب إليه إذا كان صحيحًا.', m: 'طبقات الحنابلة ١/١٣' },
+      { k: 'شهادة الشافعي', h: 'ما خلّفتُ ببغداد مثله', p: 'قال الشافعي: خرجتُ من بغداد وما خلّفتُ بها أحدًا أتقى ولا أورع ولا أفقه من أحمد بن حنبل.', m: 'طبقات الحنابلة ١/٤٠' },
+      { k: 'المسند', h: 'نيّف وثمانون ومائتا شيخ', p: 'عدّة شيوخه الذين روى عنهم في «المسند» مائتان وثمانون ونيّف.', r: '١١/١٨١' },
+      { k: 'المحنة', h: 'أثرٌ في ظهره', p: 'ضُرب في المحنة، وكان أثر الضرب بيّنًا في ظهره إلى أن توفي، وبلغ ابنَ أبي حاتم أنه جعل المعتصم في حِلٍّ من ضربه يوم فتح عمّورية.', r: '١١/٢٥٧–٢٥٨' },
+      { k: 'كلمة', h: 'يوم الجنائز', p: 'قال الإمام أحمد: قولوا لأهل البدع: بيننا وبينكم يوم الجنائز.', r: '١١/٣٤٠' },
+      { k: 'الخاتمة', h: '١٢ ربيع الأول ٢٤١', p: 'حُمّ أول ربيع الأول سنة إحدى وأربعين ومائتين، وتوفي يوم الجمعة لثنتي عشرة خلت من ربيع الأول.', r: '١١/٣٣٤–٣٣٧' }
+    ],
+    hints: [
+      { t: 'طلبتُ العلم وأنا ابن خمس عشرة سنة، في العام الذي مات فيه مالك.', r: '١١/١٨٠' },
+      { t: 'قال عني الشافعي: خرجتُ من بغداد وما خلّفتُ بها أتقى ولا أورع ولا أفقه منه.', m: 'طبقات الحنابلة ١/٤٠' },
+      { t: 'روى عني البخاري ومسلم وأبو داود.', r: '١١/١٨١' }
+    ]
+  }
+];
+
+const CITIES = {
+  kufa:    { n: 'الكوفة',  lon: 44.40, lat: 32.03, dx: -8, dy: 4,  a: 'end' },
+  basra:   { n: 'البصرة',  lon: 47.80, lat: 30.50, dx: 8,  dy: 4,  a: 'start' },
+  baghdad: { n: 'بغداد',   lon: 44.40, lat: 33.30, dx: 8,  dy: -4, a: 'start' },
+  medina:  { n: 'المدينة', lon: 39.60, lat: 24.47, dx: -8, dy: 4,  a: 'end' },
+  mecca:   { n: 'مكة',     lon: 39.83, lat: 21.42, dx: -8, dy: 4,  a: 'end' },
+  gaza:    { n: 'غزة',     lon: 34.45, lat: 31.50, dx: -8, dy: 4,  a: 'end' },
+  yemen:   { n: 'اليمن',   lon: 44.20, lat: 15.35, dx: 8,  dy: 4,  a: 'start' },
+  egypt:   { n: 'مصر',     lon: 31.23, lat: 30.04, dx: 0,  dy: 16, a: 'middle' },
+  marw:    { n: 'مرو',     lon: 61.83, lat: 37.60, dx: -8, dy: 4,  a: 'end' }
+};
+
+const LINKS = [
+  { from: 'أبو حنيفة', to: 'محمد بن الحسن', lbl: 'تلميذه', r: '٦/٣٩٤' },
+  { from: 'محمد بن الحسن', to: 'الشافعي', lbl: 'أخذ عنه ببغداد ولازمه', r: '١٠/٧', m: 'طبقات الشافعيين (فصل الرحلة)' },
+  { from: 'مالك', to: 'الشافعي', lbl: 'قرأ عليه الموطأ', r: '١٠/٧', m: 'طبقات الشافعيين (فصل الرحلة)' },
+  { from: 'الشافعي', to: 'أحمد', lbl: 'سمع منه أحمد', r: '١١/١٨١' },
+  { from: 'مالك', to: 'أبو حنيفة', lbl: 'من أقرانه، وروى عنه أبو حنيفة', r: '٦/٣٩٢، ٨/٥٢' },
+  { from: 'الشافعي', to: 'أحمد', lbl: 'وقال الشافعي لأحمد: إذا كان الحديث الصحيح فأعلموني', m: 'طبقات الحنابلة ١/١٣', noEdge: true }
+];
+
+const byId = (id) => IMAMS.find((x) => x.id === id);
+/* ---------- تراجم الشيوخ والتلاميذ ----------
+   كل سطر: t النص، r موضعه في «السير» (جزء/صفحة المطبوع)، m مرجع كتب تراجم المذهب إن وُجد.
+   لا يُذكر سنة وفاة إلا حيث قُرئت في المصدر. */
+const PEOPLE = {
+  hammad: { name: 'حماد بن أبي سليمان', sub: 'فقيه العراق · شيخ أبي حنيفة', lines: [
+    { t: 'أبو إسماعيل، مولى الأشعريين، أصله من أصبهان.', r: '٥/٢٣١–٢٣٢', m: 'الجواهر ٢/١٥٠' },
+    { t: 'روى عن أنس بن مالك (وهو أكبر شيوخه)، وتفقّه بإبراهيم النخعي وكان أنبل أصحابه.', r: '٥/٢٣١–٢٣٢', m: 'الجواهر ٢/١٥١' },
+    { t: 'روى عنه أبو حنيفة، وابنه إسماعيل، والأعمش، وسفيان، وشعبة. وقال صاحب الجواهر: «وبه تفقّه أبو حنيفة وعليه تخرّج».', r: '٥/٢٣١–٢٣٢', m: 'الجواهر ٢/١٥١' },
+    { t: 'قال الذهبي: «ليس هو بالمكثر من الرواية؛ لأنه مات قبل أوان الرواية».', r: '٥/٢٣١–٢٣٢' },
+    { t: 'كان ذا ثروة وجود: يُفطّر في رمضان كل يوم خمسين إنسانًا ويكسوهم ليلة الفطر.', r: '٥/٢٣٨' },
+    { t: 'توفي سنة ١٢٠ هـ.', r: '٥/٢٣٧', m: 'الجواهر ٢/١٥١' }
+  ], quote: { t: 'إني أن أكون تابعًا في الحق خير من أن أكون رأسًا في الباطل', by: 'حماد بن أبي سليمان', r: '٥/٢٣٣' } },
+
+  ata: { name: 'عطاء بن أبي رباح', sub: 'مفتي الحرم · شيخ الإسلام', lines: [
+    { t: 'أبو محمد القرشي مولاهم المكي، من مولَّدي الجَنَد باليمن، ونشأ بمكة. وُلد في أثناء خلافة عثمان.', r: '٥/٧٨–٨٨' },
+    { t: 'حدّث عن عائشة وأم سلمة وأبي هريرة وابن عباس وغيرهم، وروى عنه مجاهد وأبو الزبير وعمرو بن دينار والزهري وقتادة وأبو حنيفة.', r: '٥/٧٨–٨٨' },
+    { t: 'لزمه ابن جريج ثماني عشرة سنة. وكان بعدما كبر يقوم فيقرأ مئتي آية من البقرة وهو قائم.', r: '٥/٧٨–٨٨' },
+    { t: 'قال عمر بن ذر: ما رُئي عليه ثوب يساوي خمسة دراهم.', r: '٥/٨٧' },
+    { t: 'توفي سنة ١١٥ هـ، وقيل ١١٤، وعاش ٨٨ سنة (الواقدي).', r: '٥/٨٨' }
+  ], quote: { t: 'لا أدري… أستحيي من الله أن يُدان في الأرض برأيي', by: 'عطاء', r: '٥/٨٦' },
+  note: 'ذُكر شيخًا لأبي حنيفة في «الجواهر المضية» ١/٥٥، ولا تُفرد له ترجمة حنفية فيه.' },
+
+  nafi: { name: 'نافع مولى ابن عمر', sub: 'شيخ أبي حنيفة ومالك', lines: [
+    { t: 'عدّه الذهبي في شيوخ أبي حنيفة.', r: '٦/٣٩١', m: 'الجواهر ١/٥٥' },
+    { t: 'روى عنه مالك خمسةً وثمانين حديثًا في الموطأ.', r: '٨/٥٠' }
+  ], note: 'لم أقف على ترجمته المفردة في «السير» بالبحث، فاقتصرتُ على ما نُصّ عليه في ترجمتي الإمامين. وهو غير نافع بن أبي نعيم القارئ.' },
+
+  zuhri: { name: 'ابن شهاب الزهري', sub: 'حافظ زمانه · شيخ مالك', lines: [
+    { t: 'محمد بن مسلم بن عبيد الله بن عبد الله بن شهاب، أبو بكر، نزيل الشام.', r: '٥/٣٢٦–٣٤٩' },
+    { t: 'روى عن ابن عمر، وسهل بن سعد، وأنس (لقيه بدمشق)، والسائب بن يزيد، وعروة، وسعيد بن المسيب (جالسه ثماني سنين وتفقّه به).', r: '٥/٣٢٦–٣٤٩' },
+    { t: 'روى عنه عطاء، وعمر بن عبد العزيز، وعمرو بن دينار، وقتادة، ومالك، والليث، وابن عيينة.', r: '٥/٣٢٦–٣٤٩' },
+    { t: 'مولده سنة ٥٠ (دحيم) أو ٥١ (خليفة)، وقيل ٥٦.', r: '٥/٣٢٦–٣٤٩' },
+    { t: 'حديثه نحو ألفين (ابن المديني)، وقال أبو داود: ٢٢٠٠ نصفها مسند.', r: '٥/٣٢٨' },
+    { t: 'توفي سنة ١٢٤ هـ، وقيل ١٢٣، والأكثر على ١٢٤.', r: '٥/٣٤٩' }
+  ],
+  note: 'لا يُفرد «ترتيب المدارك» له عنوانًا، فلا مقابلة مالكية هنا.' },
+
+  rabia: { name: 'ربيعة الرأي', sub: 'مفتي المدينة · شيخ مالك', lines: [
+    { t: 'ربيعة بن أبي عبد الرحمن، أبو عثمان، القرشي التيمي مولاهم، من موالي آل المنكدر. مفتي المدينة وعالم الوقت.', r: '٦/٨٩–٩٦' },
+    { t: 'روى عن أنس والسائب بن يزيد وسعيد بن المسيب والقاسم وسالم، وقال الذهبي: «كان من أئمة الاجتهاد».', r: '٦/٨٩–٩٦' },
+    { t: 'روى عنه يحيى الأنصاري والأوزاعي وشعبة ومالك «وعليه تفقّه» والثوري والليث وابن عيينة.', r: '٦/٨٩–٩٦' },
+    { t: 'سُئل: «كيف استوى؟» فقال: «الكيف غير معقول، وعلى الرسول البلاغ وعلينا التصديق».', r: '٦/٩٠' },
+    { t: 'قال الزهري: «ما ظننت أن بالمدينة مثل ربيعة».', r: '٦/٩٥' },
+    { t: 'قال مالك: «كان ربيعة أعجل شيء جوابًا».', r: '٦/٩٦', m: 'المدارك ١/١٤٣ (في الموضع خبر آخر لمالك عن ربيعة: كان إذا سأله من لا يفهم عنه قال: سل هذا)' }
+  ], quote: { t: 'الكيف غير معقول، وعلى الرسول البلاغ وعلينا التصديق', by: 'ربيعة الرأي', r: '٦/٩٠' }, note: 'نُقلت قصة إنفاق أمه ثلاثين ألف دينار عليه (٦/٩٣–٩٥)، وعلّق الذهبي بأنها مجازفة بعيدة، فلم أثبتها. ولم أقرأ سنة وفاته.' },
+
+  zanji: { name: 'مسلم بن خالد الزنجي', sub: 'فقيه مكة · شيخ الشافعي', lines: [
+    { t: 'أبو خالد المخزومي مولاهم، فقيه مكة. وُلد سنة ١٠٠ أو قبلها بيسير.', r: '٨/١٧٦–١٧٧' },
+    { t: 'حدّث عن ابن أبي مليكة وعمرو بن دينار والزهري وزيد بن أسلم.', r: '٨/١٧٦–١٧٧' },
+    { t: 'روى عنه الشافعي ولازمه وتفقّه به «حتى أذن له في الفتيا».', r: '٨/١٧٦–١٧٧' },
+    { t: 'اختلف النقاد في حديثه: ابن معين «لا بأس به»، والبخاري «منكر الحديث»، وأبو داود «ضعيف»، وابن عدي «حسن الحديث».', r: '٨/١٧٦–١٧٧' }
+  ], note: 'لم أقرأ سنة وفاته، ولم أقف على ترجمته في «طبقات الشافعيين» غير ذكره شيخًا للشافعي.' },
+
+  uyayna: { name: 'سفيان بن عيينة', sub: 'حافظ العصر · شيخ الشافعي وأحمد', lines: [
+    { t: 'أبو محمد الهلالي الكوفي ثم المكي، مولى محمد بن مزاحم، حافظ العصر وشيخ الإسلام. مولده بالكوفة سنة ١٠٧.', r: '٨/٤٥٤–٤٧٤' },
+    { t: 'سمع من عمرو بن دينار (وأكثر عنه) والزهري وزياد بن علاقة.', r: '٨/٤٥٤–٤٧٤' },
+    { t: 'حدّث عنه الأعمش وابن جريج وشعبة وهم من شيوخه، والشافعي وعبد الرزاق والحميدي وأحمد وابن المديني وابن معين.', r: '٨/٤٥٤–٤٧٤' },
+    { t: '«انتهى إليه علو الإسناد ورُحل إليه من البلاد».', r: '٨/٤٥٤–٤٧٤' },
+    { t: 'عاش إحدى وتسعين سنة.', r: '٨/٤٧٤' }
+  ], note: 'سنة وفاته لم تُنقل في ما قرأتُ نصًّا، فلم أكتبها.' },
+
+  hushaym: { name: 'هشيم بن بشير', sub: 'محدّث بغداد · شيخ أحمد', lines: [
+    { t: 'أبو معاوية السلمي مولاهم الواسطي، محدّث بغداد وحافظها. وُلد سنة ١٠٤.', r: '٨/٢٨٧–٢٩٣' },
+    { t: 'أخذ عن الزهري وعمرو بن دينار (ولم يُكثر عنهما) ومنصور بن زاذان وأيوب السختياني وحميد الطويل والأعمش.', r: '٨/٢٨٧–٢٩٣' },
+    { t: 'حدّث عنه شعبة وسفيان وابن المبارك ويحيى القطان وابن مهدي وأحمد وابن المديني.', r: '٨/٢٨٧–٢٩٣' },
+    { t: 'قال الدورقي: عنده عشرون ألف حديث. وقال الذهبي: «رأس في الحفظ إلا أنه صاحب تدليس كثير».', r: '٨/٢٨٧–٢٩٣' }
+  ],
+  note: 'سنة وفاته لم أقرأها، ولم أقف له على ترجمة في «طبقات الحنابلة» بالبحث.' },
+
+  waki: { name: 'وكيع بن الجراح', sub: 'محدّث العراق · شيخ أحمد', lines: [
+    { t: 'أبو سفيان الرؤاسي الكوفي، الإمام الحافظ محدّث العراق. وُلد سنة ١٢٩ (أحمد)، وقيل ١٢٨.', r: '٩/١٤٠–١٦٧' },
+    { t: 'سمع هشام بن عروة والأعمش وابن جريج والأوزاعي وسفيان الثوري وشعبة.', r: '٩/١٤٠–١٦٧' },
+    { t: 'حدّث عنه الثوري وابن المبارك وابن مهدي والحميدي وأحمد وابن معين وإسحاق.', r: '٩/١٤٠–١٦٧' },
+    { t: 'قال يحيى بن أكثم: «صحبته في الحضر والسفر، وكان يصوم الدهر ويختم القرآن كل ليلة».', r: '٩/١٤٢' },
+    { t: 'مات يوم عاشوراء سنة ١٩٧ هـ بفَيد راجعًا من الحج، وعاش ٦٨ سنة.', r: '٩/١٦٦' },
+    { t: 'ذكره الصيمري فيمن أخذ العلم عن أبي حنيفة.', r: '', m: 'الجواهر ٣/٥٧٦' }
+  ], note: 'لم أقرأ ترجمته في «طبقات الحنابلة» (أحال إليها محقق «الجواهر» في ١/٣٩١–٣٩٢)؛ والمقابل الحنفي في «الجواهر» ٣/٥٧٦ سطر واحد.' },
+
+  razzaq: { name: 'عبد الرزاق بن همام', sub: 'عالم اليمن · شيخ أحمد', lines: [
+    { t: 'أبو بكر الحميري مولاهم الصنعاني، الحافظ الكبير عالم اليمن. وُلد سنة ١٢٦ (من قوله عند أحمد).', r: '٩/٥٦٣–٥٨٠' },
+    { t: 'ارتحل إلى الحجاز والشام والعراق، وحدّث عن هشام بن حسان وابن جريج ومعمر (فأكثر عنه) والأوزاعي والثوري ومالك.', r: '٩/٥٦٣–٥٨٠' },
+    { t: 'قال: «لزمتُ معمرًا ثماني سنين». وحدّث عنه ابن عيينة وأحمد وابن راهويه وابن معين وابن المديني.', r: '٩/٥٦٣–٥٨٠' },
+    { t: 'قال أحمد: «أتينا عبد الرزاق قبل المئتين وهو صحيح البصر، ومن سمع منه بعدما ذهب بصره فهو ضعيف السماع».', r: '٩/٥٦٣–٥٨٠' },
+    { t: 'توفي في شوال سنة ٢١١ هـ.', r: '٩/٥٨٠' }
+  ], note: 'وُصف بالتشيّع في «السير». لم أقرأ ترجمته في «طبقات الحنابلة».' },
+
+  shuayb: { name: 'أبو شعيب شعيب بن إسحاق القرشي الدمشقي', sub: 'فقيه حنفي · أخذ عن أبي حنيفة', lines: [
+    { t: 'شعيب بن إسحاق بن عبد الرحمن بن عبد الله بن راشد، الإمام الفقيه، أبو شعيب القرشي مولاهم، الدمشقي، الحنفي.', r: '٩/١٠٣', m: 'الجواهر ٢/٢٥٠' },
+    { t: 'أخذ الفقه عن أبي حنيفة، وكان من ثقات أهل الرأي، متقنًا مجوِّدًا للحديث. وعدّه النسائي في «الثقات» من أصحاب أبي حنيفة.', r: '٩/١٠٣', m: 'الجواهر ٢/٢٥٠' },
+    { t: 'قال أحمد: «جالس أبا حنيفة»، و«ما أصحّ حديثه» ووثّقه. وذكره ابن حزم في فقهاء الشام في طبقة الأوزاعي والوليد بن مسلم.', m: 'الجواهر ٢/٢٥١' },
+    { t: 'قال الوليد بن مسلم: «رأيتُ الأوزاعي يقرّب شعيب بن إسحاق ويدنيه». وقال ابن معين: هو مثل يونس وعقيل في الزهري.', m: 'الجواهر ٢/٢٥١' },
+    { t: 'سمع أبا حنيفة وهشام بن عروة والأوزاعي وابن جريج، وروى عنه الليث بن سعد وهشام بن عمار. روى له الشيخان.', r: '٩/١٠٣', m: 'الجواهر ٢/٢٥١' },
+    { t: 'وفاته: ١٨٩ هـ بدمشق عن اثنتين وسبعين سنة عند الذهبي (السير ٩/١٠٣)، و١٩٨ هـ عند القرشي (الجواهر ٢/٢٥١). والروايتان متباينتان وقد أثبتّهما كما وردتا.', r: '٩/١٠٣', m: 'الجواهر ٢/٢٥١' }
+  ] },
+  balkhi: { name: 'أبو عمر حفص بن عبد الرحمن البلخي', sub: 'قاضي نيسابور · من أفقه أصحاب أبي حنيفة الخراسانيين', lines: [
+    { t: 'حفص بن عبد الرحمن بن عمر بن فرّوخ البلخي، أبو عمر، المعروف بالنيسابوري، قاضي نيسابور ابن قاضيها.', m: 'الجواهر ٢/١٣٧' },
+    { t: 'قال القرشي: «كان من أفقه أصحاب أبي حنيفة الخراسانيين».', m: 'الجواهر ٢/١٣٨' },
+    { t: 'الإمام الفقيه، مفتي خراسان، أبو عمر البلخي ثم النيسابوري، الحنفي. حدّث عن عاصم الأحول وداود بن أبي هند وابن عون وأبي حنيفة وعيسى بن طهمان وابن أبي عروبة والثوري وإسرائيل.', r: '٩/٣١٠' },
+    { t: 'روى عن إسرائيل بن يونس وحجاج بن أرطاة والثوري وغيرهم.', m: 'الجواهر ٢/١٣٨' },
+    { t: 'قال أبو حاتم والنسائي: صدوق. وذكره ابن حبان في «الثقات».', m: 'الجواهر ٢/١٣٨' },
+    { t: 'قال الحاكم: ولي القضاء بنيسابور ثم ندم وأقبل على العبادة، وكان ابن المبارك إذا أقام بنيسابور لا يدع زيارته.', m: 'الجواهر ٢/١٣٨' },
+    { t: 'مات في ذي القعدة سنة ١٩٩ هـ (عن ابن بنته إبراهيم بن منصور).', m: 'الجواهر ٢/١٣٨' }
+  ] },
+  hasan: { name: 'الحسن بن زياد اللؤلؤي', sub: 'فقيه العراق · صاحب أبي حنيفة', lines: [
+    { t: 'أبو علي الأنصاري مولاهم الكوفي اللؤلؤي، العلامة فقيه العراق، صاحب أبي حنيفة. نزل بغداد وصنّف وتصدّر للفقه.', r: '٩/٥٤٣', m: 'الجواهر ٢/٥٦' },
+    { t: 'تكرّر ذكره في «الهداية» و«الخلاصة».', m: 'الجواهر ٢/٥٦' },
+    { t: 'قال يحيى بن آدم: «ما رأيت أفقه من الحسن بن زياد».', m: 'الجواهر ٢/٥٦' },
+    { t: 'ولي القضاء ثم استعفى عنه. وكان محبًّا للسنة واتّباعها، حتى كان يكسو مماليكه كما يكسو نفسه اتّباعًا لقوله ﷺ: «ألبسوهم مما تلبسون».', m: 'الجواهر ٢/٥٦' },
+    { t: 'كان يختلف إلى زفر وأبي يوسف في الفقه. وقال: «كان أبو يوسف أوسع صدرًا إلى التعليم من زفر».', m: 'الجواهر ٢/٥٧' },
+    { t: 'قال السمعاني: «كان عالمًا بروايات أبي حنيفة، وكان حسن الخلق». وقال السرخسي: «المقدَّم في السؤال والتفريع».', m: 'الجواهر ٢/٥٧' },
+    { t: 'توفي سنة ٢٠٤ هـ.', m: 'الجواهر ٢/٥٧' }
+  ], quote: { t: 'كتبتُ عن ابن جريج اثني عشر ألف حديث، كلها يحتاج إليها الفقهاء', by: 'الحسن بن زياد', m: 'الجواهر ٢/٥٧' } },
+  hafs: { name: 'أبو حفص الكبير أحمد بن حفص', sub: 'شيخ ما وراء النهر · تلميذ محمد بن الحسن', lines: [
+    { t: 'أحمد بن حفص أبو حفص البخاري، الفقيه العلامة، شيخ ما وراء النهر، فقيه المشرق، والد شيخ الحنفية أبي عبد الله محمد بن أحمد بن حفص.', r: '١٠/١٥٧' },
+    { t: 'ارتحل وصحب محمد بن الحسن مدة وبرع في الرأي، وسمع من وكيع وأبي أسامة. وُلد سنة ١٥٠.', r: '١٠/١٥٧–١٥٨' },
+    { t: 'المعروف بأبي حفص الكبير، «الإمام المشهور». أخذ العلم عن محمد بن الحسن، «وله أصحاب لا يُحصون».', m: 'الجواهر ١/١٦٦' },
+    { t: 'ذكر السمعاني أن بـ«بخيزاخزي» قرب بخارى جماعة من الفقهاء من أصحاب أبي حفص الكبير.', m: 'الجواهر ١/١٦٦' },
+    { t: 'مات ببخارى في المحرم سنة ٢١٧ هـ.', r: '١٠/١٥٩' },
+    { t: 'نقل القرشي عن شمس الأئمة حكاية في قدوم البخاري بخارى زمن أبي حفص وإفتائه فيها ونهي أبي حفص له، واستبعد اللكنوي وقوعها لجلالة قدر البخاري.', m: 'الجواهر ١/١٦٦' }
+  ] },
+  jawz: { name: 'أبو سليمان موسى بن سليمان الجوزجاني', sub: 'راوية كتب أبي يوسف ومحمد', lines: [
+    { t: 'العلامة الإمام، أبو سليمان موسى بن سليمان الجوزجاني، الحنفي، صاحب أبي يوسف ومحمد، حدّث عنهما وعن ابن المبارك. وكان صدوقًا محبوبًا إلى أهل الحديث.', r: '١٠/١٩٤' },
+    { t: 'كان رفيقًا للمعلّى بن منصور في أخذ الفقه ورواية الكتب، وهو «أسنّ وأشهر من المعلّى».', m: 'الجواهر ٣/٥١٨' },
+    { t: 'عرض عليه المأمون القضاء فلم يتقلّده.', m: 'الجواهر ٣/٥١٨' },
+    { t: 'توفي بعد المئتين.', m: 'الجواهر ٣/٥١٨' }
+  ], quote: { t: 'يا أمير المؤمنين، احفظ حقوق الله في القضاء، ولا تولِّ على أمانتك مثلي، فإني والله غير مأمون الغضب، ولا أرضى لنفسي أن أحكم في عباده', by: 'الجوزجاني للمأمون', m: 'الجواهر ٣/٥١٨' } },
+  mualla: { name: 'مُعلّى بن منصور الرازي', sub: 'مفتي بغداد · راوية كتب أبي يوسف ومحمد', lines: [
+    { t: 'العلامة الحافظ الفقيه، أبو يعلى الحنفي، نزيل بغداد ومفتيها.', r: '١٠/٣٦٥' },
+    { t: 'ذكره صاحب «الهداية». روى عن أبي يوسف ومحمد الكتب والأمالي، وشاركه في ذلك الجوزجاني، «وهما من الورع والدين وحفظ الفقه والحديث بالمنزلة الرفيعة».', m: 'الجواهر ٣/٤٩٢' },
+    { t: 'عرض عليهما المأمون القضاء فلم يتقلّداه. وسكن بغداد.', m: 'الجواهر ٣/٤٩٢' },
+    { t: 'روى عن مالك والليث وحماد وابن عيينة. وروى عنه ابن المديني وأبو بكر بن أبي شيبة والبخاري في غير «الجامع».', m: 'الجواهر ٣/٤٩٢' },
+    { t: 'مات سنة ٢١١ هـ (ابن سعد وأحمد بن زهير). وقال الذهبي: «كان صاحب سنة واتباع، وكان بريئًا من التجهم».', r: '١٠/٣٦٩' }
+  ] },
+  kindi: { name: 'بشر بن الوليد الكندي', sub: 'قاضي العراق · صاحب أبي يوسف', lines: [
+    { t: 'بشر بن الوليد بن خالد، أبو الوليد الكندي، الإمام العلامة المحدّث الصادق، قاضي العراق، الحنفي.', r: '١٠/٦٧٣', m: 'الجواهر ١/٤٥٢' },
+    { t: 'سمع مالكًا وحماد بن زيد وعبد الرحمن بن الغسيل. وهو من أصحاب أبي يوسف خاصة، وعنه أخذ الفقه وروى كتبه وأماليه.', m: 'الجواهر ١/٤٥٢–٤٥٣' },
+    { t: 'كان جميل المذهب، حسن الطريقة، صالحًا ديّنًا عابدًا، واسع الفقه، خشنًا في باب الحكم. وكان متحاملًا على محمد بن الحسن.', m: 'الجواهر ١/٤٥٢' },
+    { t: 'قال أحمد بن عطية: كان يصلّي كل يوم مئتي ركعة، يصلّيها بعدما فُلج وشاخ.', m: 'الجواهر ١/٤٥٣' },
+    { t: 'في محنة خلق القرآن (سنة ٢١٨) سُئل عن القرآن فقال: «أقول كلام الله»، ولم يزد. ثم وُلّي القضاء ببغداد في الجانبين، وحُبس في منزله زمن المعتصم لما سُعي به، ثم أُطلق.', m: 'الجواهر ١/٤٥٣–٤٥٤' },
+    { t: 'قال الدارقطني: ثقة، وقال صالح جزرة: صدوق. توفي سنة ٢٣٨ هـ. روى له أبو داود.', m: 'الجواهر ١/٤٥٤' }
+  ], quote: { t: 'أقول كلام الله', by: 'بشر بن الوليد في المحنة', m: 'الجواهر ١/٤٥٣' } },
+  birti: { name: 'أبو العباس أحمد بن محمد البِرتي', sub: 'قاضٍ حافظ عابد', lines: [
+    { t: 'أبو العباس أحمد بن محمد بن عيسى بن الأزهر البِرتي البغدادي، الفقيه الحافظ، من طبقة أحمد بن أبي عمران أستاذ الطحاوي.', r: '١٣/٤٠٧', m: 'الجواهر ١/٣٠١' },
+    { t: 'تفقّه على أبي سليمان الجوزجاني، وروى عنه كتب محمد بن الحسن. وحدّث بالكثير وصنّف «المسند».', m: 'الجواهر ١/٣٠١' },
+    { t: 'حدّث عن القعنبي ومسدّد وأبي بكر بن أبي شيبة، وروى عنه يحيى بن صاعد والمحاملي.', m: 'الجواهر ١/٣٠١' },
+    { t: 'قال الخطيب: «كان ثقة حجة، يُذكر بالصلاح والعبادة». كان من أصحاب القاضي يحيى بن أكثم، وتقلّد واسط، وكان إليه أحد جانبي بغداد ثم استعفى في أيام المعتضد ولزم بيته للعبادة.', m: 'الجواهر ١/٣٠١–٣٠٢' },
+    { t: 'مات ليلة السبت لتسع عشرة ليلة خلت من ذي الحجة سنة ٢٨٠ هـ (أحمد بن كامل).', m: 'الجواهر ١/٣٠٢' }
+  ] },
+  hamid: { name: 'القاضي أبو خازم عبد الحميد بن عبد العزيز', sub: 'قاضي القضاة · شيخ الطحاوي', lines: [
+    { t: 'العلامة قاضي القضاة، أبو خازم السكوني البصري ثم البغدادي، الحنفي. أصله من البصرة.', r: '١٣/٥٣٩', m: 'الجواهر ٢/٣٦٧' },
+    { t: 'ذكره صاحب «الهداية» في الرهن. وأخذ العلم عن بكر العمّي، وكان «جليل القدر».', m: 'الجواهر ٢/٣٦٦–٣٦٧' },
+    { t: 'ولي القضاء بالشام والكوفة والكرخ من بغداد، وتولّى القضاء للمعتضد ثم ابنه المكتفي.', m: 'الجواهر ٢/٣٦٧' },
+    { t: 'تفقّه عليه أبو جعفر الطحاوي وأبو طاهر الدبّاس، ولقيه أبو الحسن الكرخي وحضر مجلسه.', m: 'الجواهر ٢/٣٦٧' },
+    { t: 'مات سنة ٢٩٢ هـ.', m: 'الجواهر ٢/٣٦٧' }
+  ] },
+  nays: { name: 'عبد الرحمن بن الحسين، أبو سعيد النيسابوري', sub: 'قاضٍ · شيخ الحنفية بنيسابور', lines: [
+    { t: 'القاضي العلامة، شيخ أهل الرأي بخراسان، أبو سعيد النيسابوري، الحنفي.', r: '١٤/٢٨٤', m: 'الجواهر ٢/٣٧٨' },
+    { t: 'سمع أبا زرعة الرازي ومحمد بن رافع، وروى عنه ابنه عبد الحميد القاضي وأبو العباس أحمد بن هارون.', m: 'الجواهر ٢/٣٧٨' },
+    { t: 'توفي يوم السبت النصف من جمادى الأولى سنة ٣٠٩ هـ (عن ابنه عبد الحميد).', m: 'الجواهر ٢/٣٧٨' }
+  ], quote: { t: 'واخطُ مع الدهر إذا ما خطا … واجرِ مع الدهر كما يجري', by: 'أبو سعيد النيسابوري (بيت كان يردّده)', m: 'الجواهر ٢/٣٧٨' } },
+  tanukhi: { name: 'أبو جعفر أحمد بن إسحاق التنوخي', sub: 'القاضي الكبير · فقيه ونحوي', lines: [
+    { t: 'أبو جعفر التنوخي الأنباري النحوي القاضي، من بيت تنوخ بالأنبار. وُلد بالأنبار في المحرم سنة ٢٣١.', r: '١٤/٤٩٧', m: 'الجواهر ١/١٣٧' },
+    { t: 'سمع أباه ويعقوب الدورقي ومحمد بن المثنى العنزي، وروى عنه الدارقطني وابن شاهين وحفيده جعفر بن محمد.', m: 'الجواهر ١/١٣٧' },
+    { t: 'قال الخطيب: «كان ثبتًا في الحديث، ثقة مأمونًا… متقنًا في علوم شتى، منها الفقه على مذهب أبي حنيفة وأصحابه، وربما خالفهم في مسيئلات يسيرة».', m: 'الجواهر ١/١٣٨' },
+    { t: 'تولى القضاء بالأنبار وهيت وطريق الفرات من قبل الموفق سنة ٢٧٦، ثم للناصر، ثم للمعتضد، وقلّده المقتدر سنة ٢٩٦ القضاء بمدينة المنصور وغيرها، وصُرف عنها سنة ٣١٧.', m: 'الجواهر ١/١٣٨–١٣٩' },
+    { t: 'مات سنة ٣١٨ هـ.', r: '١٤/٤٩٨' },
+    { t: 'له «الناسخ والمنسوخ»، و«الدعاء»، و«أدب القاضي» (لم يتمّه)، وكتاب في النحو على مذهب الكوفيين.', m: 'الجواهر ١/١٣٧' }
+  ] },
+  shafii_t: { name: 'الشافعي', sub: 'إمام المذهب الشافعي', imam: 'shafii', lines: [] },
+  malik_t: { name: 'مالك بن أنس', sub: 'إمام المذهب المالكي', imam: 'maliki', lines: [] },
+  ahmad_t: { name: 'أحمد بن حنبل', sub: 'إمام المذهب الحنبلي', imam: 'hanbali', lines: [] },
+
+  muhammad: { name: 'محمد بن الحسن الشيباني', sub: 'فقيه العراق · تلميذ أبي حنيفة وشيخ الشافعي', lines: [
+    { t: 'أبو عبد الله الشيباني الكوفي، وُلد بواسط ونشأ بالكوفة (ابن سعد: ولد سنة ١٣٢). أصله من قرية حرستا بدمشق.', r: '٩/١٣٤–١٣٦', m: 'الجواهر ٣/١٢٣' },
+    { t: 'أخذ عن أبي حنيفة بعض الفقه وأتمّه على أبي يوسف، وروى عن مسعر والأوزاعي ومالك. وولي القضاء للرشيد بعد أبي يوسف.', r: '٩/١٣٤–١٣٦', m: 'الجواهر ٣/١٢٣، ١٢٥' },
+    { t: 'قال: «أقمتُ عند مالك ثلاث سنين وكسرًا وسمعت من لفظه سبع مئة حديث». وقال محقق «السير» في الحاشية: روايته للموطأ من أجود الروايات.', r: '٩/١٣٥' },
+    { t: 'أخذ عنه الشافعي فأكثر، وأبو عبيد، وابن معين (كتب عنه الجامع الصغير).', r: '٩/١٣٤–١٣٦', m: 'الجواهر ٣/١٢٣–١٢٤' },
+    { t: 'قال الشافعي: «أخذتُ من محمد بن الحسن وِقرَ بعير، وما رأيتُ رجلًا سمينًا أفهمَ منه». وقال أحمد: مسائلي الدقيقة من كتب محمد بن الحسن.', m: 'الجواهر ٣/١٢٣–١٢٤' },
+    { t: 'توفي بالري سنة ١٨٩ هـ عند الذهبي (السير ٩/١٣٦)، وسنة ١٨٧ هـ عند القرشي في اليوم الذي مات فيه الكسائي (الجواهر ٣/١٢٥–١٢٦)؛ أثبتُّ الروايتين.', r: '٩/١٣٦', m: 'الجواهر ٣/١٢٥–١٢٦' }
+  ], quote: { t: 'أقمتُ عند مالك ثلاث سنين وكسرًا وسمعت من لفظه سبع مئة حديث', by: 'محمد بن الحسن', r: '٩/١٣٥' } },
+
+  zufar: { name: 'زفر بن الهذيل', sub: 'تلميذ أبي حنيفة · «أقيس أصحابه»', lines: [
+    { t: 'أبو الهذيل العنبري، الفقيه المجتهد. وُلد سنة ١١٠. «تفقّه بأبي حنيفة وهو أكبر تلامذته».', r: '٨/٣٨–٤١', m: 'الجواهر ٢/٢٠٧–٢٠٨' },
+    { t: 'حدّث عن الأعمش وإسماعيل بن أبي خالد وأبي حنيفة وابن إسحاق. وقال ابن معين: «ثقة مأمون».', r: '٨/٣٨–٤١', m: 'الجواهر ٢/٢٠٧' },
+    { t: 'كان وداود الطائي متواخيين، فترك داود الفقه وأقبل على العبادة، وجمع زفر بينهما.', r: '٨/٣٨–٤١' },
+    { t: 'رجع عن قتل المسلم بالذمي لما ذُكّر بحديث «لا يقتل مسلم بكافر»، فقال الذهبي: «هكذا يكون العالم وقّافًا مع النص».', r: '٨/٤٠–٤١' },
+    { t: 'توفي سنة ١٥٨ هـ (ابن سعد). وولي قضاء البصرة.', r: '٨/٤١', m: 'الجواهر ٢/٢٠٧–٢٠٨' }
+  ] },
+
+  yusuf: { name: 'القاضي أبو يوسف', sub: 'قاضي القضاة · أنبل تلاميذ أبي حنيفة', lines: [
+    { t: 'يعقوب بن إبراهيم بن حبيب بن خنيس بن سعد بن حبتة الأنصاري (قال ابن عبد البر: لا يختلفون فيه). وُلد سنة ١١٣ (السير).', r: '٨/٥٣٥–٥٣٨', m: 'الجواهر ٣/٦١١' },
+    { t: 'أخذ الفقه عن أبي حنيفة وهو «المقدَّم من أصحابه». قال ابن عبد البر: لا أعلم قاضيًا كان إليه تولية القضاة في الآفاق من الشرق إلى الغرب إلا أبا يوسف في زمانه. ووثّقه أحمد وابن معين وابن المديني.', m: 'الجواهر ٣/٦١٢' },
+    { t: 'حدّث عن هشام بن عروة ويحيى الأنصاري وعطاء بن السائب والأعمش وأبي حنيفة «ولزمه وتفقّه به وهو أنبل تلامذته وأعلمهم».', r: '٨/٥٣٥–٥٣٨' },
+    { t: 'كان أبوه فقيرًا، وكان أبو حنيفة يتعاهده بالدراهم. وقال: «صحبت أبا حنيفة سبع عشرة سنة».', r: '٨/٥٣٥–٥٣٨' },
+    { t: 'تخرّج به محمد بن الحسن وهلال الرأي وابن سماعة، وحدّث عنه ابن معين وأحمد وأسد بن الفرات.', r: '٨/٥٣٥–٥٣٨' },
+    { t: 'ولي القضاء لثلاثة خلفاء: المهدي والهادي والرشيد.', m: 'الجواهر ٣/٦١٢' },
+    { t: 'توفي ببغداد يوم الخميس خامس ربيع الأول سنة ١٨٢ هـ (وقيل: ربيع الآخر)، وعاش ٦٩ سنة.', r: '٨/٥٣٨', m: 'الجواهر ٣/٦١٢' }
+  ], quote: { t: 'كل ما أفتيت به فقد رجعت عنه إلا ما وافق الكتاب والسنة', by: 'أبو يوسف قبل موته', r: '٨/٥٣٥–٥٣٨' } },
+
+  qasim: { name: 'عبد الرحمن بن القاسم', sub: 'عالم مصر · تلميذ مالك', lines: [
+    { t: 'أبو عبد الله العتقي مولاهم المصري، عالم الديار المصرية ومفتيها. وُلد سنة ١٣٢.', r: '٩/١٢٠–١٢٥' },
+    { t: 'روى عن مالك وعبد الرحمن بن شريح وبكر بن مضر، وحدّث عنه أصبغ والحارث بن مسكين وسحنون.', r: '٩/١٢٠–١٢٥' },
+    { t: 'كان ذا مال فأنفقه في العلم، ويمتنع من جوائز السلطان. وخرج إلى الحجاز اثنتي عشرة مرة أنفق في كل مرة ألف دينار.', r: '٩/١٢٠–١٢٥' },
+    { t: 'قال ابن وهب: كنا نخرج إلى مالك فسنة أسأله أنا وسنة يسأله ابن القاسم.', r: '٩/١٢٠–١٢٥' },
+    { t: 'توفي في صفر سنة ١٩١ هـ وعاش ٥٩ سنة.', r: '٩/١٢٥' }
+  ],
+  note: 'ترجمته في «ترتيب المدارك» ٢/٤٣٣ كما أحالت إليه حواشي «السير»، ولم أقرأها مباشرة.' },
+
+  wahb: { name: 'عبد الله بن وهب', sub: 'حافظ مصر · تلميذ مالك', lines: [
+    { t: 'أبو محمد الفهري مولاهم المصري، الإمام الحافظ. مولده سنة ١٢٥. طلب العلم وله سبع عشرة سنة.', r: '٩/٢٢٣–٢٣٣', m: 'المدارك ٢/٤٢١–٤٣١ (إحالة المحقق)' },
+    { t: 'روى عن ابن جريج ويونس بن يزيد والليث ومالك وابن لهيعة. وقال: «سمعت من ثلاث مئة وسبعين شيخًا».', r: '٩/٢٢٣–٢٣٣', m: 'المدارك ٢/٤٢١–٤٣١ (إحالة المحقق)' },
+    { t: 'حدّث عنه الليث وابن مهدي وأصبغ وسحنون ويحيى بن يحيى الليثي ويونس بن عبد الأعلى والربيع بن سليمان.', r: '٩/٢٢٣–٢٣٣' },
+    { t: 'لم يكتب مالك لأحد بـ«الفقيه» إلا إلى ابن وهب: «إلى عبد الله بن وهب فقيه مصر».', r: '', m: 'المدارك ٢/٤٢١–٤٣١ (إحالة المحقق)' },
+    { t: 'عُرض عليه القضاء فجنّن نفسه ولزم بيته.', r: '٩/٢٢٩ و٩/٢٣٣' },
+    { t: 'مات في شعبان سنة ١٩٧ هـ وعاش اثنتين وسبعين سنة (يونس بن عبد الأعلى).', r: '٩/٢٢٩' }
+  ], quote: { t: 'لولا مالك لضللتُ في العلم', by: 'ابن وهب', m: 'المدارك ٢/٤٢١–٤٣١ (إحالة المحقق)' },
+  note: 'المدارك: أحلتُ إلى المواضع التي ذكرها محقق «السير» (٢/٤٢١–٤٣١)، ولم أقرأها مباشرة.' },
+
+  buwayti: { name: 'أبو يعقوب البويطي', sub: 'خليفة الشافعي في حلقته', lines: [
+    { t: 'يوسف بن يحيى المصري، «سيد الفقهاء»، صاحب الشافعي، لازمه وتخرّج به وفاق الأقران.', r: '١٢/٥٨–٦١', m: 'طبقات الشافعيين ص١٥٩' },
+    { t: 'حدّث عن ابن وهب والشافعي، وروى عنه الربيع المرادي وإبراهيم الحربي والدارمي وأبو حاتم.', r: '١٢/٥٨–٦١' },
+    { t: 'وُصف بأنه «إمام في العلم، قدوة في العمل، زاهد ربّاني متهجد دائم الذكر».', r: '١٢/٥٨–٦١' },
+    { t: 'حُمل في محنة خلق القرآن إلى بغداد مغلولًا بحديد وزنه أربعون رطلًا، وامتنع عن القول بخلق القرآن.', r: '١٢/٥٨–٦١', m: 'طبقات الشافعيين ص١٦٠–١٦١' },
+    { t: 'مات في قيده مسجونًا بالعراق سنة ٢٣١ هـ، وقيل ٢٣٢؛ والصحيح عند ابن كثير أنه مات في رجب سنة ٢٣١.', r: '١٢/٦١', m: 'طبقات الشافعيين ص١٦٠' }
+  ], quote: { t: 'إنما خلق الله الخلق بـ«كن»', by: 'البويطي في محنة خلق القرآن', r: '١٢/٥٨–٦١' } },
+
+  rabi: { name: 'الربيع بن سليمان المرادي', sub: 'راوية كتب الشافعي', lines: [
+    { t: 'أبو محمد المرادي مولاهم المصري المؤذن، صاحب الشافعي وناقل علمه، شيخ المؤذنين بجامع الفسطاط. مولده ١٧٤ أو قبلها بعام.', r: '١٢/٥٨٧–٥٩٠', m: 'طبقات الشافعيين ص١٣٥–١٣٦' },
+    { t: 'سمع ابن وهب وبشر بن بكر والشافعي. ولم يكن صاحب رحلة، وما رُوي أن الشافعي بعثه بكتابه إلى أحمد «غير صحيح».', r: '١٢/٥٨٧–٥٩٠' },
+    { t: 'حدّث عنه أبو داود وابن ماجه والنسائي والطحاوي وأبو زرعة وأبو حاتم.', r: '١٢/٥٨٧–٥٩٠', m: 'طبقات الشافعيين ص١٣٥' },
+    { t: 'رحل إليه نحو مئتي رجل في كتب الشافعي (ابن عبد البر عن الترمذي).', r: '', m: 'طبقات الشافعيين ص١٣٥' },
+    { t: 'قال الذهبي: «ما يبلغ رتبة المزني، كما أن المزني لا يبلغ رتبته في الحديث». وكانت فيه سلامة وغفلة.', r: '١٢/٥٨٧–٥٩٠' },
+    { t: 'توفي سنة ٢٧٠ هـ.', r: '١٢/٥٨٧–٥٩٠', m: 'طبقات الشافعيين ص١٣٥' }
+  ], quote: { t: 'كل محدّث بعد ابن وهب كنت مستمليه', by: 'الربيع بن سليمان', m: 'طبقات الشافعيين ص١٣٥' },
+  note: 'هو غير الربيع الجيزي (ت ٢٥٦ هـ) الذي يسبقه في ابن كثير.' },
+
+  bukhari: { name: 'البخاري', sub: 'صاحب «الجامع الصحيح» · تلميذ أحمد', lines: [
+    { t: 'أبو عبد الله محمد بن إسماعيل بن إبراهيم بن المغيرة بن بردزبه الجعفي. أسلم جدّه المغيرة على يد اليمان الجعفي والي بخارى.', r: '١٢/٣٩١–٤٧١' },
+    { t: 'وُلد في شوال سنة ١٩٤ هـ.', r: '١٢/٣٩١–٤٧١' },
+    { t: 'قال: «لم أُخرّج في الكتاب إلا صحيحًا، وما تركت من الصحيح أكثر». وقيل: سمع الصحيحَ منه تسعون ألفًا.', r: '١٢/٣٩١–٤٧١' },
+    { t: 'له «الجامع الصحيح» و«التاريخ».', r: '', m: 'طبقات الحنابلة ٢/٢٤٢' }
+  ], quote: { t: 'لم أُخرّج في الكتاب إلا صحيحًا، وما تركت من الصحيح أكثر', by: 'البخاري', r: '١٢/٣٩١–٤٧١' }, note: 'لم تُقرأ نهاية ترجمته في «السير»، فلا أكتب سنة وفاته منها.' },
+
+  muslim: { name: 'مسلم بن الحجاج', sub: 'صاحب «الصحيح» · تلميذ أحمد', lines: [
+    { t: 'أبو الحسين القشيري النيسابوري، الإمام الحافظ الحجة. وُلد سنة ٢٠٤ (قيل). أول سماعه سنة ٢١٨ من يحيى بن يحيى التميمي.', r: '١٢/٥٥٧–٥٨٠' },
+    { t: 'حجّ سنة ٢٢٠ وسمع بمكة من القعنبي (أكبر شيوخه)، وسمع بالعراق والحرمين ومصر، ومن شيوخه أحمد بن حنبل وإسحاق بن راهويه.', r: '١٢/٥٥٧–٥٨٠', m: 'طبقات الحنابلة ٢/٤١٣' },
+    { t: 'قال: «ما وضعت في هذا المسند شيئًا إلا بحجة، ولا أسقطت شيئًا منه إلا بحجة».', r: '١٢/٥٨٠' },
+    { t: 'قدّمه أبو زرعة وأبو حاتم في معرفة الصحيح على مشايخ عصرهما.', r: '١٢/٥٥٧–٥٨٠' },
+    { t: 'توفي في رجب سنة ٢٦١ هـ بنيسابور عن بضع وخمسين سنة.', r: '١٢/٥٨٠' }
+  ], quote: { t: 'ما وضعت في هذا المسند شيئًا إلا بحجة، ولا أسقطت شيئًا منه إلا بحجة', by: 'مسلم بن الحجاج', r: '١٢/٥٨٠' } },
+
+  dawud: { name: 'أبو داود', sub: 'صاحب «السنن» · تلميذ أحمد', lines: [
+    { t: 'سليمان بن الأشعث الأزدي السجستاني، شيخ السنة ومقدّم الحفاظ، محدّث البصرة. وُلد سنة ٢٠٢.', r: '١٣/٢٠٣–٢٢١', m: 'طبقات الحنابلة ١/٤٢٧' },
+    { t: 'سمع بمكة من القعنبي، وبالبصرة من مسلم بن إبراهيم وأبي الوليد الطيالسي، وبالكوفة من أحمد بن يونس، ودخل بغداد وهو ابن ثماني عشرة سنة.', r: '١٣/٢٠٣–٢٢١' },
+    { t: 'أخباره مع الإمام أحمد مبثوثة في «مناقب أحمد».', r: '', m: 'طبقات الحنابلة ١/٤٢٧' },
+    { t: 'توفي سادس عشر شوال سنة ٢٧٥ هـ.', r: '١٣/٢٢١' }
+  ], note: 'لم أقرأ نص ترجمته في «طبقات الحنابلة» كاملًا، واكتفيتُ بإحالته إليها.' },
+
+  salih: { name: 'صالح بن أحمد بن حنبل', sub: 'ابن الإمام · قاضي أصبهان', lines: [
+    { t: 'أبو الفضل الشيباني البغدادي، المحدّث الفقيه القاضي، قاضي أصبهان.', r: '١٢/٥٢٩' },
+    { t: 'سمع أباه وتفقّه عليه، وسمع عفان وأبا الوليد وعلي بن المديني.', r: '١٢/٥٢٩' },
+    { t: 'حدّث عنه ابنه زهير وابن أبي عاصم والبغوي وابن صاعد.', r: '١٢/٥٢٩' },
+    { t: 'مات سنة ٢٦٥ هـ (ذُكر في وفيات تلك السنة).', r: '١٢/٣٩١' }
+  ], note: 'لم أقرأ ترجمته في «طبقات الحنابلة» مباشرة؛ ورقم ١/١١٩ فيه هو لحفيده «أحمد بن صالح» فلا يُنسب إليه.' },
+
+  abdullah: { name: 'عبد الله بن أحمد', sub: 'راوي «المسند» عن أبيه', lines: [
+    { t: 'أبو عبد الرحمن الشيباني المروزي ثم البغدادي، الإمام الحافظ الناقد محدّث بغداد. وُلد سنة ٢١٣، وهو أصغر من أخيه صالح.', r: '١٣/٥١٦–٥٢٥' },
+    { t: 'روى عن أبيه شيئًا كثيرًا (المسند كله والزهد)، وامتنع من الأخذ عن علي بن الجعد لوقفه في مسألة القرآن.', r: '١٣/٥١٦–٥٢٥' },
+    { t: 'حدّث عنه النسائي والبغوي وابن صاعد وأبو عوانة.', r: '١٣/٥١٦–٥٢٥' },
+    { t: 'قال الذهبي: «كان صيّنًا دينًا صادقًا، صاحب حديث واتباع وبصر بالرجال… وله زيادات كثيرة في مسند والده».', r: '١٣/٥١٦–٥٢٥' },
+      { t: 'قال ابن الصوّاف: وُلد سنة ٢١٣ ومات سنة ٢٩٠ هـ؛ ودُفن في مقابر باب التبن يوم الأحد لتسع ليالٍ بقين من جمادى الآخرة.', r: '١٣/٥٢٣' }
+  ], note: 'ترجمته في «طبقات الحنابلة» (١/١٨٠–١٨٨ كما أحال المحقق) لم أقرأها مباشرة.' },
+
+  hanbal: { name: 'حنبل بن إسحاق', sub: 'ابن عمّ أحمد وتلميذه', lines: [
+    { t: 'أبو علي الشيباني، الإمام الحافظ الصدوق المصنّف، ابن عمّ الإمام أحمد وتلميذه. وُلد قبل المئتين.', r: '١٣/٥١–٥٢', m: 'طبقات الحنابلة ١/٣٨٣' },
+    { t: 'سمع سليمان بن حرب وأبا نعيم وعفان والحميدي وأبا الوليد الطيالسي، وحدّث عنه ابن صاعد وأبو بكر الخلال.', r: '١٣/٥١–٥٢', m: 'طبقات الحنابلة ١/٣٨٣' },
+    { t: 'قال الخطيب: «كان ثقة ثبتًا». وقال الذهبي: «له مسائل كثيرة عن أحمد ويتفرد ويغرب».', r: '١٣/٥١–٥٢' },
+    { t: 'نُعي في جمادى الأولى سنة ٢٧٣ هـ وكان من أبناء الثمانين.', r: '١٣/٥١–٥٢', m: 'طبقات الحنابلة ١/٣٨٣' }
+  ] }
+};
+/* ربط الأسماء الواردة في قوائم الشيوخ والتلاميذ بالتراجم */
+const PERSON_OF = {
+  'حماد بن أبي سليمان': 'hammad', 'عطاء بن أبي رباح': 'ata', 'نافع مولى ابن عمر': 'nafi',
+  'ابن شهاب الزهري': 'zuhri', 'ربيعة الرأي': 'rabia', 'مسلم بن خالد الزنجي': 'zanji',
+  'سفيان بن عيينة': 'uyayna', 'هشيم بن بشير': 'hushaym', 'وكيع': 'waki', 'عبد الرزاق': 'razzaq',
+  'مالك بن أنس': 'malik_t', 'الشافعي': 'shafii_t', 'أحمد بن حنبل': 'ahmad_t',
+  'محمد بن الحسن': 'muhammad', 'محمد بن الحسن الشيباني': 'muhammad', 'زفر بن الهذيل': 'zufar',
+  'القاضي أبو يوسف': 'yusuf', 'عبد الرحمن بن القاسم': 'qasim', 'عبد الله بن وهب': 'wahb',
+  'أبو يعقوب البويطي': 'buwayti', 'الربيع بن سليمان المرادي': 'rabi', 'البخاري': 'bukhari',
+  'مسلم': 'muslim', 'أبو داود': 'dawud', 'صالح': 'salih', 'عبد الله': 'abdullah', 'ابن عمه حنبل': 'hanbal'
+};
+
+/* علماء المذهب: الأسماء المُثبتة حتى الآن، وتُزاد من وضع المطوّر */
+const SCHOLARS = {
+  // [id, وصف, الطبقة (1 = أخذ عن الإمام مباشرة، 2 = من بعدهم), سنة الوفاة المعتمدة للفرز, نص الوفاة للعرض]
+  hanafi: [['zufar', 'تلميذ أبي حنيفة', 1, 158], ['yusuf', 'تلميذ أبي حنيفة', 1, 182], ['muhammad', 'صاحب أبي حنيفة', 1, 189, '١٨٧ أو ١٨٩'], ['shuayb', 'أخذ الفقه عن أبي حنيفة', 1, 189, '١٨٩ أو ١٩٨'], ['balkhi', '', 1, 199], ['hasan', 'صاحب أبي حنيفة', 1, 204],
+    ['jawz', '', 2, 201, 'بعد ٢٠٠'], ['mualla', '', 2, 211], ['hafs', '', 2, 217], ['kindi', '', 2, 238], ['birti', '', 2, 280], ['hamid', '', 2, 292], ['nays', '', 2, 309], ['tanukhi', '', 2, 318]],
+  maliki: [['qasim', 'تلميذ مالك', 1, 191], ['wahb', 'تلميذ مالك', 1, 197]],
+  shafii: [['buwayti', 'تلميذ الشافعي', 1, 231], ['rabi', 'راوية كتبه', 1, 270]],
+  hanbali: [['salih', 'ابن الإمام', 1, 265], ['abdullah', 'ابن الإمام', 1, 290], ['hanbal', 'ابن عمّه', 1, 273]]
+};
+IMAMS.forEach((i) => { i.scholars = (SCHOLARS[i.id] || []).map(([id, d, tier, y, yl]) => ({ n: PEOPLE[id].name, d, tier, y, yl, r: ((PEOPLE[id].lines[0] || {}).r || ''), m: ((PEOPLE[id].lines.find(x => x.m) || {}).m || ''), p: id })); });
+const HANBALI_SIYAR = [{"n": "الأثرم أبو بكر أحمد بن محمد بن هانئ", "d": "«أقبل على مذهب أحمد» (١٢/٦٢٥)", "tier": 1, "y": 260, "yl": "نحو ٢٦٠", "r": "١٢/٦٢٣–٦٢٦", "m": "الوفاة: نحو ٢٦٠ (قال الذهبي: لم أظفر بوفاته… في حدود الستين ومئتين قبلها أو بعدها) — السير ١٢/٦٢٦"}, {"n": "المروذي أبو بكر أحمد بن محمد بن الحجاج", "d": "«شيخ الحنبلية» (١٣/١٠٥)", "tier": 1, "y": 275, "yl": "", "r": "١٣/١٧٣–١٧٥", "m": "الوفاة: جمادى الأولى ٢٧٥ — السير ١٣/١٧٥"}, {"n": "الخلال أبو بكر أحمد بن محمد بن هارون", "d": "«شيخ الحنابلة وعالمهم»", "tier": 2, "y": 311, "yl": "", "r": "١٤/٢٩٧–٢٩٨", "m": "الوفاة: ربيع الأول ٣١١ — السير ١٤/٢٩٨"}, {"n": "البربهاري أبو محمد الحسن بن علي بن خلف", "d": "«شيخ الحنابلة»", "tier": 2, "y": 328, "yl": "", "r": "١٥/٩٠–٩٣", "m": "الوفاة: رجب ٣٢٨ — السير ١٥/٩٢"}, {"n": "الخرقي أبو القاسم عمر بن الحسين", "d": "«شيخ الحنابلة… الحنبلي، صاحب المختصر»", "tier": 2, "y": 334, "yl": "", "r": "١٥/٣٦٣–٣٦٤", "m": "الوفاة: ٣٣٤ بدمشق — السير ١٥/٣٦٤"}, {"n": "النجاد أبو بكر أحمد بن سلمان", "d": "«الحنبلي»", "tier": 2, "y": 348, "yl": "", "r": "١٥/٥٠٢–٥٠٤", "m": "الوفاة: ذو الحجة ٣٤٨ — السير ١٥/٥٠٤"}, {"n": "غلام الخلال أبو بكر عبد العزيز بن جعفر", "d": "«شيخ الحنابلة»", "tier": 2, "y": 363, "yl": "", "r": "١٦/١٤٣–١٤٤", "m": "الوفاة: شوال ٣٦٣ — السير ١٦/١٤٤"}, {"n": "القطيعي أبو بكر أحمد بن جعفر بن حمدان", "d": "«الحنبلي، راوي مسند الإمام»", "tier": 2, "y": 368, "yl": "", "r": "١٦/٢١٠–٢١٣", "m": "الوفاة: ذو الحجة ٣٦٨ — السير ١٦/٢١٣"}, {"n": "ابن شاقلا أبو إسحاق إبراهيم بن أحمد", "d": "«شيخ الحنابلة»", "tier": 2, "y": 369, "yl": "", "r": "١٦/٢٩٢", "m": "الوفاة: رجب ٣٦٩ — السير ١٦/٢٩٢"}, {"n": "ابن بطة أبو عبد الله عبيد الله بن محمد العكبري", "d": "«الحنبلي، مصنف الإبانة»", "tier": 2, "y": 387, "yl": "", "r": "١٦/٥٢٩–٥٣٣", "m": "الوفاة: ٣٨٧ — السير ١٦/٥٣٣"}, {"n": "ابن حامد أبو عبد الله الحسن بن حامد الوراق", "d": "«شيخ الحنابلة ومفتيهم»", "tier": 2, "y": 403, "yl": "", "r": "١٧/٢٠٣–٢٠٤", "m": "الوفاة: ٤٠٣ شهيدًا في أخذ الركب — السير ١٧/٢٠٤"}, {"n": "أبو الفضل التميمي عبد الواحد بن عبد العزيز", "d": "«رئيس الحنابلة… الحنبلي»", "tier": 2, "y": 410, "yl": "", "r": "١٧/٢٧٣", "m": "الوفاة: ٤١٠ — السير ١٧/٢٧٣"}, {"n": "أبو سعيد النقاش محمد بن علي الأصبهاني", "d": "«الحنبلي»", "tier": 2, "y": 414, "yl": "", "r": "١٧/٣٠٧–٣٠٨", "m": "الوفاة: رمضان ٤١٤ — السير ١٧/٣٠٨"}, {"n": "الطرازي أبو الحسن علي بن محمد", "d": "«الحنبلي، مسند خراسان»", "tier": 2, "y": 422, "yl": "", "r": "١٧/٤٠٩", "m": "الوفاة: ذو الحجة ٤٢٢ — السير ١٧/٤٠٩"}, {"n": "الزيدي أبو القاسم علي بن محمد الحراني", "d": "«الحنبلي، السني»", "tier": 2, "y": 433, "yl": "", "r": "١٧/٥٠٥–٥٠٦", "m": "الوفاة: ٤٣٣ — السير ١٧/٥٠٦"}, {"n": "ابن شهاب أبو علي الحسن بن شهاب العكبري", "d": "«الفقيه الحنبلي»", "tier": 2, "y": 428, "yl": "", "r": "١٧/٥٤٢–٥٤٣", "m": "الوفاة: رجب ٤٢٨ — السير ١٧/٥٤٣"}, {"n": "البرمكي أبو إسحاق إبراهيم بن عمر", "d": "«الحنبلي»", "tier": 2, "y": 445, "yl": "", "r": "١٧/٦٠٥–٦٠٦", "m": "الوفاة: ذو الحجة ٤٤٥ — السير ١٧/٦٠٦"}, {"n": "القاضي أبو يعلى محمد بن الحسين ابن الفراء", "d": "«شيخ الحنابلة… الحنبلي»", "tier": 2, "y": 458, "yl": "", "r": "١٨/٨٩–٩١", "m": "الوفاة: ٤٥٨ — السير ١٨/٩١"}, {"n": "ابن البناء أبو علي الحسن بن أحمد", "d": "«الحنبلي، صاحب التواليف»", "tier": 2, "y": 471, "yl": "", "r": "١٨/٣٨٠–٣٨١", "m": "الوفاة: رجب ٤٧١ — السير ١٨/٣٨١"}, {"n": "ابن جدا أبو الحسن علي بن الحسين العكبري", "d": "«شيخ الحنابلة»", "tier": 2, "y": 468, "yl": "", "r": "١٨/٣٩١–٣٩٢", "m": "الوفاة: رمضان ٤٦٨ — السير ١٨/٣٩٢"}, {"n": "ابن موسى الخياط أبو بكر محمد بن علي المقرئ", "d": "«الحنبلي»", "tier": 2, "y": 467, "yl": "", "r": "١٨/٤٣٦–٤٣٧", "m": "الوفاة: جمادى الأولى ٤٦٧ (وقيل ٤٦٨ في الحاشية) — السير ١٨/٤٣٧"}, {"n": "أبو إسماعيل الأنصاري الهروي عبد الله بن محمد", "d": "من شعره: «أنا حنبلي ما حييت» (١٨/٥٠٦–٥٠٨)", "tier": 2, "y": 481, "yl": "", "r": "١٨/٥٠٣–٥١٥", "m": "الوفاة: ذو الحجة ٤٨١ (أبو النضر الفامي) — السير ١٨/٥١٥"}, {"n": "الشريف أبو جعفر عبد الخالق بن عيسى الهاشمي", "d": "«شيخ الحنبلية»", "tier": 2, "y": 470, "yl": "", "r": "١٨/٥٤٦–٥٤٨", "m": "الوفاة: صفر ٤٧٠ — السير ١٨/٥٤٨"}, {"n": "رزق الله التميمي أبو محمد", "d": "«رئيس الحنابلة»", "tier": 2, "y": 488, "yl": "", "r": "١٨/٦١٠–٦١٥", "m": "الوفاة: جمادى الأولى ٤٨٨ (ابن ناصر) — السير ١٨/٦١٥"}, {"n": "أبو الفرج الشيرازي عبد الواحد بن محمد", "d": "«الفقيه الحنبلي الواعظ»", "tier": 2, "y": 486, "yl": "", "r": "١٩/٥١–٥٣", "m": "الوفاة: ذو الحجة ٤٨٦ — السير ١٩/٥٣"}, {"n": "البرزبيني أبو علي يعقوب بن إبراهيم العكبري", "d": "«شيخ الحنابلة… الحنبلي»", "tier": 2, "y": 486, "yl": "", "r": "١٩/٩٣–٩٤", "m": "الوفاة: شوال ٤٨٦ — السير ١٩/٩٤"}, {"n": "البرداني أبو علي أحمد بن محمد", "d": "قال السمعاني: «كان حنبليًّا»", "tier": 2, "y": 498, "yl": "", "r": "١٩/٢١٩–٢٢١", "m": "الوفاة: شوال ٤٩٨ — السير ١٩/٢٢١"}, {"n": "أبو الخطاب الكلوذاني محفوظ بن أحمد", "d": "«شيخ الحنابلة»", "tier": 2, "y": 510, "yl": "", "r": "١٩/٣٤٨–٣٥٠", "m": "الوفاة: جمادى الآخرة ٥١٠ — السير ١٩/٣٤٩"}, {"n": "أبو الفضل جعفر بن الحسن المقرئ الدرزيجاني", "d": "«الفقيه الحنبلي المقرئ، صاحب القاضي أبي يعلى»", "tier": 2, "y": 506, "yl": "", "r": "١٩/٤١٤–٤١٥", "m": "الوفاة: ربيع الآخر ٥٠٦ — السير ١٩/٤١٥"}, {"n": "المخرمي أبو سعد المبارك بن علي", "d": "«شيخ الحنابلة»", "tier": 2, "y": 513, "yl": "", "r": "١٩/٤٢٨", "m": "الوفاة: المحرم ٥١٣ — السير ١٩/٤٢٨"}, {"n": "ابن عقيل أبو الوفاء علي بن عقيل", "d": "«شيخ الحنابلة… الحنبلي»", "tier": 2, "y": 513, "yl": "", "r": "١٩/٤٤٣–٤٥١", "m": "الوفاة: جمادى الأولى ٥١٣ — السير ١٩/٤٤٦–٤٤٧"}, {"n": "ابن أبي عمامة أبو سعد المعمر بن علي", "d": "«الحنبلي»", "tier": 2, "y": 506, "yl": "", "r": "١٩/٤٥١–٤٥٢", "m": "الوفاة: ربيع الأول ٥٠٦ — السير ١٩/٤٥٢"}, {"n": "ابن الدنف أبو بكر محمد بن علي الإسكاف", "d": "«الحنبلي»", "tier": 2, "y": 515, "yl": "", "r": "١٩/٤٨٥–٤٨٦", "m": "الوفاة: شوال ٥١٥ — السير ١٩/٤٨٦"}, {"n": "أبو الحسين محمد ابن القاضي أبي يعلى", "d": "«الحنبلي، جمع طبقات الفقهاء الحنابلة»", "tier": 2, "y": 526, "yl": "", "r": "١٩/٦٠١–٦٠٢", "m": "الوفاة: قُتل ليلة عاشوراء ٥٢٦ — السير ١٩/٦٠٢"}, {"n": "أبو غالب أحمد بن الحسن ابن البناء", "d": "«الحنبلي»", "tier": 2, "y": 527, "yl": "", "r": "١٩/٦٠٣–٦٠٤", "m": "الوفاة: صفر (وقيل ربيع الأول) ٥٢٧ — السير ١٩/٦٠٤"}, {"n": "أبو خازم محمد ابن القاضي أبي يعلى ابن الفراء", "d": "«الحنبلي»", "tier": 2, "y": 527, "yl": "", "r": "١٩/٦٠٤–٦٠٥", "m": "الوفاة: صفر ٥٢٧ — السير ١٩/٦٠٥"}, {"n": "ابن الزاغوني أبو الحسن علي بن عبيد الله", "d": "«شيخ الحنابلة»", "tier": 2, "y": 527, "yl": "", "r": "١٩/٦٠٥–٦٠٦", "m": "الوفاة: المحرم ٥٢٧ — السير ١٩/٦٠٦"}, {"n": "يحيى ابن البناء أبو عبد الله", "d": "«الحنبلي»", "tier": 2, "y": 531, "yl": "", "r": "٢٠/٦–٧", "m": "الوفاة: ربيع الأول ٥٣١ — السير ٢٠/٧"}, {"n": "قاضي المرستان أبو بكر محمد بن عبد الباقي الأنصاري", "d": "«الحنبلي، البزاز»", "tier": 2, "y": 535, "yl": "", "r": "٢٠/٢٣–٢٨", "m": "الوفاة: رجب ٥٣٥ — السير ٢٠/٢٧"}, {"n": "شرف الإسلام عبد الوهاب بن عبد الواحد الشيرازي", "d": "«شيخ الحنابلة بدمشق»", "tier": 2, "y": 536, "yl": "", "r": "٢٠/١٠٣–١٠٤", "m": "الوفاة: صفر ٥٣٦ — السير ٢٠/١٠٤"}, {"n": "سعيد بن أحمد ابن البناء أبو القاسم", "d": "«الحنبلي»", "tier": 2, "y": 550, "yl": "", "r": "٢٠/٢٦٤–٢٦٥", "m": "الوفاة: ذو الحجة ٥٥٠ — السير ٢٠/٢٦٥"}, {"n": "ابن ناصر أبو الفضل محمد بن ناصر السلامي", "d": "قال عن نفسه: «على مذهب أحمد في الأصول والفروع» (٢٠/٢٧٠)، و«انتقل إلى مذهب أحمد» بنقل السلفي (٢٠/٢٦٩)", "tier": 2, "y": 550, "yl": "", "r": "٢٠/٢٦٥–٢٧٠", "m": "الوفاة: شعبان ٥٥٠ — السير ٢٠/٢٧٠ · كان شافعيًّا ثم انتقل"}, {"n": "أبو يعلى الصغير محمد بن محمد ابن الفراء", "d": "«شيخ الحنابلة»", "tier": 2, "y": 560, "yl": "", "r": "٢٠/٣٥٣–٣٥٤", "m": "الوفاة: جمادى الأولى ٥٦٠ — السير ٢٠/٣٥٤"}, {"n": "أبو حكيم إبراهيم بن دينار النهرواني", "d": "«الحنبلي، أحد أئمة بغداد»", "tier": 2, "y": 556, "yl": "", "r": "٢٠/٣٩٦", "m": "الوفاة: جمادى الآخرة ٥٥٦ — السير ٢٠/٣٩٦"}, {"n": "الوزير ابن هبيرة أبو المظفر يحيى بن محمد", "d": "«الحنبلي، صاحب التصانيف»", "tier": 2, "y": 560, "yl": "", "r": "٢٠/٤٢٦–٤٣١", "m": "الوفاة: جمادى الأولى ٥٦٠ (ابن الجوزي) — السير ٢٠/٤٢٩"}, {"n": "الشيخ عبد القادر الجيلي", "d": "«الحنبلي، شيخ بغداد»", "tier": 2, "y": 561, "yl": "", "r": "٢٠/٤٣٩–٤٥٠", "m": "الوفاة: ربيع الآخر ٥٦١ — السير ٢٠/٤٥٠"}, {"n": "صدقة بن الحسين ابن الحداد أبو الفرج", "d": "«الحنبلي، الناسخ، الفرضي، المتكلم، المتهم في دينه»", "tier": 2, "y": 573, "yl": "", "r": "٢١/٦٦–٦٧", "m": "الوفاة: ربيع الآخر ٥٧٣ — السير ٢١/٦٧"}, {"n": "ابن الصائغ أبو الفتوح أحمد بن أبي الوفاء (غلام أبي الخطاب)", "d": "«الحنبلي»", "tier": 2, "y": 576, "yl": "", "r": "٢١/١٠٣–١٠٤", "m": "الوفاة: ٥٧٦ (ابن النجار)، وقيل ٥٧٥ — السير ٢١/١٠٤"}, {"n": "ابن المني ناصح الإسلام نصر بن فتيان النهرواني", "d": "«شيخ الحنابلة… الحنبلي»", "tier": 2, "y": 583, "yl": "", "r": "٢١/١٣٧–١٣٨", "m": "الوفاة: رمضان ٥٨٣ — السير ٢١/١٣٨"}, {"n": "الطرسوسي أبو جعفر محمد بن إسماعيل الأصبهاني", "d": "«الحنبلي، الفقيه، مسند أصبهان»", "tier": 2, "y": 595, "yl": "", "r": "٢١/٢٤٥", "m": "الوفاة: جمادى الآخرة ٥٩٥ — السير ٢١/٢٤٥"}, {"n": "ابن كليب أبو الفرج عبد المنعم بن عبد الوهاب الحراني", "d": "«الحنبلي، التاجر»", "tier": 2, "y": 596, "yl": "", "r": "٢١/٢٥٨–٢٦٠", "m": "الوفاة: ربيع الأول ٥٩٦ — السير ٢١/٢٦٠"}, {"n": "جاكير محمد بن دشم الكردي الزاهد", "d": "«الكردي، الحنبلي»", "tier": 2, "y": 590, "yl": "", "r": "٢١/٢٦١", "m": "الوفاة: لم يذكر الذهبي وفاته هنا؛ قال المحقق: ترجمه في «العبر» في وفيات ٥٩٠ — حاشية ٢١/٢٦١ · الوفاة من حاشية المحقق"}, {"n": "ابن الجوزي أبو الفرج عبد الرحمن بن علي", "d": "«الحنبلي، الواعظ، صاحب التصانيف»", "tier": 2, "y": 597, "yl": "", "r": "٢١/٣٦٥–٣٨٠", "m": "الوفاة: رمضان ٥٩٧ (بنقل سبطه) — السير ٢١/٣٧٩"}, {"n": "ابن نجية زين الدين علي بن إبراهيم الأنصاري", "d": "«الحنبلي»؛ ونقل عن أبي شامة: «كان حنبليًّا»", "tier": 2, "y": 599, "yl": "", "r": "٢١/٣٩٣–٣٩٦", "m": "الوفاة: رمضان ٥٩٩ (المنذري) — السير ٢١/٣٩٦"}, {"n": "الأرتاحي أبو عبد الله محمد بن حمد", "d": "«الحنبلي، الأدمي»", "tier": 2, "y": 601, "yl": "", "r": "٢١/٤١٥–٤١٦", "m": "الوفاة: شعبان ٦٠١ (المنذري) — السير ٢١/٤١٦"}, {"n": "عبد الرزاق ابن الشيخ عبد القادر الجيلي", "d": "«الحنبلي، الزاهد»", "tier": 2, "y": 603, "yl": "", "r": "٢١/٤٢٦–٤٢٨", "m": "الوفاة: شوال ٦٠٣ — السير ٢١/٤٢٨"}, {"n": "ابن المنجى وجيه الدين أسعد بن المنجى التنوخي", "d": "«شيخ الحنابلة… الحنبلي»", "tier": 2, "y": 606, "yl": "", "r": "٢١/٤٣٦–٤٣٧", "m": "الوفاة: جمادى الآخرة ٦٠٦ (وعند المنذري ربيع الأول) — السير ٢١/٤٣٧"}, {"n": "الحافظ عبد الغني بن عبد الواحد المقدسي", "d": "«الحنبلي، صاحب الأحكام»", "tier": 2, "y": 600, "yl": "", "r": "٢١/٤٤٣–٤٦٨", "m": "الوفاة: ربيع الأول ٦٠٠ (بنقل ابنه أبي موسى) — السير ٢١/٤٦٧–٤٦٨"}, {"n": "ابن شنيف أبو عبد الله الحسين بن سعيد الدارقزي", "d": "«من صلحاء الحنابلة»", "tier": 2, "y": 610, "yl": "", "r": "٢٢/١٩–٢٠", "m": "الوفاة: المحرم ٦١٠ (ابن الدبيثي) — السير ٢٢/٢٠"}, {"n": "الشيخ أبو عمر محمد بن أحمد بن قدامة المقدسي", "d": "«الحنبلي، الزاهد، واقف المدرسة»", "tier": 2, "y": 607, "yl": "", "r": "٢٢/٥–٩", "m": "الوفاة: ربيع الأول ٦٠٧ — السير ٢٢/٩"}, {"n": "الفخر إسماعيل بن علي الأزجي (غلام ابن المني)", "d": "«الحنبلي، صاحب ابن المني»", "tier": 2, "y": 610, "yl": "", "r": "٢٢/٢٨–٣٠", "m": "الوفاة: ربيع الأول ٦١٠ (ابن النجار؛ وقيل ربيع الآخر) — السير ٢٢/٣٠"}, {"n": "الكندي تاج الدين أبو اليمن زيد بن الحسن", "d": "«كان حنبليًّا فانتقل حنفيًّا» (٢٢/٣٥)", "tier": 2, "y": 613, "yl": "", "r": "٢٢/٣٤–٤٠", "m": "الوفاة: شوال ٦١٣ (الأنماطي) — السير ٢٢/٤٠ · انتقل إلى مذهب أبي حنيفة"}, {"n": "العز محمد ابن الحافظ عبد الغني المقدسي", "d": "«الحنبلي»", "tier": 2, "y": 613, "yl": "", "r": "٢٢/٤٢–٤٣", "m": "الوفاة: شوال ٦١٣ — السير ٢٢/٤٣"}, {"n": "العماد إبراهيم بن عبد الواحد المقدسي (أخو الحافظ عبد الغني)", "d": "«تفقه ببغداد على ابن المني، وتبصّر في مذهب أحمد» (٢٢/٤٧)", "tier": 2, "y": 614, "yl": "", "r": "٢٢/٤٧–٥٢", "m": "الوفاة: ذو القعدة ٦١٤ (الضياء) — السير ٢٢/٥١"}, {"n": "عبد القادر الرهاوي الحافظ", "d": "«الحنبلي، السفار»", "tier": 2, "y": 612, "yl": "", "r": "٢٢/٧١–٧٤", "m": "الوفاة: جمادى الأولى ٦١٢ بحران — السير ٢٢/٧٤"}, {"n": "أبو البقاء العكبري عبد الله بن الحسين", "d": "«الحنبلي، الضرير، النحوي»؛ وأقسم لا يترك مذهب أحمد (٢٢/٩٣)", "tier": 2, "y": 616, "yl": "", "r": "٢٢/٩١–٩٣", "m": "الوفاة: ربيع الآخر ٦١٦ — السير ٢٢/٩٣"}, {"n": "محمد بن مكي بن أبي الرجاء الأصبهاني", "d": "«الفقيه الحافظ الحنبلي، مفيد أصبهان»", "tier": 2, "y": 610, "yl": "", "r": "٢٢/١١٠–١١١", "m": "الوفاة: المحرم ٦١٠ — السير ٢٢/١١١"}, {"n": "السامري نصير الدين محمد بن عبد الله ابن سنينة", "d": "«شيخ الحنابلة، قاضي سامراء، صاحب المستوعب»", "tier": 2, "y": 616, "yl": "", "r": "٢٢/١٤٤–١٤٥", "m": "الوفاة: رجب ٦١٦ — السير ٢٢/١٤٥"}, {"n": "موسى بن الشيخ عبد القادر الجيلي ضياء الدين أبو نصر", "d": "«الحنبلي»", "tier": 2, "y": 618, "yl": "", "r": "٢٢/١٥٠–١٥١", "m": "الوفاة: جمادى الآخرة ٦١٨ (ابن الحاجب) — السير ٢٢/١٥١"}, {"n": "شهاب الدين محمد بن خلف بن راجح المقدسي", "d": "«الحنبلي»", "tier": 2, "y": 618, "yl": "", "r": "٢٢/١٥٦–١٥٨", "m": "الوفاة: صفر ٦١٨ (بخط الضياء) — السير ٢٢/١٥٨"}, {"n": "ابن الحصري أبو الفتوح نصر بن أبي الفرج", "d": "«الحنبلي»؛ و«أمَّ الحنابلة» بمكة (ابن الدبيثي)", "tier": 2, "y": 619, "yl": "", "r": "٢٢/١٦٣–١٦٤", "m": "الوفاة: المحرم ٦١٩ (وقيل ذو القعدة ٦١٨) — السير ٢٢/١٦٤"}, {"n": "قاضي حران أبو بكر عبد الله بن نصر الحراني", "d": "«الحنبلي»", "tier": 2, "y": 624, "yl": "", "r": "٢٢/١٨٢", "m": "الوفاة: ٦٢٤ — السير ٢٢/١٨٢"}, {"n": "الموفق ابن قدامة عبد الله بن أحمد المقدسي", "d": "«الحنبلي، صاحب المغني»؛ «إمام الحنابلة بجامع دمشق» (ابن النجار)", "tier": 2, "y": 620, "yl": "", "r": "٢٢/١٦٥–١٧٣", "m": "الوفاة: يوم الفطر ٦٢٠ (الضياء) — السير ٢٢/١٧٢"}, {"n": "الشمس البخاري أبو العباس أحمد بن عبد الواحد المقدسي", "d": "«الحنبلي، الملقب بالبخاري»", "tier": 2, "y": 623, "yl": "", "r": "٢٢/٢٥٥–٢٥٦", "m": "الوفاة: جمادى الآخرة ٦٢٣ — السير ٢٢/٢٥٦"}, {"n": "البهاء عبد الرحمن بن إبراهيم المقدسي (شارح المقنع)", "d": "«الحنبلي، شارح المقنع»", "tier": 2, "y": 624, "yl": "", "r": "٢٢/٢٦٩–٢٧١", "m": "الوفاة: ذو الحجة ٦٢٤ (ابن الحاجب) — السير ٢٢/٢٧١"}, {"n": "الفخر ابن تيمية محمد بن الخضر الحراني", "d": "«الحنبلي، صاحب الديوان والتفسير الكبير»", "tier": 2, "y": 622, "yl": "", "r": "٢٢/٢٨٨–٢٩٠", "m": "الوفاة: صفر ٦٢٢ — السير ٢٢/٢٩٠"}, {"n": "الحسن ابن الزبيدي أبو علي الحسن بن المبارك", "d": "«كان أولًا حنبليًّا، ثم تحول شافعيًّا، ثم حنفيًّا» (٢٢/٣١٦)", "tier": 2, "y": 609, "yl": "٦٠٩؟", "r": "٢٢/٣١٥–٣١٦", "m": "الوفاة: «سلخ ربيع الأول سنة تسع وست مائة» كذا في المطبوع، مع أن ترجمته في الطبقة الثالثة والثلاثين — السير ٢٢/٣١٦ · تحول عن المذهب؛ في سنة الوفاة نظر"}, {"n": "الجمال أبو موسى عبد الله ابن الحافظ عبد الغني", "d": "«الحنبلي»", "tier": 2, "y": 629, "yl": "", "r": "٢٢/٣١٧–٣١٩", "m": "الوفاة: رمضان ٦٢٩ (الضياء) — السير ٢٢/٣١٩"}, {"n": "ابن نقطة معين الدين أبو بكر محمد بن عبد الغني", "d": "«الحنبلي»", "tier": 2, "y": 629, "yl": "", "r": "٢٢/٣٤٧–٣٤٩", "m": "الوفاة: صفر ٦٢٩ — السير ٢٢/٣٤٩"}, {"n": "ابن باقا عبد العزيز بن أحمد البغدادي", "d": "«الحنبلي، التاجر، نزيل مصر»", "tier": 2, "y": 630, "yl": "", "r": "٢٢/٣٥١–٣٥٢", "m": "الوفاة: رمضان ٦٣٠ — السير ٢٢/٣٥٢"}, {"n": "ابن الزبيدي أبو عبد الله الحسين بن المبارك", "d": "«الحنبلي، مدرس مدرسة الوزير ابن هبيرة»", "tier": 2, "y": 631, "yl": "", "r": "٢٢/٣٥٧–٣٥٩", "m": "الوفاة: صفر ٦٣١ — السير ٢٢/٣٥٩"}, {"n": "أبو صالح نصر بن عبد الرزاق الجيلي", "d": "«الحنبلي»", "tier": 2, "y": 633, "yl": "", "r": "٢٢/٣٩٦–٣٩٨", "m": "الوفاة: شوال ٦٣٣ — السير ٢٢/٣٩٨"}, {"n": "السيف الآمدي علي بن أبي علي التغلبي", "d": "«الحنبلي، ثم الشافعي» (٢٢/٣٦٤)", "tier": 2, "y": 631, "yl": "", "r": "٢٢/٣٦٤–٣٦٧", "m": "الوفاة: صفر ٦٣١ (ابن خلكان) — السير ٢٢/٣٦٥ · تحول إلى مذهب الشافعي"}, {"n": "الناصح ابن الحنبلي عبد الرحمن بن نجم", "d": "«رئيس الحنابلة بدمشق» (٢٣/٧)", "tier": 2, "y": 634, "yl": "", "r": "٢٣/٥–٧", "m": "الوفاة: المحرم ٦٣٤ — السير ٢٣/٧"}, {"n": "أحمد بن محمد بن خلف المقدسي", "d": "«الحنبلي ثم الشافعي» (٢٣/٧٥)", "tier": 2, "y": 638, "yl": "", "r": "٢٣/٧٥–٧٦", "m": "الوفاة: شوال ٦٣٨ — السير ٢٣/٧٦ · تحول إلى مذهب الشافعي"}, {"n": "عمر بن أسعد بن المنجى التنوخي", "d": "«الحنبلي»", "tier": 2, "y": 641, "yl": "", "r": "٢٣/٨٠–٨١", "m": "الوفاة: ربيع الآخر ٦٤١ — السير ٢٣/٨١"}, {"n": "ابن ظفر أبو الطاهر إسماعيل بن ظفر المنذري", "d": "«الحنبلي» (٢٣/٨١)", "tier": 2, "y": 639, "yl": "", "r": "٢٣/٨١–٨٢", "m": "الوفاة: شوال ٦٣٩ — السير ٢٣/٨٢"}, {"n": "أبو الوفاء عبد الملك بن عبد الحق ابن الحنبلي", "d": "«ابن الحنبلي، الفقيه»", "tier": 2, "y": 641, "yl": "", "r": "٢٣/٩٤", "m": "الوفاة: جمادى الآخرة ٦٤١ — السير ٢٣/٩٤"}, {"n": "ضياء الدين عبد الحق بن خلف الدمشقي", "d": "«الحنبلي» (٢٣/١٠٦)", "tier": 2, "y": 641, "yl": "", "r": "٢٣/١٠٦–١٠٧", "m": "الوفاة: شعبان ٦٤١ — السير ٢٣/١٠٧"}, {"n": "سيف الدين ابن المجد أحمد بن عيسى المقدسي", "d": "«الحنبلي» (٢٣/١١٨)", "tier": 2, "y": 643, "yl": "", "r": "٢٣/١١٨–١١٩", "m": "الوفاة: أول شعبان ٦٤٣ — السير ٢٣/١١٩"}, {"n": "ابن المقير علي بن الحسين البغدادي", "d": "«المقرئ، الحنبلي» (٢٣/١١٩)", "tier": 2, "y": 643, "yl": "", "r": "٢٣/١١٩–١٢١", "m": "الوفاة: نصف ذي القعدة ٦٤٣ (عن الحسيني) — السير ٢٣/١٢٠"}, {"n": "الضياء المقدسي محمد بن عبد الواحد", "d": "«الحنبلي» (٢٣/١٢٦)", "tier": 2, "y": 643, "yl": "", "r": "٢٣/١٢٦–١٣٠", "m": "الوفاة: جمادى الآخرة ٦٤٣ — لم يذكرها الذهبي هنا، والسنة من حاشية المحقق عن تاريخ الإسلام — السير ٢٣/١٢٦ ح · السنة من حاشية المحقق"}, {"n": "ابن العز تقي الدين أحمد بن محمد بن عبد الغني", "d": "«شيخ الحنابلة» (٢٣/٢١٢)", "tier": 2, "y": 643, "yl": "", "r": "٢٣/٢١٢", "m": "الوفاة: ربيع الآخر ٦٤٣ — السير ٢٣/٢١٢"}, {"n": "ابن الخير إبراهيم بن محمود الأزجي", "d": "«الحنبلي» (٢٣/٢٣٥)", "tier": 2, "y": 648, "yl": "", "r": "٢٣/٢٣٥–٢٣٦", "m": "الوفاة: ربيع الآخر ٦٤٨ (عن الدمياطي) — السير ٢٣/٢٣٦"}, {"n": "شمس الدين محمد بن سعد المقدسي الكاتب", "d": "«الحنبلي، الكاتب»", "tier": 2, "y": 650, "yl": "", "r": "٢٣/٢٤٩", "m": "الوفاة: شوال ٦٥٠ — السير ٢٣/٢٤٩"}, {"n": "ابن المني أبو المظفر محمد بن مقبل", "d": "«ابن المني الحنبلي» (٢٣/٢٥٢)", "tier": 2, "y": 649, "yl": "", "r": "٢٣/٢٥٢–٢٥٣", "m": "الوفاة: جمادى الآخرة ٦٤٩ — السير ٢٣/٢٥٣"}, {"n": "الدباس محمد بن عبد الله ابن أبي السعادات", "d": "«المقرئ، الحنبلي»", "tier": 2, "y": 648, "yl": "", "r": "٢٣/٢٧٢", "m": "الوفاة: شعبان ٦٤٨ (بخط ابن الفوطي) — السير ٢٣/٢٧٢"}, {"n": "المجد ابن تيمية عبد السلام بن عبد الله", "d": "«فقيه العصر، شيخ الحنابلة» (٢٣/٢٩١)", "tier": 2, "y": 652, "yl": "", "r": "٢٣/٢٩١–٢٩٣", "m": "الوفاة: يوم الفطر ٦٥٢ بحران — السير ٢٣/٢٩٣"}, {"n": "الرشيد العراقي إسماعيل بن أحمد", "d": "«الحنبلي» (٢٣/٣٠٥)", "tier": 2, "y": 652, "yl": "", "r": "٢٣/٣٠٥–٣٠٦", "m": "الوفاة: جمادى الأولى ٦٥٢ — السير ٢٣/٣٠٦"}, {"n": "خطيب مردا محمد بن إسماعيل المقدسي", "d": "«الحنبلي» (٢٣/٣٢٥)", "tier": 2, "y": 656, "yl": "", "r": "٢٣/٣٢٥–٣٢٦", "m": "الوفاة: ٦٥٦ — السير ٢٣/٣٢٦"}, {"n": "فضل الله بن عبد الرزاق الجيلي", "d": "«الحنبلي، البغدادي»", "tier": 2, "y": 656, "yl": "", "r": "٢٣/٣٣٠", "m": "الوفاة: صفر ٦٥٦ — السير ٢٣/٣٣٠"}, {"n": "العماد عبد الحميد بن عبد الهادي المقدسي", "d": "«الحنبلي» (٢٣/٣٤٠)", "tier": 2, "y": 658, "yl": "", "r": "٢٣/٣٣٩–٣٤٠", "m": "الوفاة: ربيع الأول ٦٥٨ — السير ٢٣/٣٤٠"}, {"n": "شمس الدين محمد بن عبد الهادي المقدسي", "d": "«الحنبلي»", "tier": 2, "y": 658, "yl": "", "r": "٢٣/٣٤٢", "m": "الوفاة: ٦٥٨ (استشهد بساوية) — السير ٢٣/٣٤٠، ٣٤٢"}, {"n": "لاحق بن عبد المنعم الأرتاحي", "d": "«الحنبلي»", "tier": 2, "y": 658, "yl": "", "r": "٢٣/٣٥٠", "m": "الوفاة: جمادى الآخرة ٦٥٨ — السير ٢٣/٣٥٠"}, {"n": "أحمد بن حامد الأرتاحي", "d": "«الحنبلي»", "tier": 2, "y": 659, "yl": "", "r": "٢٣/٣٥١", "m": "الوفاة: رجب ٦٥٩ — السير ٢٣/٣٥١"}, {"n": "شعلة محمد بن أحمد الموصلي", "d": "«الحنبلي، المقرئ»", "tier": 2, "y": 656, "yl": "", "r": "٢٣/٣٦٠", "m": "الوفاة: صفر ٦٥٦ (عن المقصاتي) — السير ٢٣/٣٦٠"}, {"n": "محيي الدين يوسف ابن الجوزي", "d": "«الحنبلي» (٢٣/٣٧٣)", "tier": 2, "y": 656, "yl": "", "r": "٢٣/٣٧٢–٣٧٤", "m": "الوفاة: صفر ٦٥٦ (قُتل عند هولاكو) — السير ٢٣/٣٧٤"}, {"n": "شرف الدين عبد الله بن يوسف ابن الجوزي", "d": "«الحنبلي، المدرس»", "tier": 2, "y": 656, "yl": "", "r": "٢٣/٣٧٤", "m": "الوفاة: قتله هولاكو بأسد آباذ بعد خراب بغداد — لم تُذكر السنة نصًّا — السير ٢٣/٣٧٤ · السنة مفهومة من السياق"}, {"n": "المحب عبد الله بن أحمد السعدي", "d": "«الحنبلي» (٢٣/٣٧٦)", "tier": 2, "y": 658, "yl": "", "r": "٢٣/٣٧٥–٣٧٦", "m": "الوفاة: جمادى الآخرة ٦٥٨ — السير ٢٣/٣٧٦"}];
+{ const hb = IMAMS.find((x) => x.id === 'hanbali'); if (hb) { const have = new Set(hb.scholars.map((t) => t.n)); HANBALI_SIYAR.forEach((t) => { if (!have.has(t.n)) hb.scholars.push(Object.assign({ p: '' }, t)); }); } }
+const PEOPLE_TABAQAT = {"tb57": {"name": "الأثرم أبو بكر أحمد بن محمد بن هانئ الإسكافي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · لم تُعرف وفاته", "lines": [{"t": "«جليل القدر، حافظ، إمام»؛ سمع عفان وابن أبي شيبة والقعنبي وأحمد في آخرين", "r": "", "m": "طبقات الحنابلة ١/١٦٢"}, {"t": "«نقل عن إمامنا \"مسائل\" كثيرة، وصنّفها ورتّبها أبوابًا»", "r": "", "m": "طبقات الحنابلة ١/١٦٢"}, {"t": "ذكر أن أحمد كان يقول عند قيامه من المجلس: «سبحانك اللهم وبحمدك» يذهب إلى ما رُوي في كفارة المجلس", "r": "", "m": "طبقات الحنابلة ١/١٧٦"}, {"t": "قال المؤلف: «ولم يقع لي تاريخ وفاته»", "r": "", "m": "طبقات الحنابلة ١/١٧٦"}]}, "tb50": {"name": "المروذي أبو بكر أحمد بن محمد بن الحجاج", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٧٥ (حاشية المحقق)", "lines": [{"t": "كانت أمه مروذية وأبوه خوارزميًّا، «وهو المقدَّم من أصحاب أحمد لورعه وفضله، وكان إمامنا يأنس به وينبسط إليه، وهو الذي تولى إغماضه لما مات وغسّله»", "r": "", "m": "طبقات الحنابلة ١/١٣٧"}, {"t": "روى عنه «مسائل» كثيرة", "r": "", "m": "طبقات الحنابلة ١/١٣٧"}, {"t": "روى أن أحمد قال له: «قُدِم بي من خراسان وأنا حَمْل، ووُلدت هاهنا، ولم أرَ جدي ولا أبي، ولا تزوجت إلا بعد الأربعين»", "r": "", "m": "طبقات الحنابلة ١/١٥١"}, {"t": "لم أقف على تاريخ وفاته فيما قرأت من الترجمة؛ والمحقق أرّخه ٢٧٥", "r": "", "m": "طبقات الحنابلة ١/١٣٧ (حاشية المحقق)"}]}, "tb216": {"name": "أبو داود السجستاني سليمان بن الأشعث", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٧٥", "lines": [{"t": "«الإمام في زمانه»، رحل وطوّف وجمع وصنّف؛ سمع أبا الوليد الطيالسي وأحمد وخلقًا، وروى عنه ابنه عبد الله والنسائي والخلال، وسمع منه أحمد حديثًا واحدًا، وسكن البصرة", "r": "", "m": "طبقات الحنابلة ١/٤٢٨"}, {"t": "قال إبراهيم الحربي لما صنّف «السنن»: «أُلين لأبي داود الحديث كما أُلين لداود الحديد»", "r": "", "m": "طبقات الحنابلة ١/٤٣٣"}, {"t": "طلب منه الموفق أن يفرد لأولاده مجلسًا فقال: «أما هذه فلا سبيل إليها، لأن الناس شريفهم ووضيعهم في العلم سواء»", "r": "", "m": "طبقات الحنابلة ١/٤٣٣–٤٣٤"}, {"t": "ولد سنة ٢٠٢ ومات لأربع عشرة بقيت من شوال ٢٧٥ وله ثلاث وسبعون سنة، وقيل بالبصرة", "r": "", "m": "طبقات الحنابلة ١/٤٣٤"}]}, "tb86": {"name": "إبراهيم الحربي أبو إسحاق إبراهيم بن إسحاق بن إبراهيم", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٨٥ (حاشية المحقق)", "lines": [{"t": "ولد سنة ١٩٨؛ سمع أبا نعيم وعفان وأحمد في آخرين، ونقل عن أحمد «مسائل»", "r": "", "m": "طبقات الحنابلة ١/٢١٩"}, {"t": "«وكان إمامًا في العلم، رأسًا في الزهد، عارفًا بالفقه، بصيرًا بالأحكام، حافظًا للحديث»، وصنف «غريب الحديث» و«دلائل النبوة» و«المناسك» وغيرها", "r": "", "m": "طبقات الحنابلة ١/٢١٩"}, {"t": "قال: «رأيت أحمد بن حنبل يعجز النساء أن يلدن مثله»", "r": "", "m": "طبقات الحنابلة ١/٢١٩"}, {"t": "قال: «صحبته عشرين سنة… فما لقيته لِقاءة في يوم إلا وهو زائد عليه بالأمس»", "r": "", "m": "طبقات الحنابلة ١/٢٣٤"}, {"t": "لم أقف على وفاته فيما قرأت من الترجمة؛ والمحقق أرّخه ١٩٨–٢٨٥", "r": "", "m": "طبقات الحنابلة ١/٢١٨ (حاشية المحقق)"}]}, "tb133": {"name": "إسحاق بن منصور الكوسج أبو يعقوب المروزي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٥١", "lines": [{"t": "ولد بمرو، ودخل العراق والحجاز والشام فسمع ابن عيينة ويحيى القطان وابن مهدي ووكيعًا", "r": "", "m": "طبقات الحنابلة ١/٣٠٥"}, {"t": "حدّث ببغداد واستوطن نيسابور، وروى عنه البخاري ومسلم في «الصحيحين» والترمذي وابن خزيمة", "r": "", "m": "طبقات الحنابلة ١/٣٠٥"}, {"t": "«وكان عالمًا فقيهًا، وهو الذي دوّن عن إمامنا \"المسائل\" في الفقه»", "r": "", "m": "طبقات الحنابلة ١/٣٠٥"}, {"t": "مات لعشر بقين من جمادى الأولى ٢٥١ بنيسابور، ودفن إلى جنب إسحاق بن راهويه", "r": "", "m": "طبقات الحنابلة ١/٣٠٨–٣٠٩"}]}, "tb121": {"name": "إسحاق بن إبراهيم بن هانئ النيسابوري أبو يعقوب", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٧٥", "lines": [{"t": "ولد في رمضان ٢١٨، «وخدم إمامنا وهو ابن تسع سنين»", "r": "", "m": "طبقات الحنابلة ١/٢٨٤–٢٨٥"}, {"t": "قال الخلال: «كان أخا دين وورع، نقل عن أحمد \"مسائل\" كثيرة ستة أجزاء»", "r": "", "m": "طبقات الحنابلة ١/٢٨٥"}, {"t": "مات ببغداد سنة ٢٧٥ (ابن المنادي)", "r": "", "m": "طبقات الحنابلة ١/٢٨٥"}]}, "tb282": {"name": "الميموني أبو الحسن عبد الملك بن عبد الحميد الرقي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٧٤ (حاشية المحقق)", "lines": [{"t": "سمع ابن علية وأبا معاوية ويزيد بن هارون", "r": "", "m": "طبقات الحنابلة ٢/٩٢"}, {"t": "قال الخلال: «الإمام في أصحاب أحمد، جليل القدر… فقيه البدن، كان أحمد يكرمه ويفعل معه ما لا يفعله مع أحد غيره»", "r": "", "m": "طبقات الحنابلة ٢/٩٢"}, {"t": "قال: صحبت أبا عبد الله على الملازمة من سنة ٢٠٥ إلى سنة ٢٢٧، وكان يضرب لي مثل ابن جريج في عطاء من كثرة ما أسأله", "r": "", "m": "طبقات الحنابلة ٢/٩٢–٩٣"}, {"t": "وعنده عن أحمد «مسائل» في ستة عشر جزءًا وجزأين كبيرين", "r": "", "m": "طبقات الحنابلة ٢/٩٣"}, {"t": "لم أقف على وفاته فيما قرأت من الترجمة؛ والمحقق أرّخه ٢٧٤", "r": "", "m": "طبقات الحنابلة ٢/٩٢ (حاشية المحقق)"}]}, "tb271": {"name": "أبو زرعة الرازي عبيد الله بن عبد الكريم بن يزيد بن فروخ", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٦٤ (حاشية المحقق)", "lines": [{"t": "سمع أبا نعيم والقعنبي وأبا الوليد الطيالسي وغيرهم، وقدم بغداد دفعات وجالس أحمد واستفاد منه", "r": "", "m": "طبقات الحنابلة ٢/٥٤–٥٥"}, {"t": "قال الخلال: «أبو زرعة وأبو حاتم إمامان في الحديث، رويا عن أبي عبد الله \"مسائل\" كثيرة… وكانا عالمين بأحمد بن حنبل يحفظان حديثه كله»", "r": "", "m": "طبقات الحنابلة ٢/٥٥"}, {"t": "قال عبد الله بن أحمد: لما قدم أبو زرعة نزل عند أبي، فسمعت أبي يقول: «ما صليت غير الفرض، استأثرت بمذاكرة أبي زرعة على نوافلي»", "r": "", "m": "طبقات الحنابلة ٢/٥٥"}, {"t": "لم أقف على وفاته فيما قرأت من الترجمة؛ والمحقق أرّخه ٢٠٠–٢٦٤", "r": "", "m": "طبقات الحنابلة ٢/٥٣ (حاشية المحقق)"}]}, "tb390": {"name": "أبو حاتم الرازي محمد بن إدريس بن المنذر الحنظلي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٧٧ (حاشية المحقق)", "lines": [{"t": "«كان أحد الأئمة الحفاظ»؛ سمع محمد بن عبد الله الأنصاري وأحمد في آخرين، وأول كتبه الحديث سنة ٢٠٩", "r": "", "m": "طبقات الحنابلة ٢/٢٧١"}, {"t": "روى عنه يونس بن عبد الأعلى والربيع بن سليمان وهما أكبر منه، وقدم بغداد فروى عنه إبراهيم الحربي", "r": "", "m": "طبقات الحنابلة ٢/٢٧١"}, {"t": "قال: «أحصيت ما مشيت على قدمي ألف فرسخ، لم أزل أحصي حتى لما زاد على ألف فرسخ تركته»؛ وقال يونس بن عبد الأعلى: «أبو زرعة وأبو حاتم إماما خراسان»", "r": "", "m": "طبقات الحنابلة ٢/٢٧٣"}, {"t": "لم أقف على وفاته فيما قرأت من الترجمة؛ والمحقق أرّخه ١٩٥–٢٧٧", "r": "", "m": "طبقات الحنابلة ٢/٢٧٠ (حاشية المحقق)"}]}, "tb189": {"name": "حرب بن إسماعيل الكرماني الحنظلي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٨٠ (حاشية المحقق)", "lines": [{"t": "قال الخلال: «رجل جليل، حثّني أبو بكر المروذي على الخروج إليه»", "r": "", "m": "طبقات الحنابلة ١/٣٨٨"}, {"t": "قال له حرب: هذه «المسائل» أربعة آلاف عن أبي عبد الله وإسحاق بن راهويه", "r": "", "m": "طبقات الحنابلة ١/٣٨٩"}, {"t": "«وكان رجلًا فقيه البلد، وكان السلطان قد جعله على أمر الحكم وغيره في البلد»", "r": "", "m": "طبقات الحنابلة ١/٣٨٩"}, {"t": "لم أقف على وفاته في الترجمة؛ ونقل المحقق أن ابن قانع قيّدها سنة ٢٨٠", "r": "", "m": "طبقات الحنابلة ١/٣٨٨ (حاشية المحقق)"}]}, "tb13": {"name": "أبو طالب المشكاني أحمد بن حميد", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٤٤ (حاشية المحقق)", "lines": [{"t": "«المتخصص بصحبة إمامنا أحمد، روى عن أحمد \"مسائل\" كثيرة، وكان أحمد يكرمه ويعظمه»", "r": "", "m": "طبقات الحنابلة ١/٨١"}, {"t": "روى عنه فوران وزكريا بن يحيى وغيرهما", "r": "", "m": "طبقات الحنابلة ١/٨١"}, {"t": "من مسائله عن أحمد في المسح: العمامة يُمسح عليها والخف يُمسح عليه، فإذا خلع أعاد، وليس الشعر مثل العمامة والخف", "r": "", "m": "طبقات الحنابلة ١/٨٤"}, {"t": "لم أقف على وفاته فيما قرأت من الترجمة؛ والمحقق أرّخه ٢٤٤", "r": "", "m": "طبقات الحنابلة ١/٨١ (حاشية المحقق)"}]}, "tb496": {"name": "مهنا بن يحيى الشامي السلمي أبو عبد الله", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · لم تُذكر وفاته", "lines": [{"t": "حدّث عن بقية وعبد الرزاق وأحمد في آخرين، وروى عنه عبد الله بن أحمد وسهل التستري", "r": "", "m": "طبقات الحنابلة ٢/٤٣٢–٤٣٣"}, {"t": "قال الخلال: «من كبار أصحاب أبي عبد الله، روى عنه من \"المسائل\" ما فخر به، وكان أبو عبد الله يكرمه ويعرف له حق الصحبة، ورحل معه إلى عبد الرزاق، وصحبه إلى أن مات»", "r": "", "m": "طبقات الحنابلة ٢/٤٣٣"}, {"t": "قال: «و\"مسائله\" أكثر من أن تُحد من كثرتها»، وكتب عنه عبد الله بن أحمد بضعة عشر جزءًا لم تكن عند غيره", "r": "", "m": "طبقات الحنابلة ٢/٤٣٣"}, {"t": "لم تُذكر وفاته فيما قرأت، ولم يؤرّخها المحقق", "r": "", "m": "طبقات الحنابلة ٢/٤٣٢ (حاشية المحقق)"}]}, "tb353": {"name": "الفضل بن زياد أبو العباس القطان البغدادي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · لم تُذكر وفاته", "lines": [{"t": "قال الخلال: «كان من المتقدمين عند أبي عبد الله، وكان أبو عبد الله يعرف قدره ويكرمه، وكان يصلي بأبي عبد الله، فوقع له عنه \"مسائل\" كثيرة جياد»", "r": "", "m": "طبقات الحنابلة ٢/١٨٨–١٨٩"}, {"t": "حدّث عنه يعقوب بن سفيان الفسوي وأحمد الأدمي وجعفر الصندلي", "r": "", "m": "طبقات الحنابلة ٢/١٨٩"}, {"t": "لم تُذكر وفاته، والمحقق نقل أن الخطيب لم يذكرها", "r": "", "m": "طبقات الحنابلة ٢/١٨٩ (حاشية المحقق)"}]}, "tb140": {"name": "بكر بن محمد النسائي الأصل أبو أحمد البغدادي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · لم تُذكر وفاته", "lines": [{"t": "«النسائي الأصل، البغدادي المنشأ»؛ قال الخلال: «كان أبو عبد الله يقدّمه ويكرمه، وعنده \"مسائل\" كثيرة سمعها من أبي عبد الله»", "r": "", "m": "طبقات الحنابلة ١/٣١٨"}, {"t": "لم تُذكر وفاته", "r": "", "m": "طبقات الحنابلة ١/٣١٨ (حاشية المحقق)"}]}, "tb530": {"name": "يحيى بن معين أبو زكريا المري", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٣٣", "lines": [{"t": "سمع ابن المبارك وهشيمًا وابن عيينة والقطان وابن مهدي ووكيعًا وأحمد، وروى عنه البخاري وأبو داود وعبد الله بن أحمد، «وكان إمامًا عالمًا حافظًا»", "r": "", "m": "طبقات الحنابلة ٢/٥٣١"}, {"t": "قال: خلوت بأحمد على باب عفان فقلت: ما تقول؟ فقال: «أقول أبو بكر وعمر وعثمان»", "r": "", "m": "طبقات الحنابلة ٢/٥٣١"}, {"t": "مات بالمدينة وهو يريد مكة سنة ٢٣٣، وحُمل على سرير النبي ﷺ، ودفن بالبقيع", "r": "", "m": "طبقات الحنابلة ٢/٥٣٧"}]}, "tb315": {"name": "علي بن المديني أبو الحسن علي بن عبد الله بن جعفر", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٣٤ (حاشية المحقق)", "lines": [{"t": "«الحافظ المبرّز، بصري الدار»؛ حدّث عن حماد بن زيد وابن عيينة ويحيى القطان وأحمد", "r": "", "m": "طبقات الحنابلة ٢/١٣٢"}, {"t": "قال: «ما قام أحد بأمر الإسلام بعد رسول الله ﷺ ما قام أحمد بن حنبل»، قيل: ولا أبو بكر؟ قال: «ولا أبو بكر، لأن أبا بكر كان له أعوان وأصحاب، وأحمد لم يكن له أعوان ولا أصحاب»", "r": "", "m": "طبقات الحنابلة ٢/١٣٦"}, {"t": "وقال: «لأن أسأل أحمد بن حنبل عن مسألة فيفتيني أحب إلي من أن أسأل أبا عاصم النبيل وابن داود، إن العلم ليس بالسن»", "r": "", "m": "طبقات الحنابلة ٢/١٣٦"}, {"t": "لم أقف على وفاته فيما قرأت؛ والمحقق أرّخه ١٦١–٢٣٤", "r": "", "m": "طبقات الحنابلة ٢/١٣١ (حاشية المحقق)"}]}, "tb333": {"name": "عباس الدوري أبو الفضل العباس بن محمد بن حاتم", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٧١", "lines": [{"t": "مولى بني هاشم، بغدادي؛ سمع شبابة وأبا النضر وعفان، وحدّث عنه يعقوب بن سفيان وعبد الله بن أحمد والنسائي والبغوي", "r": "", "m": "طبقات الحنابلة ٢/١٥٦–١٥٧"}, {"t": "ذكره الخلال فيمن صحب أحمد", "r": "", "m": "طبقات الحنابلة ٢/١٥٧"}, {"t": "سمع أحمد يقول: «أبو عبيد عندنا ممن يزداد كل يوم خيرًا»", "r": "", "m": "طبقات الحنابلة ٢/١٦٢"}, {"t": "مولده سنة ١٨٥، وموته لست عشرة خلت من صفر ٢٧١ وقد بلغ ثمانيًا وثمانين سنة (ابن المنادي)", "r": "", "m": "طبقات الحنابلة ٢/١٦٢–١٦٣"}]}, "tb387": {"name": "البخاري أبو عبد الله محمد بن إسماعيل الجعفي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٥٦", "lines": [{"t": "«صاحب \"الجامع الصحيح\" و\"التاريخ\" وغيرهما من التصانيف»، رحل إلى أكثر محدثي الأمصار", "r": "", "m": "طبقات الحنابلة ٢/٢٤٢–٢٤٣"}, {"t": "سمع مكي بن إبراهيم والحميدي وابن معين وابن المديني وأحمد، وورد بغداد دفعات، وآخر من حدّث عنه بها المحاملي", "r": "", "m": "طبقات الحنابلة ٢/٢٤٣"}, {"t": "قال لأحمد: «القرآن من أوله إلى آخره كلام الله ليس شيء منه مخلوق…» قال: نعم", "r": "", "m": "طبقات الحنابلة ٢/٢٥٩"}, {"t": "ولد لثلاث عشرة خلت من شوال ١٩٤، وتوفي ليلة الفطر ٢٥٦", "r": "", "m": "طبقات الحنابلة ٢/٢٥٩"}]}, "tb488": {"name": "مسلم بن الحجاج أبو الحسين القشيري النيسابوري", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٦١", "lines": [{"t": "«أحد الأئمة من حفاظ الأثر، وهو صاحب \"المسند الصحيح\"»؛ رحل إلى العراق والحجاز والشام ومصر، وسمع يحيى بن يحيى وقتيبة وإسحاق بن راهويه وأحمد", "r": "", "m": "طبقات الحنابلة ٢/٤١٣"}, {"t": "رأى أحمد بن سلمة أبا زرعة وأبا حاتم «يقدّمان مسلم بن الحجاج في معرفة الصحيح على مشايخ عصرهما»", "r": "", "m": "طبقات الحنابلة ٢/٤١٣–٤١٤"}, {"t": "قال مسلم: «صنفت هذا \"المسند الصحيح\" من ثلاثمائة ألف حديث مسموعة»", "r": "", "m": "طبقات الحنابلة ٢/٤١٤"}, {"t": "مات عشية الأحد ودفن لخمس بقين من رجب ٢٦١", "r": "", "m": "طبقات الحنابلة ٢/٤١٧"}]}, "tb276": {"name": "أبو زرعة الدمشقي عبد الرحمن بن عمرو بن صفوان النصري", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٨٠", "lines": [{"t": "قال الخلال: «إمام في زمانه، رفيع القدر، حافظ عالم بالحديث والرجال، وصنف من حديث الشام ما لم يصنفه أحد»", "r": "", "m": "طبقات الحنابلة ٢/٧٤"}, {"t": "جمع كتابًا في «التاريخ وعلل الرجال»، «وكان عالمًا بأحمد بن حنبل ويحيى بن معين»، وسمع من أحمد خاصة «مسائل» مشبعة محكمة", "r": "", "m": "طبقات الحنابلة ٢/٧٤"}, {"t": "من مسائله: سأل أحمد عن حديث «أفطر الحاجم والمحجوم» فقال: إليه أذهب، هو صحيح", "r": "", "m": "طبقات الحنابلة ٢/٧٥–٧٦"}, {"t": "توفي سنة ٢٨٠ (ابن المنادي)، وفي تاريخ الخطيب ٢٨١", "r": "", "m": "طبقات الحنابلة ٢/٧٦"}]}, "tb541": {"name": "يعقوب بن إسحاق بن بختان أبو يوسف", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · لم تُذكر وفاته", "lines": [{"t": "سمع مسلم بن إبراهيم وأحمد، وروى عنه ابن أبي الدنيا وجعفر الصندلي، «وكان أحد الصالحين الثقات»", "r": "", "m": "طبقات الحنابلة ٢/٥٥٥"}, {"t": "قال ابن أبي الدنيا: «أبو يوسف بن بختان كان من خيار المسلمين»", "r": "", "m": "طبقات الحنابلة ٢/٥٥٥"}, {"t": "قال الخلال: «كان جار أبي عبد الله وصديقه، وروى عن أبي عبد الله \"مسائل\" صالحة كثيرة لم يروها غيره في الورع، و\"مسائل\" صالحة في السلطان»", "r": "", "m": "طبقات الحنابلة ٢/٥٥٥"}, {"t": "لم تُذكر وفاته", "r": "", "m": "طبقات الحنابلة ٢/٥٥٤ (حاشية المحقق)"}]}, "tb113": {"name": "إسماعيل بن سعيد الشالنجي أبو إسحاق", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٣٠ (حاشية المحقق)", "lines": [{"t": "قال الخلال: «عنده \"مسائل\" كثيرة، ما أحسب أن أحدًا من أصحاب أبي عبد الله روى عنه أحسن مما روى هذا، ولا أشبع ولا أكثر مسائل منه، وكان عالمًا بالرأي، كبير القدر عندهم»", "r": "", "m": "طبقات الحنابلة ١/٢٧٣"}, {"t": "من روايته عن أحمد: لا يجوز شيء من الحيل في إبطال حق امرئ مسلم", "r": "", "m": "طبقات الحنابلة ١/٢٧٤"}, {"t": "لم أقف على وفاته في الترجمة؛ والمحقق أرّخه ٢٣٠", "r": "", "m": "طبقات الحنابلة ١/٢٧٣ (حاشية المحقق)"}]}, "tb70": {"name": "أحمد بن أبي الحواري أبو الحسن الدمشقي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٤٦", "lines": [{"t": "حدّث عن جماعة منهم أحمد", "r": "", "m": "طبقات الحنابلة ١/١٩١"}, {"t": "قال: قال لي أحمد بن حنبل: متى مولدك؟ قلت: سنة أربع وستين، قال: «وهي مولدي»", "r": "", "m": "طبقات الحنابلة ١/١٩١"}, {"t": "قيل إنه طلب العلم ثلاثين سنة ثم غرّق كتبه في البحر", "r": "", "m": "طبقات الحنابلة ١/١٩١"}, {"t": "مات مدخل رجب سنة ٢٤٦", "r": "", "m": "طبقات الحنابلة ١/١٩١"}]}, "tb463": {"name": "محمد بن يحيى الذهلي النيسابوري أبو عبد الله", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٥٨ (حاشية المحقق)", "lines": [{"t": "حدّث عن أحمد بأشياء", "r": "", "m": "طبقات الحنابلة ٢/٣٨٠–٣٨٢"}, {"t": "روى عن أحمد عن عبد الرزاق عن جابر: سُئل رسول الله ﷺ عن النُّشرة فقال: «من الشيطان»", "r": "", "m": "طبقات الحنابلة ٢/٣٨٢"}, {"t": "لم تُذكر وفاته في الترجمة؛ والمحقق أرّخه ٢٥٨", "r": "", "m": "طبقات الحنابلة ٢/٣٨٠ (حاشية المحقق)"}]}, "tb141": {"name": "بقي بن مخلد أبو عبد الرحمن الأندلسي الحافظ", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٧٦", "lines": [{"t": "رحل إلى أحمد فسمع منه ومن أبي بكر بن أبي شيبة وغيرهما", "r": "", "m": "طبقات الحنابلة ١/٣٢٠–٣٢١"}, {"t": "«ورجع إلى الأندلس فملأها علمًا جمًّا، وكان ذا خاصة من إمامنا أحمد»", "r": "", "m": "طبقات الحنابلة ١/٣٢١"}, {"t": "مات سنة ٢٧٦، وقيل سنة ٢٧٣", "r": "", "m": "طبقات الحنابلة ١/٣٢١–٣٢٣"}]}, "tb281": {"name": "عبد الوهاب بن عبد الحكم الوراق أبو الحسن", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٥١", "lines": [{"t": "نسائي الأصل، «صحب إمامنا أحمد وسمع منه»، وروى عنه أبو داود وابن أبي الدنيا والبغوي والمحاملي، «وكان صالحًا ورعًا زاهدًا»", "r": "", "m": "طبقات الحنابلة ٢/٨٦"}, {"t": "قال ابن المنادي: «كان يسكن الجانب الغربي ببغداد، وحدّث بألوف، وكان من الصالحين العقلاء»", "r": "", "m": "طبقات الحنابلة ٢/٨٦"}, {"t": "وسُئل أحمد: من معك اليوم على هذا الأمر؟ فقال: «معي عبد الوهاب»", "r": "", "m": "طبقات الحنابلة ٢/٥٥٤"}, {"t": "اختُلف في وفاته فقيل ٢٥٠ وقيل ٢٥١ «وهو أثبت»، وصلى عليه الموفق", "r": "", "m": "طبقات الحنابلة ٢/٩١"}]}, "tb260": {"name": "ابن أبي الدنيا أبو بكر عبد الله بن محمد بن عبيد القرشي", "sub": "من الطبقة الأولى (أصحاب أحمد) في «طبقات الحنابلة» · ت ٢٨١ (حاشية المحقق)", "lines": [{"t": "مولى بني أمية، «صاحب الكتب المصنفة»، ذكره الخلال فيمن روى عن أحمد", "r": "", "m": "طبقات الحنابلة ٢/٣٧"}, {"t": "سمع سعيد بن سليمان الواسطي وإبراهيم بن المنذر الحزامي، وروى عنه النجاد وغيره", "r": "", "m": "طبقات الحنابلة ٢/٣٧"}, {"t": "قال ابن أبي حاتم: كتبت عنه مع أبي، وسُئل أبي عنه فقال: «بغدادي صدوق»", "r": "", "m": "طبقات الحنابلة ٢/٣٧"}, {"t": "لم أقف على وفاته فيما قرأت من الترجمة؛ والمحقق أرّخه ٢٠٨–٢٨١", "r": "", "m": "طبقات الحنابلة ٢/٣٧ (حاشية المحقق)"}]}, "tb578": {"name": "ابن المنادي أبو الحسين أحمد بن جعفر", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٣٦", "lines": [{"t": "سمع جده وأباه والصغاني وعباسًا الدوري وأبا داود وعبد الله بن أحمد وأكثر الرواية عنه", "r": "", "m": "طبقات الحنابلة ٣/٥"}, {"t": "«كان ثقة أمينًا ثبتًا صدوقًا»", "r": "", "m": "طبقات الحنابلة ٣/٥"}, {"t": "من اختياراته: إيجاب غسل اليدين عند القيام من نوم الليل", "r": "", "m": "طبقات الحنابلة ٣/١١"}, {"t": "مات الثلاثاء لإحدى عشرة بقيت من المحرم سنة ٣٣٦ ودفن بمقبرة الخيزران", "r": "", "m": "طبقات الحنابلة ٣/١١"}]}, "tb579": {"name": "أبو بكر القطيعي أحمد بن جعفر بن حمدان بن مالك", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٦٨", "lines": [{"t": "كان يسكن قطيعة الدقيق؛ روى عن عبد الله بن أحمد «المسند» و«الزهد» و«التاريخ» و«المسائل»", "r": "", "m": "طبقات الحنابلة ٣/١٢"}, {"t": "مولده المحرم ٢٧٤؛ روى عنه الدارقطني وابن شاهين وأبو نعيم", "r": "", "m": "طبقات الحنابلة ٣/١٣"}, {"t": "قال البرقاني: ثبت عندي أنه صدوق لا يُشك في سماعه", "r": "", "m": "طبقات الحنابلة ٣/١٤"}, {"t": "توفي لسبع بقين من ذي الحجة ٣٦٨ ودفن بقرب قبر الإمام أحمد", "r": "", "m": "طبقات الحنابلة ٣/١٤"}]}, "tb580": {"name": "أبو العباس السنوط أحمد بن الحجاج البزار", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٠٥", "lines": [{"t": "كانت عنده «مسائل الفضل بن زياد القطان» لأحمد سمعها من الفضل", "r": "", "m": "طبقات الحنابلة ٣/١٤–١٥"}, {"t": "توفي لثمان خلون من رمضان ٣٠٥", "r": "", "m": "طبقات الحنابلة ٣/١٥"}]}, "tb581": {"name": "أبو بكر النجاد أحمد بن سلمان", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٤٨", "lines": [{"t": "«العالم الناسك الورع»؛ له بجامع المنصور حلقتان: قبل الصلاة للفتوى على مذهب أحمد، وبعدها لإملاء الحديث", "r": "", "m": "طبقات الحنابلة ٣/١٦"}, {"t": "سمع أبا داود وإبراهيم الحربي وعبد الله بن أحمد", "r": "", "m": "طبقات الحنابلة ٣/١٦"}, {"t": "توفي وقد كُفّ بصره لعشر بقين من ذي الحجة ٣٤٨ ودفن عند قبر بشر بن الحارث، وعاش خمسًا وتسعين سنة", "r": "", "m": "طبقات الحنابلة ٣/٢٣"}]}, "tb582": {"name": "أبو بكر الخلال أحمد بن محمد بن هارون", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣١١", "lines": [{"t": "له التصانيف السائرة: «الجامع» و«العلل» و«السنة» و«الطبقات» و«أخلاق أحمد» وغيرها", "r": "", "m": "طبقات الحنابلة ٣/٢٣–٢٤"}, {"t": "صحب أبا بكر المروذي إلى أن مات، وسمع «مسائل» أحمد من صالح وعبد الله والحربي والميموني وحنبل وحرب وأبي داود وغيرهم", "r": "", "m": "طبقات الحنابلة ٣/٢٤"}, {"t": "رحل إلى أقاصي البلاد في جمع مسائل أحمد وسماعها ممن سمعها منه", "r": "", "m": "طبقات الحنابلة ٣/٢٤"}, {"t": "كانت حلقته بجامع المهدي، وتوفي لليلتين خلتا من ربيع الآخر ٣١١ ودفن إلى جنب المروذي عند رجل أحمد", "r": "", "m": "طبقات الحنابلة ٣/٢٧"}]}, "tb583": {"name": "أبو بكر الأدمي المقرئ أحمد بن محمد بن إسماعيل", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٢٧ (حاشية المحقق)", "lines": [{"t": "حدّث عن الفضل بن زياد القطان صاحب أحمد", "r": "", "m": "طبقات الحنابلة ٣/٢٧–٢٨"}, {"t": "روى عن الفضل عن أحمد: «من ردّ حديث رسول الله ﷺ فهو على شفا هلكة»", "r": "", "m": "طبقات الحنابلة ٣/٢٨"}, {"t": "لم أقف في الترجمة على وفاته، والمحقق أرّخها ٢٣٧–٣٢٧", "r": "", "m": "طبقات الحنابلة ٣/٢٧ (حاشية المحقق)"}]}, "tb584": {"name": "أبو الحسن الشيرجي إبراهيم بن إسحاق", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٣٢", "lines": [{"t": "«المتخصص بصحبة أبي بكر المروذي، له تصانيف»", "r": "", "m": "طبقات الحنابلة ٣/٣٠"}, {"t": "حدّث عن عباس الدوري وغيره، وحدّث عنه الدارقطني", "r": "", "m": "طبقات الحنابلة ٣/٣٠–٣١"}, {"t": "توفي سنة ٣٣٢", "r": "", "m": "طبقات الحنابلة ٣/٣١"}]}, "tb585": {"name": "أبو الفرج الهندباني", "sub": "من الطبقة الثانية في «طبقات الحنابلة»", "lines": [{"t": "صحب المروذي وروى عنه أشياء", "r": "", "m": "طبقات الحنابلة ٣/٣١"}, {"t": "روى عن المروذي أن أحمد سُئل: أيش قلت لما انقطع سراويلك؟ قال: قلت: سبحانك يا من لا يعلم كنه عظمة ما هو فيه إلا هو", "r": "", "m": "طبقات الحنابلة ٣/٣١"}, {"t": "لم تُذكر وفاته", "r": "", "m": "طبقات الحنابلة ٣/٣١ (حاشية المحقق)"}]}, "tb586": {"name": "أبو الفضل القافلاني جعفر بن محمد بن أحمد بن الوليد", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٢٥", "lines": [{"t": "حدّث عن الصاغاني وغيره، وصحب جماعة ممن صحب أحمد منهم إسحاق بن إبراهيم", "r": "", "m": "طبقات الحنابلة ٣/٣٢"}, {"t": "روى عنه القطيعي وابن شاهين؛ قال يوسف القواس: «كان من الثقات»", "r": "", "m": "طبقات الحنابلة ٣/٣٣"}, {"t": "توفي سنة ٣٢٥", "r": "", "m": "طبقات الحنابلة ٣/٣٣"}]}, "tb587": {"name": "أبو الفضل الصندلي جعفر بن محمد بن يعقوب", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣١٨", "lines": [{"t": "سمع إبراهيم بن مجشر وإسحاق البغوي وغيرهما", "r": "", "m": "طبقات الحنابلة ٣/٣٣"}, {"t": "روى عن الفضل بن زياد عن أحمد في زكاة الحلي: «يُروى فيه عن خمسة من أصحاب النبي ﷺ أنهم لا يرون في الحلي زكاة»", "r": "", "m": "طبقات الحنابلة ٣/٣٥"}, {"t": "توفي في ربيع الآخر ٣١٨", "r": "", "m": "طبقات الحنابلة ٣/٣٥"}]}, "tb588": {"name": "أبو محمد البربهاري الحسن بن علي بن خلف", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٢٩", "lines": [{"t": "«شيخ الطائفة في وقته، ومتقدمها في الإنكار على أهل البدع والمباينة لهم باليد واللسان»", "r": "", "m": "طبقات الحنابلة ٣/٣٦"}, {"t": "«وكان أحد الأئمة العارفين والحفاظ للأصول المتقنين والثقات المؤمنين»", "r": "", "m": "طبقات الحنابلة ٣/٣٦"}, {"t": "صحب جماعة من أصحاب أحمد منهم المروذي، وصحب سهلًا التستري", "r": "", "m": "طبقات الحنابلة ٣/٣٦"}, {"t": "نودي ببغداد ألا يجتمع من أصحابه نفسان، فاستتر، وتوفي في الاستتار في رجب ٣٢٩", "r": "", "m": "طبقات الحنابلة ٣/٧٩"}]}, "tb589": {"name": "أبو علي الخرقي الحسين بن عبد الله", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٢٩٩", "lines": [{"t": "والد أبي القاسم الخرقي صاحب «المختصر»؛ صحب جماعة من أصحاب أحمد منهم حرب، وأكثر من صحبة المروذي حتى كان يُدعى «خليفة المروذي»", "r": "", "m": "طبقات الحنابلة ٣/٨٠"}, {"t": "توفي يوم الفطر سنة ٢٩٩ (ابن كامل)، ودُفن بقرب قبر أحمد", "r": "", "m": "طبقات الحنابلة ٣/٨٢–٨٣"}, {"t": "قال ابن مهدي: كان رجلًا صالحًا؛ صلّى العيد ثم تغدّى ونام فوجده أهله ميتًا", "r": "", "m": "طبقات الحنابلة ٣/٨٣"}]}, "tb590": {"name": "ابن شاصو الحسين بن علي بن محمد المخرمي", "sub": "من الطبقة الثانية في «طبقات الحنابلة»", "lines": [{"t": "حدّث عن أبي علي الحسين بن إسحاق الخرقي عن أحمد في قصر المسافر: إذا عزم على إقامة أكثر من أربعة أيام (إحدى وعشرين صلاة)", "r": "", "m": "طبقات الحنابلة ٣/٨٣"}, {"t": "حدّث عنه أبو إسحاق بن شاقلا", "r": "", "m": "طبقات الحنابلة ٣/٨٣"}, {"t": "لم تُذكر وفاته", "r": "", "m": "طبقات الحنابلة ٣/٨٣ (حاشية المحقق)"}]}, "tb591": {"name": "أبو القاسم القزاز حبيب بن الحسن بن داود", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٥٩", "lines": [{"t": "سمع أبا مسلم الكجي وموسى بن إسحاق الأنصاري ومحمد بن عثمان بن أبي شيبة وغيرهم، وروى عنه الدارقطني وابن شاهين وابن حامد", "r": "", "m": "طبقات الحنابلة ٣/٨٤"}, {"t": "روى عن ابن أبي عوف والبراثي والسدوسي شيئًا من «مسائل أحمد»", "r": "", "m": "طبقات الحنابلة ٣/٨٤"}, {"t": "قال ابن الفرات: «كان ثقة مستورًا»", "r": "", "m": "طبقات الحنابلة ٣/٨٤"}, {"t": "توفي في جمادى ٣٥٩، قال ابن أبي الفوارس: «كان ثقة مستورًا حسن المذهب»", "r": "", "m": "طبقات الحنابلة ٣/٨٥"}]}, "tb592": {"name": "خضر بن مثنى الكندي", "sub": "من الطبقة الثانية في «طبقات الحنابلة»", "lines": [{"t": "نقل عن عبد الله بن أحمد أشياء، منها «الرد على الجهمية» لأحمد، ورواه عنه الخلال", "r": "", "m": "طبقات الحنابلة ٣/٨٦"}, {"t": "لم تُذكر وفاته", "r": "", "m": "طبقات الحنابلة ٣/٨٦ (حاشية المحقق)"}]}, "tb593": {"name": "زهير بن صالح بن أحمد بن حنبل", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٠٣", "lines": [{"t": "حفيد الإمام؛ حدّث عن أبيه صالح وغيره؛ سُئل عنه الدارقطني فقال: «قد حدّث، وهو ثقة»", "r": "", "m": "طبقات الحنابلة ٣/٨٩"}, {"t": "روى عنه ابن أخيه محمد بن أحمد بن صالح والنجاد والخلال، وأملى على الخلال خبر أزواج جده وأولاده", "r": "", "m": "طبقات الحنابلة ٣/٨٩–٩٠"}, {"t": "مات سنة ٣٠٣ (أحمد بن كامل)", "r": "", "m": "طبقات الحنابلة ٣/٩٠"}]}, "tb594": {"name": "أبو القاسم الطبراني سليمان بن أحمد بن أيوب", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٦٠", "lines": [{"t": "نزل أصبهان وسكنها؛ سمع من أصحاب أحمد أبا زرعة الدمشقي وعبد الله بن أحمد، ومن غيرهما إسحاق الدبري وغيره", "r": "", "m": "طبقات الحنابلة ٣/٩٢"}, {"t": "«وكان أحد الأئمة والحفاظ في علم الحديث»، من تصانيفه «المعجم الكبير» و«الأوسط» و«الأصغر»", "r": "", "m": "طبقات الحنابلة ٣/٩٣"}, {"t": "مولده بعكا سنة ٢٦٠، ومات بأصبهان سنة ٣٦٠ ودفن بباب مدينتها عند قبر حممة الدوسي", "r": "", "m": "طبقات الحنابلة ٣/٩٣"}]}, "tb595": {"name": "أبو بكر بن أبي داود عبد الله بن سليمان بن الأشعث السجستاني", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣١٦", "lines": [{"t": "رحل به أبوه من سجستان فطوّف به شرقًا وغربًا وسمّعه من علماء الوقت، واستوطن بغداد", "r": "", "m": "طبقات الحنابلة ٣/٩٦"}, {"t": "صنّف «المسند» و«السنن» و«التفسير» و«القراءات» و«الناسخ والمنسوخ»", "r": "", "m": "طبقات الحنابلة ٣/٩٦"}, {"t": "قال عن منظومته في السنة: «هذا قولي وقول أبي وقول أحمد بن حنبل وقول من أدركنا من أهل العلم»", "r": "", "m": "طبقات الحنابلة ٣/١٠٢"}, {"t": "مولده سنة ٢٣٠، ودُفن لاثنتي عشرة بقيت من ذي الحجة ٣١٦ بمقبرة باب البستان، وقيل صلى عليه زهاء ثلاثمائة ألف", "r": "", "m": "طبقات الحنابلة ٣/١٠٢–١٠٣"}]}, "tb596": {"name": "أبو محمد ابن أبي حاتم عبد الرحمن بن محمد بن إدريس الرازي", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٢٧", "lines": [{"t": "«الإمام ابن الإمام الحافظ أبي حاتم»؛ سمع صالح بن أحمد وأبا زرعة وأباه وغيرهم", "r": "", "m": "طبقات الحنابلة ٣/١٠٣–١٠٤"}, {"t": "رحل في طلب الحديث مع أبيه وبعده، وصنّف «السنة» و«التفسير» و«الرد على الجهمية» و«فضائل أحمد»", "r": "", "m": "طبقات الحنابلة ٣/١٠٤"}, {"t": "مات سنة ٣٢٧ (أبو الشيخ في تاريخه)", "r": "", "m": "طبقات الحنابلة ٣/١٠٥"}]}, "tb597": {"name": "أبو حفص القافلاني عمر بن محمد بن بكار", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٠٨ (حاشية المحقق)", "lines": [{"t": "حدّث بـ«مسائل أبي إبراهيم (إسحاق) بن هانئ النيسابوري» عن أحمد", "r": "", "m": "طبقات الحنابلة ٣/١٠٥–١٠٦"}, {"t": "من روايته فيها: سُئل أحمد عن مسجد بُني على الطريق؟ قال: يُقلع ويُرد الطريق إلى ما كان", "r": "", "m": "طبقات الحنابلة ٣/١٠٦"}, {"t": "لم تُذكر وفاته في الترجمة؛ نقل المحقق عن تاريخ بغداد أنه مات في شوال ٣٠٨", "r": "", "m": "طبقات الحنابلة ٣/١٠٥ (حاشية المحقق)"}]}, "tb598": {"name": "أبو حفص العكبري عمر بن محمد بن رجاء", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٣٩", "lines": [{"t": "حدّث عن عبد الله بن أحمد وغيره، «وكان عابدًا صالحًا»؛ روى عنه ابن بطة وقال: إذا رأيت العكبري يحب أبا حفص بن رجاء فاعلم أنه صاحب سنة", "r": "", "m": "طبقات الحنابلة ٣/١٠٧"}, {"t": "روى عن أحمد: لا ينبغي للرجل أن ينصب نفسه للفتوى حتى تكون فيه خمس خصال: النية، والحلم والوقار والسكينة، والقوة على ما هو فيه، والكفاية، ومعرفة الناس", "r": "", "m": "طبقات الحنابلة ٣/١٠٨"}, {"t": "توفي سنة ٣٣٩", "r": "", "m": "طبقات الحنابلة ٣/١٠٨"}]}, "tb599": {"name": "أبو الحسن بن بشار علي بن محمد الزاهد", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣١٣", "lines": [{"t": "«الزاهد العارف»؛ حدّث عن المروذي وصالح وعبد الله ابني أحمد", "r": "", "m": "طبقات الحنابلة ٣/١٠٨–١٠٩"}, {"t": "كان إذا أخبر عن نفسه قال: «أعرف رجلًا منذ ثلاثين سنة ما تكلم بكلمة يعتذر منها»", "r": "", "m": "طبقات الحنابلة ٣/١٠٩"}, {"t": "قال: ما أعيب على رجل يحفظ لأحمد خمس مسائل أن يستند إلى بعض سواري المسجد ويفتي الناس بها", "r": "", "m": "طبقات الحنابلة ٣/١١٨"}, {"t": "توفي لسبع خلون من ربيع الأول ٣١٣", "r": "", "m": "طبقات الحنابلة ٣/١١٨"}]}, "tb600": {"name": "أبو علي بن الصواف محمد بن أحمد بن الحسن", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٥٩", "lines": [{"t": "سمع إسحاق الحربي وبشر بن موسى وعبد الله بن أحمد، وروى عنه الدارقطني وغيره", "r": "", "m": "طبقات الحنابلة ٣/١١٩"}, {"t": "قال الدارقطني: «ما رأت عيناي مثل أبي علي بن الصواف»", "r": "", "m": "طبقات الحنابلة ٣/١١٩"}, {"t": "توفي لثلاث خلون من شعبان ٣٥٩ وله تسع وثمانون سنة؛ قال ابن أبي الفوارس: «كان ثقة مأمونًا من أهل التحرز، ما رأيت مثله في التحرز»", "r": "", "m": "طبقات الحنابلة ٣/١٢٠"}]}, "tb601": {"name": "أبو جعفر محمد بن أحمد بن صالح بن أحمد بن حنبل", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٣٠", "lines": [{"t": "حدّث عن عم أبيه عبد الله بن أحمد، وعن أبيه أحمد بن صالح، وعن عمه زهير بن صالح", "r": "", "m": "طبقات الحنابلة ٣/١٢٠"}, {"t": "روى عن عبد الله عن أبيه: رأيت البارحة في النوم علي بن عاصم فأوّلت ذلك: عليًّا علوًّا، وعاصمًا عصمة الله", "r": "", "m": "طبقات الحنابلة ٣/١٢٣"}, {"t": "مات سنة ٣٣٠", "r": "", "m": "طبقات الحنابلة ٣/١٢٤"}]}, "tb602": {"name": "أبو بكر الصيدلاني محمد بن حمدان بن حماد", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٢٠", "lines": [{"t": "سمع أبا بكر المروذي وأبا الأشعث العجلي والفضل بن يعقوب الرخامي", "r": "", "m": "طبقات الحنابلة ٣/١٢٤"}, {"t": "قال الخطيب: «كان ثقة يتفقه على مذهب أحمد بن حنبل»، وقال محمد بن خلف الخلال: «حنبلي ثقة»", "r": "", "m": "طبقات الحنابلة ٣/١٢٥"}, {"t": "مات سنة ٣٢٠ (من خط القاضي أبي يعلى)", "r": "", "m": "طبقات الحنابلة ٣/١٢٦"}]}, "tb603": {"name": "أبو عمر الزاهد غلام ثعلب محمد بن عبد الواحد", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٤٥", "lines": [{"t": "«اللغوي الزاهد المعروف بغلام ثعلب»؛ سمع إبراهيم الحربي وغيره، وروى عنه ابن رزقويه وابن بشران وابن شاذان", "r": "", "m": "طبقات الحنابلة ٣/١٢٦–١٢٧"}, {"t": "سُئل عن حديث الضحك فقال: «الحديث معروف وروايته سنة، والاعتراض بالطعن عليه بدعة، وتفسير الضحك تكلف وإلحاد»", "r": "", "m": "طبقات الحنابلة ٣/١٣٣"}, {"t": "توفي في ذي القعدة ٣٤٥، ومولده سنة ٢٦١", "r": "", "m": "طبقات الحنابلة ٣/١٣٣"}]}, "tb604": {"name": "أبو بكر بن الأنباري محمد بن القاسم بن محمد بن بشار", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٢٨ (حاشية المحقق)", "lines": [{"t": "«كان من أعلم الناس بالنحو والأدب وأكثرهم حفظًا له»؛ سمع إسماعيل القاضي وإبراهيم الحربي", "r": "", "m": "طبقات الحنابلة ٣/١٣٤"}, {"t": "«وكان صدوقًا فاضلًا دينًا خيرًا من أهل السنة»، وصنف في علوم القرآن والمشكل و«الوقف والابتداء» و«غريب الحديث»", "r": "", "m": "طبقات الحنابلة ٣/١٣٤"}, {"t": "لم أقف على موضع وفاته في الترجمة؛ والمحقق أرّخه ٢٧١–٣٢٨", "r": "", "m": "طبقات الحنابلة ٣/١٣٣ (حاشية المحقق)"}]}, "tb605": {"name": "أبو عبد الله الدوري محمد بن مخلد بن حفص العطار", "sub": "من الطبقة الثانية في «طبقات الحنابلة» · ت ٣٣١", "lines": [{"t": "صحب جماعة من أصحاب أحمد وحدث عنهم، منهم صالح وأبو داود والمروذي", "r": "", "m": "طبقات الحنابلة ٣/١٤٢"}, {"t": "حدّث عنه ابن بطة والآجري والدارقطني وابن شاهين", "r": "", "m": "طبقات الحنابلة ٣/١٤٣"}, {"t": "سُئل عنه الدارقطني فقال: «ثقة مأمون»؛ ومات سنة ٣٣١ وقد استكمل سبعًا وتسعين سنة", "r": "", "m": "طبقات الحنابلة ٣/١٤٤"}]}};
+const TABAQAT_APPEND = {"salih": [{"t": "«أكبر أولاده»؛ سمع أباه وعلي بن الوليد الطيالسي؛ قال ابن أبي حاتم: كتبت عنه بأصبهان، وهو صدوق ثقة", "r": "", "m": "طبقات الحنابلة ١/٤٦٢"}, {"t": "قال الخلال: سمع من أبيه «مسائل» كثيرة، وكان الناس يكتبون إليه من خراسان يسأل لهم أباه، «وكان أبو عبد الله يحبه ويكرمه»، وكان سخيًّا", "r": "", "m": "طبقات الحنابلة ١/٤٦٢–٤٦٣"}, {"t": "ولي القضاء بطرسوس قبل ولايته قضاء أصبهان", "r": "", "m": "طبقات الحنابلة ١/٤٦٦"}, {"t": "مات بأصبهان في رمضان ٢٦٦ وله ثلاث وستون سنة، ودفن قرب قبر حممة الدوسي؛ وقال أبو نعيم: سنة ٢٦٥، «والتاريخ الأول أصح»", "r": "", "m": "طبقات الحنابلة ١/٤٦٧"}], "abdullah": [{"t": "حدّث عن أبيه وعن يحيى بن معين وابني أبي شيبة وأبي خيثمة في خلق كثير", "r": "", "m": "طبقات الحنابلة ٢/٥–٦"}, {"t": "روى عنه البغوي والمحاملي والنجاد وابن المنادي والخلال وغيرهم، «وكان ثبتًا فهمًا ثقة»، وولد في جمادى الأولى ٢١٣", "r": "", "m": "طبقات الحنابلة ٢/٦"}, {"t": "مات لتسع بقين من جمادى الآخرة ٢٩٠ ودفن بمقابر باب التبن، وصلى عليه ابن أخيه زهير بن صالح", "r": "", "m": "طبقات الحنابلة ٢/٢٠"}, {"t": "أوصى أن يدفن بالقطيعة وقال: «صحّ عندي أن بالقطيعة نبيًّا مدفونًا، وأن أكون في جوار نبي أحب إليّ من أن أكون في جوار أبي»", "r": "", "m": "طبقات الحنابلة ٢/٢٠"}], "hanbal": [{"t": "«ابن عم إمامنا أحمد»؛ سمع أبا نعيم الفضل بن دكين وأبا غسان وعفان بن مسلم وغيرهم", "r": "", "m": "طبقات الحنابلة ١/٣٨٣"}, {"t": "روى أن فقهاء بغداد اجتمعوا إلى أحمد في ولاية الواثق يشاورونه في ترك الرضا بإمرته، فقال: «عليكم بالنكرة في قلوبكم، ولا تخلعوا يدًا من طاعة، ولا تشقوا عصا المسلمين»", "r": "", "m": "طبقات الحنابلة ١/٣٨٧"}, {"t": "مات بواسط في جمادى الأولى ٢٧٣ (ابن المنادي)", "r": "", "m": "طبقات الحنابلة ١/٣٨٧"}]};
+const TABAQAT_SCH = [["tb216", "«طبقات الحنابلة»: الطبقة الأولى", 1, 275, "", ""], ["tb86", "«طبقات الحنابلة»: الطبقة الأولى", 1, 285, "", "(من حاشية المحقق)"], ["tb133", "«طبقات الحنابلة»: الطبقة الأولى", 1, 251, "", ""], ["tb121", "«طبقات الحنابلة»: الطبقة الأولى", 1, 275, "", ""], ["tb282", "«طبقات الحنابلة»: الطبقة الأولى", 1, 274, "", "(من حاشية المحقق)"], ["tb271", "«طبقات الحنابلة»: الطبقة الأولى", 1, 264, "", "(من حاشية المحقق)"], ["tb390", "«طبقات الحنابلة»: الطبقة الأولى", 1, 277, "", "(من حاشية المحقق)"], ["tb189", "«طبقات الحنابلة»: الطبقة الأولى", 1, 280, "", "(من حاشية المحقق)"], ["tb13", "«طبقات الحنابلة»: الطبقة الأولى", 1, 244, "", "(من حاشية المحقق)"], ["tb496", "«طبقات الحنابلة»: الطبقة الأولى", 1, null, "", ""], ["tb353", "«طبقات الحنابلة»: الطبقة الأولى", 1, null, "", ""], ["tb140", "«طبقات الحنابلة»: الطبقة الأولى", 1, null, "", ""], ["tb530", "«طبقات الحنابلة»: الطبقة الأولى", 1, 233, "", ""], ["tb315", "«طبقات الحنابلة»: الطبقة الأولى", 1, 234, "", "(من حاشية المحقق)"], ["tb333", "«طبقات الحنابلة»: الطبقة الأولى", 1, 271, "", ""], ["tb387", "«طبقات الحنابلة»: الطبقة الأولى", 1, 256, "", ""], ["tb488", "«طبقات الحنابلة»: الطبقة الأولى", 1, 261, "", ""], ["tb276", "«طبقات الحنابلة»: الطبقة الأولى", 1, 280, "", ""], ["tb541", "«طبقات الحنابلة»: الطبقة الأولى", 1, null, "", ""], ["tb113", "«طبقات الحنابلة»: الطبقة الأولى", 1, 230, "", "(من حاشية المحقق)"], ["tb70", "«طبقات الحنابلة»: الطبقة الأولى", 1, 246, "", ""], ["tb463", "«طبقات الحنابلة»: الطبقة الأولى", 1, 258, "", "(من حاشية المحقق)"], ["tb141", "«طبقات الحنابلة»: الطبقة الأولى", 1, 276, "", ""], ["tb281", "«طبقات الحنابلة»: الطبقة الأولى", 1, 251, "", ""], ["tb260", "«طبقات الحنابلة»: الطبقة الأولى", 1, 281, "", "(من حاشية المحقق)"], ["tb578", "«طبقات الحنابلة»: الطبقة الثانية", 2, 336, "", ""], ["tb580", "«طبقات الحنابلة»: الطبقة الثانية", 2, 305, "", ""], ["tb583", "«طبقات الحنابلة»: الطبقة الثانية", 2, 327, "", "(من حاشية المحقق)"], ["tb584", "«طبقات الحنابلة»: الطبقة الثانية", 2, 332, "", ""], ["tb585", "«طبقات الحنابلة»: الطبقة الثانية", 2, null, "", ""], ["tb586", "«طبقات الحنابلة»: الطبقة الثانية", 2, 325, "", ""], ["tb587", "«طبقات الحنابلة»: الطبقة الثانية", 2, 318, "", ""], ["tb589", "«طبقات الحنابلة»: الطبقة الثانية", 2, 299, "", ""], ["tb590", "«طبقات الحنابلة»: الطبقة الثانية", 2, null, "", ""], ["tb591", "«طبقات الحنابلة»: الطبقة الثانية", 2, 359, "", ""], ["tb592", "«طبقات الحنابلة»: الطبقة الثانية", 2, null, "", ""], ["tb593", "«طبقات الحنابلة»: الطبقة الثانية", 2, 303, "", ""], ["tb594", "«طبقات الحنابلة»: الطبقة الثانية", 2, 360, "", ""], ["tb595", "«طبقات الحنابلة»: الطبقة الثانية", 2, 316, "", ""], ["tb596", "«طبقات الحنابلة»: الطبقة الثانية", 2, 327, "", ""], ["tb597", "«طبقات الحنابلة»: الطبقة الثانية", 2, 308, "", "(من حاشية المحقق)"], ["tb598", "«طبقات الحنابلة»: الطبقة الثانية", 2, 339, "", ""], ["tb599", "«طبقات الحنابلة»: الطبقة الثانية", 2, 313, "", ""], ["tb600", "«طبقات الحنابلة»: الطبقة الثانية", 2, 359, "", ""], ["tb601", "«طبقات الحنابلة»: الطبقة الثانية", 2, 330, "", ""], ["tb602", "«طبقات الحنابلة»: الطبقة الثانية", 2, 320, "", ""], ["tb603", "«طبقات الحنابلة»: الطبقة الثانية", 2, 345, "", ""], ["tb604", "«طبقات الحنابلة»: الطبقة الثانية", 2, 328, "", "(من حاشية المحقق)"], ["tb605", "«طبقات الحنابلة»: الطبقة الثانية", 2, 331, "", ""]];
+const TABAQAT_LINK = {"الأثرم": "tb57", "المروذي": "tb50", "القطيعي": "tb579", "النجاد": "tb581", "الخلال أبو بكر": "tb582", "البربهاري": "tb588"};
+Object.assign(PEOPLE, PEOPLE_TABAQAT);
+Object.keys(TABAQAT_APPEND).forEach((k) => { if (PEOPLE[k]) PEOPLE[k].lines = PEOPLE[k].lines.concat(TABAQAT_APPEND[k]); });
+{ const hb = IMAMS.find((x) => x.id === 'hanbali'); if (hb) {
+  hb.scholars.forEach((t) => { const k = Object.keys(TABAQAT_LINK).find((k) => t.n.startsWith(k)); if (k) t.p = TABAQAT_LINK[k]; });
+  TABAQAT_SCH.forEach(([id, d, tier, y, yl, yn]) => hb.scholars.push({ n: PEOPLE[id].name, d: '', tier, y, yl, yn, r: '', m: PEOPLE[id].lines[0].m, p: id }));
+} }
+/* ---------- الحالة ---------- */
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('siyar:' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('siyar:' + k, JSON.stringify(v)); } catch (e) {} }
+};
+const state = {
+  view: 'home', imam: null, tab: 'bio', story: 0, mapFilter: 'all',
+  stamps: store.get('stamps', {}),
+  best: store.get('best', 0),
+  quiz: null,
+  dev: store.get('dev', false), edit: null, draft: null, devOut: ''
+};
+/* وضع المطوّر لا يظهر إلا إذا فُتحت الصفحة بـ #dev في آخر الرابط (أو بالضغط ٧ مرات على الشعار) */
+let DEV_OK = /dev/i.test(location.hash + location.search);
+window.addEventListener('hashchange', () => { if (/dev/i.test(location.hash)) { DEV_OK = true; render(); } });
+let logoTaps = 0, logoT = 0;
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.brand h1')) return;
+  const now = Date.now(); logoTaps = now - logoT < 1500 ? logoTaps + 1 : 1; logoT = now;
+  if (logoTaps >= 7) { DEV_OK = true; logoTaps = 0; render(); }
+});
+/* ---------- تعديلات المطوّر (محفوظة على الجهاز) ---------- */
+const ORIG_PEOPLE = JSON.parse(JSON.stringify(PEOPLE));
+const ORIG_IMAMS = IMAMS.map((i) => ({ id: i.id, summary: i.summary, sifaT: i.sifa.t, extraT: i.extra.t, quote: i.quote, quoteBy: i.quoteBy, quoteRef: i.quoteRef, quoteM: i.quoteM || '' }));
+let EDITS = store.get('edits', { people: {}, imams: {} });
+if (!EDITS.people) EDITS.people = {};
+if (!EDITS.imams) EDITS.imams = {};
+if (!EDITS.added) EDITS.added = [];
+const ORIG_LEN = {};
+IMAMS.forEach((i) => { ORIG_LEN[i.id] = { teachers: i.teachers.length, students: i.students.length, scholars: i.scholars.length }; });
+function applyImam(i, e) {
+  if (e.summary != null) i.summary = e.summary;
+  if (e.sifaT != null) i.sifa.t = e.sifaT;
+  if (e.extraT != null) i.extra.t = e.extraT;
+  if (e.quote != null) i.quote = e.quote;
+  if (e.quoteBy != null) i.quoteBy = e.quoteBy;
+  if (e.quoteRef != null) i.quoteRef = e.quoteRef;
+  if (e.quoteM != null) i.quoteM = e.quoteM;
+}
+function applyEdits() {
+  Object.keys(PEOPLE).forEach((id) => { if (ORIG_PEOPLE[id]) PEOPLE[id] = JSON.parse(JSON.stringify(ORIG_PEOPLE[id])); });
+  ORIG_IMAMS.forEach((o) => applyImam(byId(o.id), o));
+  Object.keys(PEOPLE).forEach((id) => { if (!ORIG_PEOPLE[id]) delete PEOPLE[id]; });
+  IMAMS.forEach((i) => { i.teachers.length = ORIG_LEN[i.id].teachers; i.students.length = ORIG_LEN[i.id].students; i.scholars.length = ORIG_LEN[i.id].scholars; });
+  EDITS.added.forEach((a) => {
+    const i = byId(a.imam); if (!i) return;
+    PEOPLE[a.id] = JSON.parse(JSON.stringify(a.person));
+    i[a.role].push({ n: a.n, d: a.d || '', r: a.r || '', m: a.m || '', p: a.id });
+  });
+  Object.keys(EDITS.people).forEach((id) => { if (PEOPLE[id]) Object.assign(PEOPLE[id], EDITS.people[id]); });
+  Object.keys(EDITS.imams).forEach((id) => { const i = byId(id); if (i) applyImam(i, EDITS.imams[id]); });
+}
+const saveEdits = () => store.set('edits', EDITS);
+applyEdits();
+const ic = (id) => `var(--c-${id})`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const ar = (n) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+const REF = (r) => `<span class="ref">السير ${r}</span>`;
+const CITE = (r, m) => { const p = []; if (r) p.push('السير ' + r); if (m) p.push(m); return p.length ? `<span class="ref">${p.join(' · ')}</span>` : ''; };
+
+const ICONS = {
+  gear: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+  back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>',
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
+  time: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10M8 12h12M6 18h9"/></svg>',
+  map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  quiz: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.6a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7M12 16.6v.1"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
+};
+
+function go(view, extra) {
+  Object.assign(state, { view, edit: null, draft: null, nedit: null, xedit: null, gedit: null, gdelask: false, nmsg: '' }, extra || {});
+  render();
+  try { window.scrollTo({ top: 0 }); } catch (e) { window.scrollTo(0, 0); }
+}
+
+
+/* ---------- علماء بارزون ---------- */
+/* علماء بارزون: يضيفهم صاحب التطبيق ويعدّلهم بنفسه؛ يُحفظون في قاعدة بيانات التطبيق (أو على الجهاز إن لم تتوفر) */
+const MADH = [['hanafi', 'الحنفية'], ['maliki', 'المالكية'], ['shafii', 'الشافعية'], ['hanbali', 'الحنابلة'], ['other', 'غير ذلك']];
+const canEdit = () => NOT.canWrite && DEV_OK && state.dev;
+const NOT = { list: [], ready: false, db: null, canWrite: true, local: false };
+function notablesSorted() { return NOT.list.slice().sort((a, b) => (a.died || 9999) - (b.died || 9999) || String(a.name).localeCompare(b.name, 'ar')); }
+function notableList() { return NOT.list; }
+function notLocalLoad() { NOT.list = store.get('notables', []); NOT.local = true; NOT.ready = true; }
+function notLocalSave() { store.set('notables', NOT.list); }
+notLocalLoad();
+(async () => {
+  try {
+    if (!window.claude || !window.claude.use) return;
+    const db = await window.claude.use('db');
+    if (!db) return;
+    const user = await window.claude.use('user');
+    if (user) { try { const c = await user.can('data.write'); if (c === false) NOT.canWrite = false; } catch (e) {} }
+    NOT.db = db; NOT.local = false; EXT.db = db;
+    db.collection('ngroups').onSnapshot((snap) => { GRP.list = snap.docs.map((d) => Object.assign({ id: d.id }, d.data())); if (['notables', 'notable'].includes(state.view) && !state.nedit && !state.gedit) render(); }, () => {});
+    db.collection('bioext').onSnapshot((snap) => { EXT.map = {}; snap.docs.forEach((d) => { EXT.map[d.id] = d.data(); }); if (state.view === 'person' && !state.xedit) render(); }, () => {});
+    db.collection('notables').onSnapshot((snap) => {
+      NOT.list = snap.docs.map((d) => Object.assign({ id: d.id }, d.data()));
+      NOT.ready = true;
+      if (['home', 'notables', 'notable'].includes(state.view) && !state.nedit) render();
+    }, () => {});
+  } catch (e) {}
+})();
+async function notSave(rec) {
+  const { id, ...body } = rec;
+  if (NOT.db) {
+    try { await NOT.db.doc('notables/' + id).set(body); return true; }
+    catch (e) { if (e && e.code === 'invalid_argument') NOT.canWrite = false; alertMsg(e && e.code === 'quota_exceeded' ? 'امتلأت مساحة الحفظ.' : 'تعذّر الحفظ، حاول مرة أخرى.'); return false; }
+  }
+  const i = NOT.list.findIndex((x) => x.id === id);
+  if (i >= 0) NOT.list[i] = rec; else NOT.list.push(rec);
+  notLocalSave(); return true;
+}
+async function notDelete(id) {
+  if (NOT.db) { try { await NOT.db.doc('notables/' + id).delete(); return true; } catch (e) { alertMsg('تعذّر الحذف، حاول مرة أخرى.'); return false; } }
+  NOT.list = NOT.list.filter((x) => x.id !== id); notLocalSave(); return true;
+}
+function alertMsg(m) { state.nmsg = m; render(); }
+const madhName = (k) => (MADH.find((m) => m[0] === k) || MADH[4])[1];
+const madhColor = (k) => (k && k !== 'other' ? ic(k) : 'var(--teal)');
+
+/* مواقف وكلمة مأثورة يضيفها صاحب التطبيق على أي ترجمة (علماء المذهب وغيرهم) */
+const EXT = { map: {}, db: null };
+EXT.map = store.get('bioext', {});
+const linesToTxt = (a) => (a || []).map((l) => l.t + (l.src ? ' | ' + l.src : '')).join('\n');
+const txtToLines = (v) => String(v || '').split('\n').map((x) => x.trim()).filter(Boolean).map((x) => { const i = x.lastIndexOf('|'); return i > 0 ? { t: x.slice(0, i).trim(), src: x.slice(i + 1).trim() } : { t: x, src: '' }; });
+function storyStepper(list, key) {
+  const n = list.length; state.pst = state.pst || {};
+  const k = Math.max(0, Math.min(state.pst[key] || 0, n - 1)), s = list[k];
+  return `<div class="progress" aria-hidden="true">${list.map((_, j) => `<span class="${j <= k ? 'on' : ''}"></span>`).join('')}</div>
+  <article class="story" aria-live="polite">
+    <span class="kicker">${esc(s.k || 'موقف')} · الموقف ${ar(k + 1)} من ${ar(n)}</span>
+    ${s.h ? `<h3>${esc(s.h)}</h3>` : ''}
+    <p>${esc(s.t)}</p>
+    ${s.src ? `<span class="ref">${esc(s.src)}</span>` : ''}
+  </article>
+  ${n > 1 ? `<div class="row"><button class="btn grow" data-pst="-1" data-pk="${esc(key)}" ${k === 0 ? 'disabled' : ''}>السابق</button><button class="btn primary grow" data-pst="1" data-pk="${esc(key)}" ${k === n - 1 ? 'disabled' : ''}>الموقف التالي</button></div>` : ''}`;
+}
+function extShow(e, key) {
+  if (!e) return '';
+  const st = (e.stories || []).length ? `<h2 style="font-size:18px">مواقف</h2>${storyStepper(e.stories, key)}` : '';
+  const q = e.quote && e.quote.t ? `<section class="panel"><h2>كلمة مأثورة</h2><p class="quote">«${esc(e.quote.t)}»</p><span class="ref">${[e.quote.by, e.quote.src].filter(Boolean).map(esc).join(' · ')}</span></section>` : '';
+  return st + q;
+}
+const storyBlock = (x) => `<div class="ed-line" data-sb="1" style="display:flex;flex-direction:column;gap:6px">
+      <input class="ed" data-sf="k" value="${esc((x && x.k) || '')}" placeholder="التصنيف (اختياري) مثل: الصبر، العلم، الورع">
+      <input class="ed" data-sf="h" value="${esc((x && x.h) || '')}" placeholder="عنوان الموقف">
+      <textarea class="ed" data-sf="t" rows="4" placeholder="نص الموقف">${esc((x && x.t) || '')}</textarea>
+      <input class="ed" data-sf="src" value="${esc((x && x.src) || '')}" placeholder="المصدر: الكتاب والجزء/الصفحة">
+      <button class="btn" data-sdel="1">حذف هذا الموقف</button></div>`;
+const extFields = (e) => `
+    <div class="set-row" style="gap:8px"><b>مواقف</b>
+      <span class="muted" style="font-size:12px">كل موقف بطاقة تُقرأ واحدة بعد الأخرى، كما في مواقف الأئمة.</span>
+      <div id="stlist" style="display:flex;flex-direction:column;gap:10px">${((e && e.stories) || []).map((x, n) => storyBlock(x, n)).join('')}</div>
+      <button class="btn" data-sadd="1" style="border-style:dashed">+ إضافة موقف</button></div>
+    <label class="set-row" style="gap:4px"><b>كلمة مأثورة</b><textarea class="ed" data-nf="qt" rows="2">${esc((e && e.quote && e.quote.t) || '')}</textarea></label>
+    <label class="set-row" style="gap:4px"><b>القائل</b><input class="ed" data-nf="qby" value="${esc((e && e.quote && e.quote.by) || '')}"></label>
+    <label class="set-row" style="gap:4px"><b>مصدر الكلمة</b><input class="ed" data-nf="qsrc" value="${esc((e && e.quote && e.quote.src) || '')}" placeholder="مثال: السير ١١/١٨٤"></label>`;
+function extRead() {
+  const f = (k) => { const el = document.querySelector(`[data-nf="${k}"]`); return el ? el.value.trim() : ''; };
+  const qt = f('qt');
+  const stories = [...document.querySelectorAll('[data-sb]')].map((b) => { const g = (k) => (b.querySelector(`[data-sf="${k}"]`).value || '').trim(); return { k: g('k'), h: g('h'), t: g('t'), src: g('src') }; }).filter((x) => x.t || x.h);
+  return { stories, quote: qt ? { t: qt, by: f('qby'), src: f('qsrc') } : null };
+}
+async function extSave(id, body) {
+  if (EXT.db) {
+    try { await EXT.db.doc('bioext/' + id).set(body); EXT.map[id] = body; return true; }
+    catch (e) { if (e && e.code === 'invalid_argument') NOT.canWrite = false; state.nmsg = 'تعذّر الحفظ، حاول مرة أخرى.'; render(); return false; }
+  }
+  EXT.map[id] = body; store.set('bioext', EXT.map); return true;
+}
+function extForm(id) {
+  const p = PEOPLE[id];
+  return `
+  <div class="topbar">
+    <button class="icon-btn" data-xcancel="1" aria-label="إلغاء">${ICONS.back}</button>
+    <div class="title-block"><h1>مواقف وكلمة مأثورة</h1><span class="sub">${esc(p.name)}</span></div>
+  </div>
+  <section class="panel set-row" id="nform">${extFields(EXT.map[id])}
+    ${state.nmsg ? `<p class="muted" role="status">${esc(state.nmsg)}</p>` : ''}
+    <div class="row" style="gap:10px"><button class="btn primary" data-xsave="1">حفظ</button><button class="btn" data-xcancel="1">إلغاء</button></div>
+  </section>`;
+}
+
+/* مجموعات يُنشئها صاحب التطبيق داخل «علماء بارزون» */
+const GRP = { list: store.get('ngroups', []) };
+const grpName = (id) => { const g = GRP.list.find((x) => x.id === id); return g ? g.name : ''; };
+async function grpSave(rec) {
+  const { id, ...body } = rec;
+  if (NOT.db) { try { await NOT.db.doc('ngroups/' + id).set(body); } catch (e) { state.nmsg = 'تعذّر الحفظ، حاول مرة أخرى.'; render(); return false; } }
+  const i = GRP.list.findIndex((x) => x.id === id);
+  if (i >= 0) GRP.list[i] = rec; else GRP.list.push(rec);
+  if (!NOT.db) store.set('ngroups', GRP.list);
+  return true;
+}
+async function grpDelete(id) {
+  const members = NOT.list.filter((t) => t.grp === id);
+  for (const t of members) { const r = Object.assign({}, t, { grp: '', updated: Date.now() }); await notSave(r); if (NOT.db) { const k = NOT.list.findIndex((x) => x.id === t.id); if (k >= 0) NOT.list[k] = r; } }
+  if (NOT.db) { try { await NOT.db.doc('ngroups/' + id).delete(); } catch (e) { state.nmsg = 'تعذّر الحذف.'; render(); return false; } }
+  GRP.list = GRP.list.filter((x) => x.id !== id);
+  if (!NOT.db) store.set('ngroups', GRP.list);
+  return true;
+}
+function groupForm() {
+  const g = state.gedit === 'new' ? { name: '' } : (GRP.list.find((x) => x.id === state.gedit) || { name: '' });
+  const n = NOT.list.filter((t) => t.grp === g.id).length;
+  return `
+  <div class="topbar">
+    <button class="icon-btn" data-gcancel="1" aria-label="إلغاء">${ICONS.back}</button>
+    <div class="title-block"><h1>${state.gedit === 'new' ? 'إضافة مجموعة' : 'تعديل المجموعة'}</h1><span class="sub">داخل «علماء بارزون»</span></div>
+  </div>
+  <section class="panel set-row" id="nform">
+    <label class="set-row" style="gap:4px"><b>اسم المجموعة</b><input class="ed" data-gf="name" value="${esc(g.name)}" placeholder="مثال: شيوخ الإمام أحمد"></label>
+    ${state.nmsg ? `<p class="muted" role="status">${esc(state.nmsg)}</p>` : ''}
+    <div class="row" style="gap:10px"><button class="btn primary" data-gsave="1">حفظ</button><button class="btn" data-gcancel="1">إلغاء</button></div>
+    ${state.gedit !== 'new' ? (state.gdelask ? `<p class="muted" style="font-size:13px">سيبقى الـ${ar(n)} المنتمون إليها في القائمة بحسب مذهبهم.</p><button class="btn" data-gdel="${esc(g.id)}" style="border-color:var(--c-shafii);color:var(--c-shafii)">تأكيد حذف المجموعة</button>` : `<button class="btn" data-gdelask="1">حذف المجموعة</button>`) : ''}
+  </section>`;
+}
+
+function notablesView() {
+  const L = notablesSorted();
+  const card = (t) => `<button class="pill tap" data-nopen="${esc(t.id)}" data-q="${esc(t.name)}"><b>${esc(t.name)}</b><span class="ref">${t.role ? esc(t.role) + ' · ' : ''}${t.died ? 'ت ' + AR_N(t.died) + ' هـ' : 'لم تُحدَّد وفاته'}</span></button>`;
+  const mine = GRP.list.slice().sort((a, b) => (a.created || 0) - (b.created || 0));
+  const inGrp = (t) => t.grp && mine.some((g) => g.id === t.grp);
+  const groups = MADH.map(([k, l]) => [k, l, L.filter((t) => !inGrp(t) && (t.madh || 'other') === k)]).filter((g) => g[2].length);
+  const mineHTML = mine.map((g) => { const items = L.filter((t) => t.grp === g.id); return `<section class="panel not-group" style="--ic:var(--gold)"><div class="row" style="align-items:center;justify-content:space-between"><h3>${esc(g.name)}</h3>${canEdit() ? `<button class="btn" data-gedit="${esc(g.id)}" aria-label="تعديل المجموعة">✎</button>` : ''}</div>${items.length ? `<div class="pills">${items.map(card).join('')}</div>` : '<p class="muted" style="font-size:13px">لا أحد فيها بعد؛ اختر هذه المجموعة عند إضافة شيخ أو عالم.</p>'}</section>`; }).join('');
+  return `
+  <div class="topbar">
+    <button class="icon-btn" data-go="home" aria-label="رجوع إلى الرئيسية">${ICONS.back}</button>
+    <div class="title-block"><h1>علماء بارزون</h1></div>
+  </div>
+  ${state.nmsg ? `<p class="muted" role="status">${esc(state.nmsg)}</p>` : ''}
+  ${canEdit() ? '<div class="row" style="gap:10px"><button class="btn primary grow" data-nnew="1">+ إضافة شيخ أو عالم</button><button class="btn grow" data-gnew="1">+ إضافة مجموعة</button></div>' : ''}
+  ${L.length ? '<input class="search" id="notq" type="search" placeholder="ابحث باسم العالم" aria-label="ابحث باسم العالم">' : ''}
+  ${mineHTML}
+  ${groups.map(([k, l, items]) => `<section class="panel not-group" style="--ic:${madhColor(k)}"><h3>${l}</h3><div class="pills">${items.map(card).join('')}</div></section>`).join('')}
+  ${!L.length && !mine.length ? `<section class="panel"><p class="muted">لا يوجد أحد بعد. ${canEdit() ? 'اضغط «إضافة شيخ أو عالم» لتبدأ قائمتك: الاسم، والمذهب، وسنة الوفاة، وأسطر الترجمة مع مصدر كل سطر.' : ''}</p></section>` : ''}
+  <p class="muted" id="notnone" hidden>لا نتائج.</p>
+  ${NOT.local ? '<p class="muted" style="font-size:12px">تُحفظ القائمة على هذا الجهاز فقط في هذا العرض.</p>' : ''}`;
+}
+
+function notableView() {
+  const t = NOT.list.find((x) => x.id === state.nid);
+  if (!t) return `<div class="topbar"><button class="icon-btn" data-go="notables" aria-label="رجوع">${ICONS.back}</button><div class="title-block"><h1>غير موجود</h1></div></div>`;
+  return `
+  <div class="topbar">
+    <button class="icon-btn" data-go="notables" aria-label="رجوع إلى علماء بارزون">${ICONS.back}</button>
+    <div class="title-block"><h1>${esc(t.name)}</h1><span class="sub">${[grpName(t.grp), madhName(t.madh), t.role, t.died ? 'ت ' + AR_N(t.died) + ' هـ' : ''].filter(Boolean).map(esc).join(' · ')}</span></div>
+  </div>
+  <section class="panel" style="--ic:${madhColor(t.madh)}"><h2>ترجمته</h2>
+    ${(t.lines || []).length ? t.lines.map((l) => `<div class="fact"><span>${esc(l.t)}</span>${l.src ? `<span class="ref">${esc(l.src)}</span>` : ''}</div>`).join('') : '<p class="muted">لم تُضف أسطر الترجمة بعد.</p>'}
+  </section>
+  ${extShow(t, 'n:' + t.id)}
+  ${canEdit() ? `<div class="row" style="gap:10px">
+    <button class="btn" data-nedit="${esc(t.id)}">✎ تعديل</button>
+    ${state.ndelask === t.id ? `<button class="btn" data-ndel="${esc(t.id)}" style="border-color:var(--c-shafii);color:var(--c-shafii)">تأكيد الحذف</button>` : `<button class="btn" data-ndelask="${esc(t.id)}">حذف</button>`}
+  </div>` : ''}`;
+}
+
+function notableForm() {
+  const t = state.nedit === 'new' ? { name: '', madh: 'hanbali', role: '', died: '', lines: [] } : (NOT.list.find((x) => x.id === state.nedit) || {});
+  const linesTxt = (t.lines || []).map((l) => l.t + (l.src ? ' | ' + l.src : '')).join('\n');
+  return `
+  <div class="topbar">
+    <button class="icon-btn" data-ncancel="1" aria-label="إلغاء">${ICONS.back}</button>
+    <div class="title-block"><h1>${state.nedit === 'new' ? 'إضافة شيخ أو عالم' : 'تعديل'}</h1><span class="sub">يُحفظ في «علماء بارزون»</span></div>
+  </div>
+  <section class="panel set-row" id="nform">
+    <label class="set-row" style="gap:4px"><b>الاسم</b><input class="ed" data-nf="name" value="${esc(t.name || '')}" placeholder="مثال: أبو بكر الخلال"></label>
+    <label class="set-row" style="gap:4px"><b>المذهب</b><select class="ed" data-nf="madh">${MADH.map(([k, l]) => `<option value="${k}" ${t.madh === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+    ${GRP.list.length ? `<label class="set-row" style="gap:4px"><b>المجموعة</b><select class="ed" data-nf="grp"><option value="">بدون مجموعة</option>${GRP.list.map((g) => `<option value="${esc(g.id)}" ${t.grp === g.id ? 'selected' : ''}>${esc(g.name)}</option>`).join('')}</select></label>` : ''}
+    <label class="set-row" style="gap:4px"><b>الصفة</b><input class="ed" data-nf="role" value="${esc(t.role || '')}" placeholder="مثال: شيخ الإمام أحمد، أو فقيه حنبلي"></label>
+    <label class="set-row" style="gap:4px"><b>سنة الوفاة (هجري)</b><input class="ed" data-nf="died" inputmode="numeric" value="${esc(t.died || '')}" placeholder="مثال: ٣١١"></label>
+    <label class="set-row" style="gap:4px"><b>أسطر الترجمة</b>
+      <span class="muted" style="font-size:12px">سطر لكل معلومة، والمصدر بعد علامة | مثل: صحب المروذي إلى أن مات | طبقات الحنابلة ٣/٢٤</span>
+      <textarea class="ed" data-nf="lines" rows="8">${esc(linesTxt)}</textarea></label>
+    ${extFields(t)}
+    ${state.nmsg ? `<p class="muted" role="status">${esc(state.nmsg)}</p>` : ''}
+    <div class="row" style="gap:10px"><button class="btn primary" data-nsave="1">حفظ</button><button class="btn" data-ncancel="1">إلغاء</button></div>
+  </section>`;
+}
+const toEn = (v) => String(v || '').replace(/[٠-٩]/g, (d) => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+async function notableSubmit() {
+  const f = (k) => { const el = document.querySelector(`[data-nf="${k}"]`); return el ? el.value : ''; };
+  const name = f('name').trim();
+  if (!name) { state.nmsg = 'اكتب الاسم أولًا.'; render(); return; }
+  const died = parseInt(toEn(f('died')), 10);
+  const lines = f('lines').split('\n').map((x) => x.trim()).filter(Boolean).map((x) => { const i = x.lastIndexOf('|'); return i > 0 ? { t: x.slice(0, i).trim(), src: x.slice(i + 1).trim() } : { t: x, src: '' }; });
+  const id = state.nedit === 'new' ? 'n' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) : state.nedit;
+  const old = NOT.list.find((x) => x.id === id);
+  const rec = { id, name, madh: f('madh') || 'other', role: f('role').trim(), grp: f('grp') || '', died: isNaN(died) ? null : died, lines, stories: extRead().stories, quote: extRead().quote, created: (old && old.created) || Date.now(), updated: Date.now() };
+  state.nmsg = '';
+  const ok = await notSave(rec);
+  if (ok) {
+    if (NOT.db && !NOT.list.find((x) => x.id === id)) NOT.list.push(rec);
+    go('notable', { nid: id, nedit: null, ndelask: null });
+  }
+}
+
+document.addEventListener('input', (e) => {
+  if (e.target.id !== 'schq') return;
+  const norm = (x) => x.replace(/[ًٌٍَُِّْـ]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
+  const q = norm(e.target.value.trim());
+  const sec = e.target.closest('section');
+  let any = false;
+  sec.querySelectorAll('.pills').forEach((ps) => {
+    let n = 0;
+    ps.querySelectorAll('.pill').forEach((p) => { const b = p.querySelector('b'); const ok = !q || norm(b ? b.textContent : '').includes(q); p.hidden = !ok; if (ok) n++; });
+    const box = ps.closest('.cent') || ps.closest('.tier'); if (box) box.hidden = !n;
+    if (n) any = true;
+  });
+  sec.querySelectorAll('.tier').forEach((t) => { t.hidden = ![...t.querySelectorAll('.pill')].some((p) => !p.hidden); });
+  document.getElementById('schnone').hidden = any;
+});
+document.addEventListener('input', (e) => {
+  if (e.target.id !== 'notq') return;
+  const q = e.target.value.trim().replace(/[ًٌٍَُِّْ]/g, '');
+  let any = false;
+  document.querySelectorAll('.not-group').forEach((sec) => {
+    let n = 0;
+    sec.querySelectorAll('[data-q]').forEach((b) => { const ok = !q || b.dataset.q.replace(/[ًٌٍَُِّْ]/g, '').includes(q); b.hidden = !ok; if (ok) n++; });
+    sec.hidden = !n; if (n) any = true;
+  });
+  document.getElementById('notnone').hidden = any;
+});
+
+/* ---------- الإعدادات والوضع الليلي/النهاري ---------- */
+function setTheme(v) {
+  if (v === 'light' || v === 'dark') document.documentElement.setAttribute('data-theme', v);
+  else document.documentElement.removeAttribute('data-theme');
+  store.set('theme', v);
+}
+setTheme(store.get('theme', 'auto'));
+function settingsView() {
+  const cur = store.get('theme', 'auto');
+  const opt = (v, l) => `<button class="chip" data-theme="${v}" aria-pressed="${cur === v}">${l}</button>`;
+  return `
+  <div class="title-block"><h1>الإعدادات</h1></div>
+  <section class="panel set-row">
+    <h2>المظهر</h2>
+    <div class="chips" role="group" aria-label="المظهر">${opt('light', 'نهاري')}${opt('dark', 'ليلي')}${opt('auto', 'تلقائي (حسب الجهاز)')}</div>
+    <p class="muted" style="font-size:13px">يُحفظ اختيارك على هذا الجهاز.</p>
+  </section>
+  <section class="panel quiet">
+    <p class="source-note">المراجع من المكتبة الشاملة: «سير أعلام النبلاء» للذهبي (ط الرسالة)، و«الجواهر المضية»، و«ترتيب المدارك»، و«طبقات الشافعيين» لابن كثير، و«طبقات الحنابلة» لابن أبي يعلى. الأرقام هي الجزء/الصفحة.</p>
+  </section>`;
+}
+
+/* ---------- الرئيسية ---------- */
+function homeView() {
+  const done = IMAMS.filter((i) => state.stamps[i.id]).length;
+  return `
+  <header class="brand">
+    <div><h1>سِيَر</h1><p class="tag">رحلة في تراجم العلماء، من «السير» وكتب تراجم المذاهب</p></div>
+  </header>
+
+  <button class="collection" data-go="imams">
+    <span class="eyebrow">مجموعة</span>
+    <span class="ctitle">أئمة المذاهب الأربعة</span>
+    <span class="letters" aria-hidden="true">${IMAMS.map((i) => `<i style="--ic:${ic(i.id)}">${i.letter}</i>`).join('')}</span>
+  </button>
+
+  <button class="collection alt" data-go="notables">
+    <span class="eyebrow">مجموعة</span>
+    <span class="ctitle">علماء بارزون</span>
+  </button>
+  <section class="panel quiet">
+    <p class="source-note">المراجع من المكتبة الشاملة: «سير أعلام النبلاء» للذهبي (ط الرسالة)، ومع كل إمام كتاب من تراجم مذهبه: «الجواهر المضية» للحنفية، و«ترتيب المدارك» للمالكية، و«طبقات الشافعيين» لابن كثير، و«طبقات الحنابلة» لابن أبي يعلى. الأرقام هي الجزء/الصفحة.</p>
+  </section>
+  ${!DEV_OK ? '' : state.dev ? devPanel() : '<button class="btn" data-dev="on" style="border-style:dashed;min-height:44px">وضع المطوّر</button>'}`;
+}
+
+function imamsView() {
+  const done = IMAMS.filter((i) => state.stamps[i.id]).length;
+  return `
+  <div class="topbar">
+    <button class="icon-btn" data-go="home" aria-label="رجوع إلى الرئيسية">${ICONS.back}</button>
+    <div class="title-block"><h1>أئمة المذاهب الأربعة</h1><span class="sub">اختر إمامًا لتقرأ ترجمته ومواقفه</span></div>
+  </div>
+  <section class="imam-grid" aria-label="الأئمة">
+    ${IMAMS.map((i) => `
+      <button class="imam-card" style="--ic:${ic(i.id)}" data-open="${i.id}" aria-label="ترجمة ${esc(i.name)}">
+        ${state.stamps[i.id] ? `<span class="stamp" title="أتممتَ مواقفه">${ICONS.check}</span>` : ''}
+        <span class="letter" aria-hidden="true">${i.letter}</span>
+        <span class="name">${i.short}</span>
+        <span class="yrs">${i.years}</span>
+        <span class="school">${i.school}</span>
+      </button>`).join('')}
+  </section>
+  <section class="tiles two" aria-label="أدوات الأئمة">
+    <button class="tile" data-go="timeline">${ICONS.time}<b>الخط الزمني</b><span>أعمارهم ولحظات التقائهم</span></button>
+    <button class="tile" data-go="map">${ICONS.map}<b>الخريطة</b><span>أين وُلدوا وطلبوا العلم</span></button>
+  </section>
+  <button class="tile" data-go="quiz" style="flex-direction:row;align-items:center;gap:12px">${ICONS.quiz}<span style="display:flex;flex-direction:column"><b>من أنا؟</b><span>خمّن الإمام من التلميحات</span></span></button>
+
+  <section class="panel">
+    <div class="row" style="align-items:center;justify-content:space-between">
+      <h2>جواز الرحلة</h2>
+      <span class="score">${ar(done)} من ٤</span>
+    </div>
+    ${passportHTML()}
+    <p class="muted" style="font-size:13px">اقرأ مواقف كل إمام حتى آخرها ليُختم جوازك باسمه.</p>
+  </section>
+  <section class="panel">
+    <h2>سلسلة الأئمة</h2>
+    <p class="muted" style="font-size:14px">كيف اتصل علم الأئمة الأربعة بعضه ببعض، بين شيخ وتلميذ.</p>
+    ${chainSVG()}
+    <div class="fact" style="gap:6px">
+      ${LINKS.map((l) => `<div style="font-size:13px">${l.from} ← ${l.to}: ${l.lbl} ${CITE(l.r, l.m)}</div>`).join('')}
+    </div>
+  </section>`;
+}
+
+function passportHTML() {
+  return `<div class="passport">${IMAMS.map((i) => `
+    <div class="seal ${state.stamps[i.id] ? 'on' : ''}" style="--ic:${ic(i.id)}">
+      <span class="ring" aria-hidden="true">${i.letter}</span><span>${i.short}</span>
+    </div>`).join('')}</div>`;
+}
+
+function chainSVG() {
+  // عُقد السلسلة: الأعلى أقدم
+  const N = {
+    'أبو حنيفة':     { x: 255, y: 50,  id: 'hanafi' },
+    'مالك':          { x: 85,  y: 50,  id: 'maliki' },
+    'محمد بن الحسن': { x: 255, y: 140, id: null },
+    'الشافعي':       { x: 170, y: 225, id: 'shafii' },
+    'أحمد':          { x: 170, y: 305, id: 'hanbali' }
+  };
+  const w = 120, h = 36;
+  const edge = (l) => {
+    const a = N[l.from], b = N[l.to];
+    if (l.from === 'مالك' && l.to === 'أبو حنيفة') {
+      return `<path class="edge" d="M${a.x + w / 2} ${a.y} L${b.x - w / 2 - 6} ${b.y}" marker-end="url(#ah)"/>
+              <text class="elbl" x="${(a.x + b.x) / 2}" y="${a.y - 26}" text-anchor="middle">أقران · روى عنه</text>`;
+    }
+    const x1 = a.x, y1 = a.y + h / 2, x2 = b.x, y2 = b.y - h / 2 - 6;
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+    const short = { 'تلميذه': 'تلميذه', 'أخذ عنه ببغداد ولازمه': 'لازمه ببغداد', 'قرأ عليه الموطأ': 'قرأ الموطأ', 'سمع منه أحمد': 'سمع منه' }[l.lbl] || '';
+    return `<path class="edge" d="M${x1} ${y1} C${x1} ${my}, ${x2} ${my}, ${x2} ${y2}" marker-end="url(#ah)"/>
+            <text class="elbl" x="${mx + (x1 > x2 ? 10 : -10)}" y="${my}" text-anchor="${x1 > x2 ? 'start' : 'end'}">${short}</text>`;
+  };
+  return `<div class="svgwrap"><svg class="chain" viewBox="0 0 340 335" role="img" aria-label="مخطط: أبو حنيفة ثم تلميذه محمد بن الحسن ثم الشافعي، ومالك ثم الشافعي، ثم أحمد">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrow" d="M0 0L10 5L0 10z"/></marker></defs>
+    ${LINKS.filter((l) => !l.noEdge).map(edge).join('')}
+    ${Object.entries(N).map(([name, p]) => `
+      <g>
+        <rect class="node" x="${p.x - w / 2}" y="${p.y - h / 2}" width="${w}" height="${h}" rx="18" style="${p.id ? `stroke:${ic(p.id)};stroke-width:1.6` : ''}"/>
+        <text class="lbl" x="${p.x}" y="${p.y + 5}" text-anchor="middle">${name}</text>
+      </g>`).join('')}
+  </svg></div>`;
+}
+
+/* ---------- صفحة الإمام ---------- */
+function imamView() {
+  const i = byId(state.imam);
+  const tabs = [['bio', 'الترجمة'], ['trip', 'الرحلة'], ['stories', 'المواقف'], ['scholars', 'علماء المذهب']];
+  let body = '';
+  if (state.tab === 'bio') body = state.edit === 'imam' ? imamForm() : state.edit === 'new' ? personForm() : state.edit === 'quotei' ? quoteForm() : editBtn('editi') + bioHTML(i);
+  if (state.tab === 'trip') body = tripHTML(i);
+  if (state.tab === 'stories') body = storiesHTML(i);
+  if (state.tab === 'scholars') body = state.edit === 'new' ? personForm() : scholarsHTML(i);
+  return `
+  <div class="topbar">
+    <button class="icon-btn" data-go="imams" aria-label="رجوع إلى أئمة المذاهب الأربعة">${ICONS.back}</button>
+    <div class="title-block"><h1>${i.short}</h1><span class="sub">${i.school} · ${i.years}</span></div>
+  </div>
+  <div class="tabs" role="tablist">
+    ${tabs.map(([k, l]) => `<button class="tab" role="tab" aria-selected="${state.tab === k}" data-tab="${k}">${l}</button>`).join('')}
+  </div>
+  <div style="--ic:${ic(i.id)};display:flex;flex-direction:column;gap:14px">${body}</div>`;
+}
+
+/* ---------- نماذج التعديل (وضع المطوّر) ---------- */
+const fld = (label, inner) => `<label class="ed-f"><span class="ref">${label}</span>${inner}</label>`;
+const inp = (k, v, ph) => `<input class="ed" data-f="${k}" value="${esc(v || '')}" placeholder="${ph || ''}">`;
+const area = (k, v, rows) => `<textarea class="ed" data-f="${k}" rows="${rows || 3}">${esc(v || '')}</textarea>`;
+function collect() {
+  const d = state.draft, g = (k) => { const el = document.querySelector(`[data-f="${k}"]`); return el ? el.value : undefined; };
+  if (state.edit === 'person' || state.edit === 'new') {
+    ['name', 'sub', 'note', 'd', 'lr', 'lm'].forEach((k) => { const v = g(k); if (v !== undefined) d[k] = v; });
+    d.lines.forEach((l, n) => ['t', 'r', 'm'].forEach((k) => { const v = g(`l${n}${k}`); if (v !== undefined) l[k] = v; }));
+    if (g('qt') !== undefined) { d.quote = { t: g('qt'), by: g('qby'), r: g('qr'), m: g('qm') }; }
+  } else if (state.edit === 'quote' || state.edit === 'quotei') {
+    ['qt', 'qby', 'qr', 'qm'].forEach((k) => { const v = g(k); if (v !== undefined) d[k] = v; });
+  } else if (state.edit === 'imam') {
+    ['summary', 'sifaT', 'extraT', 'quote', 'quoteBy'].forEach((k) => { const v = g(k); if (v !== undefined) d[k] = v; });
+  }
+}
+function personForm(id) {
+  const d = state.draft;
+  const q = d.quote || { t: '', by: '', r: '', m: '' };
+  const isNew = state.edit === 'new';
+  return `<section class="panel"><h2>${isNew ? (d.role === 'teachers' ? 'إضافة شيخ' : d.role === 'scholars' ? 'إضافة عالم من علماء المذهب' : 'إضافة تلميذ') : 'تعديل الترجمة'}</h2>
+    ${fld('الاسم', inp('name', d.name))}${d.err ? '<p style="color:#c0392b;font-size:13px">الاسم مطلوب.</p>' : ''}${fld('الوصف المختصر', inp('sub', d.sub))}
+    ${isNew ? fld('عبارة قصيرة تظهر في القائمة (اختياري)', inp('d', d.d)) + fld('السير (جزء/صفحة) للقائمة', inp('lr', d.lr, 'مثال: ٦/٣٩١')) + fld('مرجع كتاب المذهب للقائمة', inp('lm', d.lm, 'مثال: الجواهر ١/٥٥')) : ''}
+    ${d.lines.map((l, n) => `<div class="ed-line">
+      ${fld('السطر ' + ar(n + 1), area('l' + n + 't', l.t, 3))}
+      ${fld('السير (جزء/صفحة)', inp('l' + n + 'r', l.r, 'مثال: ٥/٢٣١'))}
+      ${fld('مرجع كتاب المذهب', inp('l' + n + 'm', l.m, 'مثال: الجواهر ٢/١٥١'))}
+      <button class="btn" data-dev="delline" data-k="${n}">حذف هذا السطر</button></div>`).join('')}
+    <button class="btn" data-dev="addline">+ إضافة سطر</button>
+  </section>
+  <section class="panel"><h2>الكلمة المأثورة</h2>
+    ${fld('النص', area('qt', q.t, 2))}${fld('القائل', inp('qby', q.by))}${fld('السير', inp('qr', q.r))}${fld('مرجع المذهب', inp('qm', q.m))}
+    <p class="muted" style="font-size:12px">اترك النص فارغًا لحذفها.</p>
+  </section>
+  <div class="row" style="gap:8px;flex-wrap:wrap">
+    <button class="btn primary grow" data-dev="${isNew ? 'savenew' : 'savep'}">حفظ</button>
+    <button class="btn grow" data-dev="cancel">إلغاء</button>
+    ${isNew ? '' : '<button class="btn" data-dev="resetp">استرجاع الأصل</button>'}
+  </div>`;
+}
+function quoteForm() {
+  const d = state.draft;
+  return `<section class="panel"><h2>تعديل الكلمة المأثورة</h2>
+    ${fld('النص (من كلام صاحب الترجمة نفسه)', area('qt', d.qt, 3))}
+    ${fld('القائل', inp('qby', d.qby))}${fld('السير (جزء/صفحة)', inp('qr', d.qr, 'مثال: ٥/٢٣٣'))}${fld('مرجع كتاب المذهب', inp('qm', d.qm, 'مثال: الجواهر ٢/١٥١'))}
+    <p class="muted" style="font-size:12px">اترك النص فارغًا لحذف الكلمة المأثورة.</p>
+  </section>
+  <div class="row" style="gap:8px;flex-wrap:wrap">
+    <button class="btn primary grow" data-dev="saveq">حفظ</button>
+    <button class="btn grow" data-dev="cancel">إلغاء</button>
+    <button class="btn" data-dev="resetq">استرجاع الأصل</button>
+  </div>`;
+}
+const quoteBtn = (what, has) => (DEV_OK && state.dev) ? `<button class="btn" data-dev="${what}" style="border-style:dashed">${has ? '✎ تعديل الكلمة المأثورة' : '+ إضافة كلمة مأثورة'}</button>` : '';
+
+function imamForm() {
+  const d = state.draft;
+  return `<section class="panel"><h2>تعديل نصوص الترجمة</h2>
+    ${fld('الملخص', area('summary', d.summary, 5))}${fld('الصفة والشمائل', area('sifaT', d.sifaT, 5))}
+    ${fld('الفقرة الإضافية', area('extraT', d.extraT, 3))}${fld('الكلمة المأثورة', area('quote', d.quote, 2))}${fld('قائلها', inp('quoteBy', d.quoteBy))}
+    <p class="muted" style="font-size:12px">المراجع (أرقام الصفحات) تبقى كما هي؛ تأكد أن تعديلك لا يخالف المصدر.</p>
+  </section>
+  <div class="row" style="gap:8px;flex-wrap:wrap">
+    <button class="btn primary grow" data-dev="savei">حفظ</button>
+    <button class="btn grow" data-dev="cancel">إلغاء</button>
+    <button class="btn" data-dev="reseti">استرجاع الأصل</button>
+  </div>`;
+}
+function devPanel() {
+  const n = Object.keys(EDITS.people).length + Object.keys(EDITS.imams).length + EDITS.added.length;
+  return `<section class="panel"><h2>وضع المطوّر</h2>
+    <p class="muted" style="font-size:13px">افتح أي ترجمة (إمام أو شيخ أو تلميذ) واضغط «تعديل». التعديلات محفوظة على هذا الجهاز (${ar(n)} حاليًا).</p>
+    <div class="row" style="gap:8px;flex-wrap:wrap">
+      <button class="btn" data-dev="export">تصدير التعديلات</button>
+      <button class="btn" data-dev="import">استيراد</button>
+      <button class="btn" data-dev="clear">مسح كل التعديلات</button>
+      <button class="btn" data-dev="off">إغلاق وضع المطوّر</button>
+    </div>
+    <textarea class="ed" data-f="io" rows="4" placeholder="للتصدير: انسخ النص من هنا. للاستيراد: الصق النص ثم اضغط استيراد.">${esc(state.devOut)}</textarea>
+  </section>`;
+}
+const addBtn = (role, w) => (DEV_OK && state.dev) ? `<button class="btn" data-dev="addnew" data-role="${role}" style="border-style:dashed">+ إضافة ${w}</button>` : '';
+const editBtn = (what) => (DEV_OK && state.dev) ? `<button class="btn" data-dev="${what}" style="border-style:dashed">✎ تعديل</button>` : '';
+
+function pplPill(t) {
+  const id = t.p || PERSON_OF[t.n];
+  const inner = `<b>${t.n}</b>${t.d ? `<span class="ref">${t.d}</span>` : ''}${CITE(t.r, t.m)}${id ? '<span class="more">اقرأ ترجمته ‹</span>' : ''}`;
+  return id ? `<button class="pill tap" data-person="${id}" aria-label="ترجمة ${esc(t.n)}">${inner}</button>` : `<div class="pill">${inner}</div>`;
+}
+
+function delAdded() {
+  if (!(DEV_OK && state.dev) || !EDITS.added.some((a) => a.id === state.person)) return '';
+  return '<button class="btn" data-dev="deladded" style="border-style:dashed">حذف من القائمة</button>';
+}
+
+function personView() {
+  const p = PEOPLE[state.person];
+  const back = state.from === 'notables' ? 'data-backnot="1"' : state.imam ? `data-backimam="${state.imam}"` : 'data-go="imams"';
+  const i = state.imam ? byId(state.imam) : null;
+  if (state.xedit === state.person) return extForm(state.person);
+  const body = (state.edit === 'person') ? personForm(state.person) : (state.edit === 'quote') ? quoteForm() : p.imam
+    ? `<section class="panel"><p>إمام من أئمة المذاهب الأربعة، وترجمته الكاملة بمواقفها في صفحته.</p><button class="btn primary" data-open="${p.imam}">افتح ترجمة ${esc(p.name)}</button></section>`
+    : `<section class="panel"><h2>ترجمته</h2>${p.lines.map((l) => `<div class="fact"><span>${l.t}</span>${CITE(l.r, l.m)}</div>`).join('')}</section>
+       ${p.quote ? `<section class="panel"><h2>كلمة مأثورة</h2><p class="quote">«${p.quote.t}»</p><span class="ref">${p.quote.by}${p.quote.r ? ' · السير ' + p.quote.r : ''}${p.quote.m ? ' · ' + p.quote.m : ''}</span></section>` : ''}
+       ${quoteBtn('editqp', !!p.quote)}
+       ${extShow(EXT.map[state.person], 'p:' + state.person)}
+       ${canEdit() ? `<button class="btn" data-xedit="${esc(state.person)}" style="border-style:dashed">${EXT.map[state.person] ? '✎ تعديل المواقف والكلمة المأثورة' : '+ إضافة مواقف وكلمة مأثورة'}</button>` : ''}`;
+  return `
+  <div class="topbar">
+    <button class="icon-btn" ${back} aria-label="رجوع${i ? ' إلى ' + esc(i.short) : ''}">${ICONS.back}</button>
+    <div class="title-block"><h1>${p.name}</h1><span class="sub">${p.sub}</span></div>
+  </div>
+  <div style="${i ? `--ic:${ic(i.id)};` : ''}display:flex;flex-direction:column;gap:14px">${state.edit || p.imam ? '' : editBtn('editp') + delAdded()}${body}</div>`;
+}
+
+const AR_N = (n) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+const CENT = ['', 'الأول', 'الثاني', 'الثالث', 'الرابع', 'الخامس', 'السادس', 'السابع', 'الثامن', 'التاسع', 'العاشر'];
+const TIER_T = { 1: ['الطبقة الأولى', 'الآخذون عن الإمام مباشرةً'], 2: ['الطبقة الثانية', 'مَن جاء بعدهم، وأخذ عن أصحابه وتلاميذه'] };
+function schPill(t) {
+  const dy = t.y ? `ت ${t.yl || AR_N(t.y)} هـ${t.yn ? ' ' + t.yn : ''}` : '';
+  return pplPill(Object.assign({}, t, { d: [t.d, dy].filter(Boolean).join(' · ') }));
+}
+function scholarsHTML(i) {
+  const all = i.scholars;
+  const groups = [];
+  [1, 2].forEach((tr) => {
+    const inT = all.filter((t) => t.tier === tr && t.y);
+    const noY = all.filter((t) => t.tier === tr && !t.y);
+    if (!inT.length && !noY.length) return;
+    const cs = [...new Set(inT.map((t) => Math.ceil(t.y / 100)))].sort((a, b) => a - b);
+    groups.push(`<div class="tier"><h3>${TIER_T[tr][0]} <small>${TIER_T[tr][1]}</small></h3>${cs.map((c) => `<div class="cent"><h4>القرن ${CENT[c] || AR_N(c)} الهجري</h4><div class="pills">${inT.filter((t) => Math.ceil(t.y / 100) === c).sort((a, b) => a.y - b.y).map(schPill).join('')}</div></div>`).join('')}${noY.length ? `<div class="cent"><h4>لم تُذكر سنة وفاته في مصدره</h4><div class="pills">${noY.map(schPill).join('')}</div></div>` : ''}</div>`);
+  });
+  const rest = all.filter((t) => !t.tier);
+  if (rest.length) groups.push(`<div class="tier"><h3>غير مصنَّف <small>لم تُحدَّد طبقته أو سنة وفاته بعد</small></h3><div class="pills">${rest.map((t) => pplPill(t)).join('')}</div></div>`);
+  return `<section class="panel">
+    <h2>علماء المذهب</h2>
+    ${all.length ? '<input class="search" id="schq" type="search" placeholder="ابحث عن اسم العالم" aria-label="ابحث عن اسم العالم في علماء المذهب">' : ''}
+    <p class="muted" id="schnone" hidden>لا نتائج.</p>
+    <p class="muted" style="font-size:13px">من علماء ${i.school} الذين ترجم لهم الذهبي في «السير»، مع موضع كل ترجمة. التصنيف إلى طبقتين بحسب الأخذ عن الإمام مباشرةً أو عمّن بعده، ثم بالقرن الهجري بحسب سنة الوفاة المذكورة في ترجمة كل عالم (وعند الخلاف تُذكر الروايتان).</p>
+    ${i.id === 'hanbali' ? '<p class="muted" style="font-size:13px">أُضيف هنا كل مَن وصفه الذهبي في ترجمته من «السير» بأنه حنبلي (١٠٩ أسماء)، وتحت كل اسم وصف الذهبي له، وموضع ترجمته، وسنة وفاته كما في ترجمته. ومَن تحوّل عن المذهب أو انتقل إليه نُبّه عليه. أما مَن ذُكر عَرَضًا في ترجمة غيره فليس هنا. وأُضيفت تراجم من «طبقات الحنابلة» لابن أبي يعلى (ت العثيمين): الطبقة الثانية كاملةً، وأعلام الطبقة الأولى من أصحاب أحمد؛ ويُفتح كل اسم منها على ترجمته موثّقةً بالجزء والصفحة.</p>' : ''}
+    ${all.length ? groups.join('') : '<p class="muted">لم تُضف أسماء لهذا المذهب بعد.</p>'}
+    ${addBtn('scholars', 'عالم')}
+  </section>`;
+}
+
+function bioHTML(i) {
+  return `
+  <section class="hero">
+    <span class="eyebrow">${i.school}</span>
+    <h2 class="nm">${i.name}</h2>
+    <div class="fact"><span class="yrs">${i.years}</span>${CITE(i.yearsRef, i.yearsM)}</div>
+    <p>${i.summary}</p>${REF(i.summaryRef)}
+    <div class="fact" style="border-top:1px solid var(--line);padding-top:10px"><span>${i.extra.t}</span>${CITE('', i.extra.m)}</div>
+  </section>
+  <section class="panel">
+    <h2>صفته وشمائله</h2>
+    <p>${i.sifa.t}</p>${CITE(i.sifa.r, i.sifa.m)}
+  </section>
+  <section class="panel">
+    <h2>محطات حياته</h2>
+    ${i.places.map((p) => `<div class="place"><span class="dot"></span><div class="fact"><span><b>${CITIES[p.city].n}</b>: ${p.t}</span>${CITE(p.r, p.m)}</div></div>`).join('')}
+  </section>
+  <section class="panel">
+    <h2>من شيوخه</h2>
+    <div class="pills">${i.teachers.map((t) => pplPill(t)).join('')}</div>${addBtn('teachers', 'شيخ')}
+  </section>
+  <section class="panel">
+    <h2>من تلاميذه والرواة عنه</h2>
+    <div class="pills">${i.students.map((t) => pplPill(t)).join('')}</div>${addBtn('students', 'تلميذ')}
+    ${i.studentsNote ? `<div class="fact"><span style="font-size:14px">${i.studentsNote.t}</span>${CITE('', i.studentsNote.m)}</div>` : ''}
+  </section>
+  <section class="panel">
+    <h2>مؤلفاته</h2>
+    ${i.works.length
+      ? `<div class="pills">${i.works.map((w) => `<div class="pill work"><b>${w.n}</b>${CITE(w.r, w.m)}</div>`).join('')}</div>`
+      : `<p class="muted">لم يذكر الذهبي في هذه الترجمة كتابًا من تصنيفه.</p>`}
+  </section>
+  <section class="panel">
+    <h2>كلمة مأثورة</h2>
+    <p class="quote">«${i.quote}»</p>
+    <span class="ref">${i.quoteBy}${i.quoteRef ? ' · السير ' + i.quoteRef : ''}${i.quoteM ? ' · ' + i.quoteM : ''}</span>
+    ${quoteBtn('editqi', true)}
+  </section>
+  <section class="panel quiet">
+    <h2 style="color:var(--muted)">تنبيه في الروايات</h2>
+    ${i.notes.map((n) => `<div class="fact"><p style="font-size:14px">${n.t}</p>${CITE(n.r, n.m)}</div>`).join('')}
+  </section>
+  <section class="panel">
+    <h2>مراجع الترجمة</h2>
+    <div class="fact"><span style="font-size:14px">«سير أعلام النبلاء» لشمس الدين الذهبي (ت ٧٤٨ هـ)، طبعة مؤسسة الرسالة</span><span class="ref">يُشار إليه بـ«السير»</span></div>
+    <div class="fact"><span style="font-size:14px">${i.book.full}</span><span class="ref">يُشار إليه بـ«${i.book.short}»</span></div>
+  </section>`;
+}
+
+/* ---------- الخريطة ---------- */
+const LON0 = 29, LON1 = 64, LAT0 = 13, LAT1 = 39.5, W = 340, H = 290, PAD = 12;
+const px = (lon) => PAD + (lon - LON0) / (LON1 - LON0) * (W - 2 * PAD);
+const py = (lat) => PAD + (LAT1 - lat) / (LAT1 - LAT0) * (H - 2 * PAD);
+
+const KIND_COLOR = { b: '#2e9e5b', d: '#d64541', s: '#2f7de1' };
+function mapSVG(ids) {
+  const active = new Set();
+  ids.forEach((id) => byId(id).places.forEach((p) => active.add(p.city)));
+  let grid = '';
+  for (let lon = 30; lon <= 60; lon += 5) grid += `<line class="grid" x1="${px(lon)}" y1="${PAD}" x2="${px(lon)}" y2="${H - PAD}"/><text class="gl" x="${px(lon)}" y="${H - 2}" text-anchor="middle">${ar(lon)}°</text>`;
+  for (let lat = 15; lat <= 35; lat += 5) grid += `<line class="grid" x1="${PAD}" y1="${py(lat)}" x2="${W - PAD}" y2="${py(lat)}"/><text class="gl" x="${W - 2}" y="${py(lat) - 2}" text-anchor="end">${ar(lat)}°</text>`;
+  const routes = ids.map((id) => {
+    const pts = byId(id).places.map((p) => `${px(CITIES[p.city].lon)},${py(CITIES[p.city].lat)}`).join(' ');
+    return byId(id).places.length > 1 ? `<polyline points="${pts}" fill="none" stroke="${ic(id)}" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round" opacity=".9"/>` : '';
+  }).join('');
+  const cities = Object.entries(CITIES).map(([k, c]) => {
+    const on = active.has(k);
+    const owners = ids.filter((id) => byId(id).places.some((p) => p.city === k));
+    const x = px(c.lon), y = py(c.lat);
+    const dots = owners.length
+      ? owners.map((id, n) => { const pl = byId(id).places.find((q) => q.city === k); return `<circle cx="${x + (n - (owners.length - 1) / 2) * 9}" cy="${y}" r="5.5" fill="${KIND_COLOR[pl.k] || 'var(--faint)'}" stroke="${ic(id)}" stroke-width="2"/>`; }).join('')
+      : `<circle cx="${x}" cy="${y}" r="3" fill="var(--faint)"/>`;
+    return `${dots}<text class="city ${on ? '' : 'dim'}" x="${x + c.dx + (c.a === 'start' ? (owners.length - 1) * 3.5 : c.a === 'end' ? -(owners.length - 1) * 3.5 : 0)}" y="${y + c.dy}" text-anchor="${c.a}">${c.n}</text>`;
+  }).join('');
+  return `<div class="svgwrap"><svg class="map" viewBox="0 0 ${W} ${H}" role="img" aria-label="خريطة تخطيطية لمواضع الأئمة">
+    <rect class="base" x="${PAD}" y="${PAD}" width="${W - 2 * PAD}" height="${H - 2 * PAD}" rx="10"/>
+    ${grid}${routes}${cities}
+  </svg></div>
+  <p class="ref">خريطة تخطيطية بخطوط الطول والعرض، والمواضع تقريبية. لون النقطة يدلّ على نوع الموضع، ولون حلقتها على الإمام. يصل الخط بين المواضع بترتيب ذكرها في الترجمة، لا بترتيب زمني مؤكد.</p>`;
+}
+
+function tripHTML(i) {
+  return `
+  <section class="panel">${mapSVG([i.id])}<div class="legend">${[['b', 'الولادة'], ['s', 'طلب العلم'], ['d', 'الوفاة']].map(([k, l]) => `<span><i style="background:${KIND_COLOR[k]}"></i>${l}</span>`).join('')}<span><i style="background:var(--faint)"></i>غير محدَّد</span></div></section>
+  <section class="panel">
+    <h2>المواضع في ترجمته</h2>
+    ${i.places.map((p) => `<div class="place"><span class="dot"></span><div class="fact"><span><b>${CITIES[p.city].n}</b>: ${p.t}</span>${CITE(p.r, p.m)}</div></div>`).join('')}
+  </section>`;
+}
+
+function mapView() {
+  const ids = state.mapFilter === 'all' ? IMAMS.map((i) => i.id) : [state.mapFilter];
+  return `
+  <div class="topbar"><button class="icon-btn" data-go="imams" aria-label="رجوع إلى أئمة المذاهب الأربعة">${ICONS.back}</button><div class="title-block"><h1>خريطة الأئمة</h1><span class="sub">أين وُلدوا وطلبوا العلم وماتوا</span></div></div>
+  <div class="chips" role="group" aria-label="تصفية الخريطة">
+    <button class="chip" aria-pressed="${state.mapFilter === 'all'}" data-mapf="all">الكل</button>
+    ${IMAMS.map((i) => `<button class="chip" aria-pressed="${state.mapFilter === i.id}" data-mapf="${i.id}">${i.short}</button>`).join('')}
+  </div>
+  <section class="panel">
+    ${mapSVG(ids)}
+    <div class="legend">${[['b', 'الولادة'], ['s', 'طلب العلم'], ['d', 'الوفاة']].map(([k, l]) => `<span><i style="background:${KIND_COLOR[k]}"></i>${l}</span>`).join('')}<span><i style="background:var(--faint)"></i>غير محدَّد</span></div>
+    <div class="legend">${IMAMS.map((i) => `<span style="--ic:${ic(i.id)}"><i style="background:none;border:2px solid var(--ic)"></i>${i.short}</span>`).join('')}</div>
+  </section>
+  ${ids.map((id) => { const i = byId(id); return `
+  <section class="panel" style="--ic:${ic(id)}">
+    <h2 style="color:var(--ic)">${i.short}</h2>
+    ${i.places.map((p) => `<div class="place"><span class="dot"></span><div class="fact"><span><b>${CITIES[p.city].n}</b>: ${p.t}</span>${CITE(p.r, p.m)}</div></div>`).join('')}
+  </section>`; }).join('')}`;
+}
+
+/* ---------- المواقف ---------- */
+function storiesHTML(i) {
+  const n = i.stories.length, k = Math.min(state.story, n - 1), s = i.stories[k];
+  const last = k === n - 1;
+  return `
+  <div class="progress" aria-hidden="true">${i.stories.map((_, j) => `<span class="${j <= k ? 'on' : ''}"></span>`).join('')}</div>
+  <article class="story" aria-live="polite">
+    <span class="kicker">${s.k} · الموقف ${ar(k + 1)} من ${ar(n)}</span>
+    <h3>${s.h}</h3>
+    <p>${s.p}</p>
+    ${CITE(s.r, s.m)}
+  </article>
+  <div class="row">
+    <button class="btn grow" data-story="-1" ${k === 0 ? 'disabled' : ''}>السابق</button>
+    ${last
+      ? `<button class="btn primary grow" data-stamp="${i.id}">${state.stamps[i.id] ? 'خُتم جوازك' : 'أتممتُ المواقف، اختم الجواز'}</button>`
+      : `<button class="btn primary grow" data-story="1">الموقف التالي</button>`}
+  </div>`;
+}
+
+/* ---------- الخط الزمني ---------- */
+function timelineView() {
+  const Y0 = 70, Y1 = 250, L = 16, R = 324;
+  const x = (y) => R - (y - Y0) / (Y1 - Y0) * (R - L); // من اليمين إلى اليسار
+  const rowH = 46, top = 30;
+  const ticks = [80, 100, 150, 200, 241].map((t) => `<line class="axis" x1="${x(t)}" y1="${top - 8}" x2="${x(t)}" y2="${top + rowH * 4}"/><text class="tick" x="${x(t)}" y="${top - 12}" text-anchor="middle">${ar(t)}</text>`).join('');
+  const bars = IMAMS.map((i, n) => {
+    const y = top + n * rowH + 10;
+    return `<rect x="${x(i.died)}" y="${y}" width="${x(i.born) - x(i.died)}" height="16" rx="8" fill="${ic(i.id)}"/>
+      <text class="nm" x="${x(i.born)}" y="${y - 4}" text-anchor="end">${i.short}</text>
+      <text class="yr" x="${x(i.died) - 4}" y="${y + 12}" text-anchor="end">${ar(i.died)}</text>`;
+  }).join('');
+  const ev = `<line class="ev" x1="${x(179)}" y1="${top - 4}" x2="${x(179)}" y2="${top + rowH * 4 + 4}"/><text class="evt" x="${x(179)}" y="${top + rowH * 4 + 18}" text-anchor="middle">١٧٩ هـ</text>`;
+  return `
+  <div class="topbar"><button class="icon-btn" data-go="imams" aria-label="رجوع إلى أئمة المذاهب الأربعة">${ICONS.back}</button><div class="title-block"><h1>الخط الزمني</h1><span class="sub">أعمار الأئمة الأربعة بالسنة الهجرية</span></div></div>
+  <section class="panel">
+    <div class="svgwrap"><svg class="tl" viewBox="0 0 340 ${top + rowH * 4 + 28}" role="img" aria-label="أشرطة أعمار الأئمة من سنة ٨٠ إلى ٢٤١ هجرية">${ticks}${bars}${ev}</svg></div>
+    <p class="ref">يُقرأ الخط من اليمين إلى اليسار. الخط المتقطع عند سنة ١٧٩ هـ.</p>
+  </section>
+  <section class="panel">
+    <h2>لحظات التقاء</h2>
+    <div class="fact"><span>سنة ١٧٩ هـ مات مالك، وفيها بدأ أحمد طلب العلم وهو ابن خمس عشرة سنة.</span>${REF('٨/١٣٠، ١١/١٨٠')}</div>
+    <div class="fact"><span>الشافعي، المولود سنة ١٥٠، حمل الموطأ عن مالك في المدينة وهو ابن نيّف وعشرين.</span>${CITE('١٠/٦–٧', 'طبقات الشافعيين (فصل الرحلة)')}</div>
+    <div class="fact"><span>وُلد الشافعي في السنة التي تُوفي فيها أبو حنيفة، سنة ١٥٠ هـ.</span>${CITE('٦/٤٠٣، ١٠/١٠', 'طبقات الشافعيين (فصل المولد)')}</div>
+    <div class="fact"><span>قدم الشافعي بغداد أول مرة سنة ١٨٤ هـ بعد موت أبي يوسف بسنتين، واجتمع بأحمد في قدمته سنة ١٩٥ هـ.</span>${CITE('', 'طبقات الشافعيين (فصل الرحلة)، ص ٣٩')}</div>
+    <div class="fact"><span>كان أحمد يبكي في زمن محنته، ويتسلّى بضرب أبي حنيفة على القضاء.</span>${CITE('', 'الجواهر ١/٥٦')}</div>
+    <div class="fact"><span>سمع أحمد من الشافعي، ثم عاش بعده سبعًا وثلاثين سنة.</span>${REF('١١/١٨١، ١٠/٧٦، ١١/٣٣٤')}</div>
+  </section>
+  <section class="panel">
+    <h2>بين يديك</h2>
+    <div class="pills">${IMAMS.map((i) => `<button class="pill" style="--ic:${ic(i.id)};border:1px solid var(--ic);cursor:pointer;text-align:start" data-open="${i.id}"><b>${i.short}</b><span class="ref">${i.years}</span></button>`).join('')}</div>
+  </section>`;
+}
+
+/* ---------- من أنا؟ ---------- */
+function shuffle(a) { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; }
+function newQuiz() { return { order: shuffle(IMAMS.map((i) => i.id)), round: 0, shown: 1, picked: null, score: 0, opts: shuffle(IMAMS.map((i) => i.id)) }; }
+
+function quizView() {
+  if (!state.quiz) state.quiz = newQuiz();
+  const q = state.quiz;
+  if (q.round >= q.order.length) {
+    return `
+    <div class="topbar"><button class="icon-btn" data-go="imams" aria-label="رجوع إلى أئمة المذاهب الأربعة">${ICONS.back}</button><div class="title-block"><h1>من أنا؟</h1><span class="sub">انتهت الجولة</span></div></div>
+    <section class="panel" style="align-items:flex-start">
+      <span class="eyebrow">نتيجتك</span>
+      <p class="display" style="font-size:40px;line-height:1.2;color:var(--gold)">${ar(q.score)} من ١٢</p>
+      <p class="muted">أفضل نتيجة لك: ${ar(state.best)} من ١٢</p>
+      <button class="btn primary" data-quiz="again">جولة جديدة</button>
+    </section>`;
+  }
+  const id = q.order[q.round], im = byId(id);
+  const answered = q.picked !== null;
+  const right = q.picked === id;
+  const pts = 4 - q.shown;
+  return `
+  <div class="row" style="align-items:flex-end;justify-content:space-between">
+    <div class="topbar"><button class="icon-btn" data-go="imams" aria-label="رجوع إلى أئمة المذاهب الأربعة">${ICONS.back}</button><div class="title-block"><h1>من أنا؟</h1><span class="sub">السؤال ${ar(q.round + 1)} من ٤ · كلما قلّت التلميحات زادت النقاط</span></div></div>
+    <span class="score">${ar(q.score)} نقطة</span>
+  </div>
+  <section class="panel">
+    <div class="hints">
+      ${im.hints.map((h, n) => n < q.shown || answered
+        ? `<div class="hint"><span>${h.t}</span>${CITE(h.r, h.m)}</div>`
+        : `<div class="hint locked">تلميح ${ar(n + 1)} مخفي</div>`).join('')}
+    </div>
+    ${!answered && q.shown < 3 ? `<button class="btn" data-quiz="hint">أظهر تلميحًا آخر (تنقص النقاط إلى ${ar(pts - 1)})</button>` : ''}
+  </section>
+  <div class="options" role="group" aria-label="الخيارات">
+    ${q.opts.map((o) => {
+      let cls = '';
+      if (answered && o === id) cls = 'right';
+      else if (answered && o === q.picked) cls = 'wrong';
+      return `<button class="opt ${cls}" data-pick="${o}" ${answered ? 'disabled' : ''}>${byId(o).short}</button>`;
+    }).join('')}
+  </div>
+  ${answered ? `
+  <section class="panel" style="--ic:${ic(id)}">
+    <p class="verdict" style="color:${right ? 'var(--teal)' : 'var(--c-shafii)'}">${right ? `أصبت، +${ar(pts)} نقاط` : `الجواب: ${im.name}`}</p>
+    <div class="row">
+      <button class="btn grow" data-open="${id}">اقرأ ترجمته</button>
+      <button class="btn primary grow" data-quiz="next">${q.round === 3 ? 'النتيجة' : 'السؤال التالي'}</button>
+    </div>
+  </section>` : ''}`;
+}
+
+/* ---------- العرض والأحداث ---------- */
+function render() {
+  const app = document.getElementById('app');
+  let html = '';
+  if (state.view === 'home') html = homeView();
+  else if (state.view === 'imams') html = imamsView();
+  else if (state.view === 'imam') html = imamView();
+  else if (state.view === 'person') html = personView();
+  else if (state.view === 'timeline') html = timelineView();
+  else if (state.view === 'map') html = mapView();
+  else if (state.view === 'quiz') html = quizView();
+  else if (state.view === 'notables') html = state.gedit ? groupForm() : state.nedit ? notableForm() : notablesView();
+  else if (state.view === 'notable') html = state.nedit ? notableForm() : notableView();
+  else if (state.view === 'settings') html = settingsView();
+  app.innerHTML = html;
+  const navItems = [['home', 'الرئيسية', ICONS.home], ['settings', 'الإعدادات', ICONS.gear]];
+  const cur = state.view === 'settings' ? 'settings' : 'home';
+  document.getElementById('nav').innerHTML = navItems.map(([k, l, svg]) =>
+    `<button class="nav" data-go="${k}" ${cur === k ? 'aria-current="page"' : ''}>${svg}<span>${l}</span></button>`).join('');
+}
+
+function devAction(a, d) {
+  if (a === 'on') { state.dev = true; store.set('dev', true); }
+  else if (a === 'off') { state.dev = false; store.set('dev', false); state.edit = null; }
+  else if (a === 'editp') { state.edit = 'person'; const p = PEOPLE[state.person]; state.draft = JSON.parse(JSON.stringify({ name: p.name, sub: p.sub, lines: p.lines, quote: p.quote || null, note: p.note || '' })); }
+  else if (a === 'editi') { const i = byId(state.imam); state.edit = 'imam'; state.draft = { summary: i.summary, sifaT: i.sifa.t, extraT: i.extra.t, quote: i.quote, quoteBy: i.quoteBy }; }
+  else if (a === 'addnew') { state.edit = 'new'; state.draft = { role: d.role, name: '', sub: '', d: '', lr: '', lm: '', lines: [{ t: '', r: '', m: '' }], quote: null, note: '' }; }
+  else if (a === 'savenew') {
+    collect();
+    const x = state.draft;
+    if (!x.name.trim()) { x.err = 1; render(); return; }
+    const id = 'x' + Date.now().toString(36);
+    EDITS.added.push({ id, imam: state.imam, role: x.role, n: x.name.trim(), d: x.d.trim(), r: x.lr.trim(), m: x.lm.trim(),
+      person: { name: x.name.trim(), sub: x.sub.trim() || (x.role === 'teachers' ? 'من شيوخ ' : x.role === 'scholars' ? 'من علماء ' : 'من تلاميذ ') + byId(state.imam).short, lines: x.lines.filter((l) => l.t.trim()), note: '' } });
+    saveEdits(); applyEdits(); state.edit = null; state.draft = null;
+  }
+  else if (a === 'deladded') {
+    EDITS.added = EDITS.added.filter((x) => x.id !== state.person); delete EDITS.people[state.person]; saveEdits(); applyEdits();
+    go('imam', { imam: state.imam, tab: state.backTab || 'bio' }); return;
+  }
+  else if (a === 'editqp') { const q = PEOPLE[state.person].quote || {}; state.edit = 'quote'; state.draft = { qt: q.t || '', qby: q.by || '', qr: q.r || '', qm: q.m || '' }; }
+  else if (a === 'editqi') { const i = byId(state.imam); state.edit = 'quotei'; state.draft = { qt: i.quote || '', qby: i.quoteBy || '', qr: i.quoteRef || '', qm: i.quoteM || '' }; }
+  else if (a === 'saveq') {
+    collect(); const x = state.draft;
+    if (state.edit === 'quote') {
+      const q = x.qt.trim() ? { t: x.qt.trim(), by: x.qby.trim(), r: x.qr.trim(), m: x.qm.trim() } : null;
+      const ad = EDITS.added.find((z) => z.id === state.person);
+      if (ad) ad.person.quote = q; else EDITS.people[state.person] = Object.assign({}, EDITS.people[state.person], { quote: q });
+    } else {
+      EDITS.imams[state.imam] = Object.assign({}, EDITS.imams[state.imam], { quote: x.qt.trim(), quoteBy: x.qby.trim(), quoteRef: x.qr.trim(), quoteM: x.qm.trim() });
+    }
+    saveEdits(); applyEdits(); state.edit = null; state.draft = null;
+  }
+  else if (a === 'resetq') {
+    if (state.edit === 'quote') {
+      const ad = EDITS.added.find((z) => z.id === state.person);
+      if (ad) ad.person.quote = null; else if (EDITS.people[state.person]) delete EDITS.people[state.person].quote;
+    } else if (EDITS.imams[state.imam]) { ['quote', 'quoteBy', 'quoteRef', 'quoteM'].forEach((k) => delete EDITS.imams[state.imam][k]); }
+    saveEdits(); applyEdits(); state.edit = null; state.draft = null;
+  }
+  else if (a === 'cancel') { state.edit = null; state.draft = null; }
+  else if (a === 'addline') { collect(); state.draft.lines.push({ t: '', r: '', m: '' }); }
+  else if (a === 'delline') { collect(); state.draft.lines.splice(Number(d.k), 1); }
+  else if (a === 'savep') {
+    collect();
+    const x = state.draft, q = x.quote && x.quote.t && x.quote.t.trim() ? x.quote : null;
+    const clean = { name: x.name.trim() || PEOPLE[state.person].name, sub: x.sub, lines: x.lines.filter((l) => l.t.trim()), note: x.note.trim() };
+    if (q) { clean.quote = {}; ['t', 'by', 'r', 'm'].forEach((k) => { if (q[k]) clean.quote[k] = q[k]; }); } else clean.quote = null;
+    const ad = EDITS.added.find((z) => z.id === state.person);
+    if (ad) { ad.person = clean; ad.n = clean.name; } else EDITS.people[state.person] = clean;
+    saveEdits(); applyEdits();
+    if (!clean.quote) delete PEOPLE[state.person].quote;
+    if (!clean.note) delete PEOPLE[state.person].note;
+    state.edit = null; state.draft = null;
+  }
+  else if (a === 'resetp') { delete EDITS.people[state.person]; saveEdits(); applyEdits(); state.edit = null; state.draft = null; }
+  else if (a === 'savei') { collect(); EDITS.imams[state.imam] = Object.assign({}, state.draft); saveEdits(); applyEdits(); state.edit = null; state.draft = null; }
+  else if (a === 'reseti') { delete EDITS.imams[state.imam]; saveEdits(); applyEdits(); state.edit = null; state.draft = null; }
+  else if (a === 'export') { state.devOut = JSON.stringify(EDITS); try { navigator.clipboard.writeText(state.devOut).catch(() => {}); } catch (e) {} }
+  else if (a === 'import') {
+    const el = document.querySelector('[data-f="io"]');
+    try {
+      const j = JSON.parse(el.value);
+      EDITS = { people: Object.assign({}, EDITS.people, j.people || {}), imams: Object.assign({}, EDITS.imams, j.imams || {}), added: EDITS.added.filter((x) => !(j.added || []).some((y) => y.id === x.id)).concat(j.added || []) };
+      saveEdits(); applyEdits(); state.devOut = 'تم الاستيراد.';
+    } catch (e) { state.devOut = 'نص غير صالح؛ الصق ناتج «تصدير التعديلات» كما هو.'; }
+  }
+  else if (a === 'clear') { EDITS = { people: {}, imams: {}, added: [] }; saveEdits(); applyEdits(); state.devOut = ''; }
+  render();
+}
+
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('button');
+  if (!t) return;
+  const d = t.dataset;
+  if (d.dev) { devAction(d.dev, d); return; }
+  if (d.go) go(d.go, d.go === 'imams' ? { imam: null } : {});
+  else if (d.person) go('person', { person: d.person, from: state.view === 'notables' ? 'notables' : (state.view === 'person' ? state.from : ''), backTab: state.tab, backY: state.view === 'person' ? state.backY : (window.scrollY || 0) });
+  else if (d.backnot) { const y = state.backY || 0; go('notables', { from: '' }); try { window.scrollTo(0, y); } catch (e) {} }
+  else if (d.theme) { setTheme(d.theme); render(); }
+  else if (d.nnew) { state.nedit = 'new'; state.nmsg = ''; render(); window.scrollTo(0, 0); }
+  else if (d.nopen) go('notable', { nid: d.nopen, nedit: null, ndelask: null, nmsg: '' });
+  else if (d.nedit) { state.nedit = d.nedit; state.nmsg = ''; render(); window.scrollTo(0, 0); }
+  else if (d.ncancel) { state.nedit = null; state.nmsg = ''; render(); }
+  else if (d.gnew) { state.gedit = 'new'; state.nmsg = ''; render(); window.scrollTo(0, 0); }
+  else if (d.gedit) { state.gedit = d.gedit; state.gdelask = false; state.nmsg = ''; render(); window.scrollTo(0, 0); }
+  else if (d.gcancel) { state.gedit = null; state.gdelask = false; state.nmsg = ''; render(); }
+  else if (d.gdelask) { state.gdelask = true; render(); }
+  else if (d.gdel) { grpDelete(d.gdel).then((ok) => { if (ok) { state.gedit = null; state.gdelask = false; render(); } }); }
+  else if (d.gsave) {
+    const name = (document.querySelector('[data-gf="name"]').value || '').trim();
+    if (!name) { state.nmsg = 'اكتب اسم المجموعة أولًا.'; render(); return; }
+    const old = GRP.list.find((x) => x.id === state.gedit);
+    const id = old ? old.id : 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+    grpSave({ id, name, created: (old && old.created) || Date.now() }).then((ok) => { if (ok) { state.gedit = null; state.nmsg = ''; render(); window.scrollTo(0, 0); } });
+  }
+  else if (d.sadd) { document.getElementById('stlist').insertAdjacentHTML('beforeend', storyBlock({})); const b = document.querySelectorAll('[data-sb]'); b[b.length - 1].querySelector('[data-sf="h"]').focus(); }
+  else if (d.sdel) { t.closest('[data-sb]').remove(); }
+  else if (d.pst) { state.pst = state.pst || {}; state.pst[d.pk] = Math.max(0, (state.pst[d.pk] || 0) + Number(d.pst)); render(); }
+  else if (d.nsave) notableSubmit();
+  else if (d.xedit) { state.xedit = d.xedit; state.nmsg = ''; render(); window.scrollTo(0, 0); }
+  else if (d.xcancel) { state.xedit = null; state.nmsg = ''; render(); }
+  else if (d.xsave) { const id = state.xedit; extSave(id, extRead()).then((ok) => { if (ok) { state.xedit = null; state.nmsg = ''; render(); window.scrollTo(0, 0); } }); }
+  else if (d.ndelask) { state.ndelask = d.ndelask; render(); }
+  else if (d.ndel) { notDelete(d.ndel).then((ok) => { if (ok) go('notables', { nid: null, ndelask: null }); }); }
+  else if (d.backimam) { const y = state.backY || 0; go('imam', { imam: d.backimam, tab: state.backTab || 'bio', story: 0 }); try { window.scrollTo(0, y); } catch (e) {} }
+  else if (d.open) go('imam', { imam: d.open, tab: 'bio', story: 0 });
+  else if (d.tab) { state.tab = d.tab; state.story = 0; render(); }
+  else if (d.mapf) { state.mapFilter = d.mapf; render(); }
+  else if (d.story) { state.story = Math.max(0, state.story + Number(d.story)); render(); }
+  else if (d.stamp) { state.stamps[d.stamp] = true; store.set('stamps', state.stamps); go('imams'); }
+  else if (d.pick) {
+    const q = state.quiz; if (q.picked !== null) return;
+    q.picked = d.pick;
+    if (d.pick === q.order[q.round]) q.score += 4 - q.shown;
+    render();
+  }
+  else if (d.quiz === 'hint') { state.quiz.shown = Math.min(3, state.quiz.shown + 1); render(); }
+  else if (d.quiz === 'next') {
+    const q = state.quiz; q.round += 1; q.shown = 1; q.picked = null; q.opts = shuffle(IMAMS.map((i) => i.id));
+    if (q.round >= q.order.length && q.score > state.best) { state.best = q.score; store.set('best', state.best); }
+    render();
+  }
+  else if (d.quiz === 'again') { state.quiz = newQuiz(); render(); }
+});
+
+render();
+</script>
+
+</body></html>
